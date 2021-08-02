@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Nav.scss';
 
-class Nav extends React.Component {
+class Nav extends Component {
   render() {
     return (
       <nav className="nav">
@@ -14,7 +14,7 @@ class Nav extends React.Component {
             <div className="myPageLink">
               <ul>
                 <li>
-                  <Link to="/">로그인/회원가입</Link>
+                  <Link to="Login">로그인/회원가입</Link>
                 </li>
                 {/* <li>
                   <Link to="/">마이페이지</Link>
