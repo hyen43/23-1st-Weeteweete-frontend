@@ -8,11 +8,11 @@
   z-index: 999;
 
   .contain {
-    max-width: 1180px;
-    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    max-width: 1180px;
+    margin: 0 auto;
 
     .siteLogo {
       h1 {
@@ -28,8 +28,10 @@
         display: flex;
         justify-content: flex-end;
       }
+
       .myPageLink {
         margin-bottom: 10px;
+
         ul {
           li {
             color: #222;
@@ -38,6 +40,7 @@
           }
         }
       }
+
       .menuLink {
         ul {
           li {

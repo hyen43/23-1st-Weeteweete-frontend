@@ -1,9 +1,14 @@
-.footer {
+@mixin flex-between-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+Footer {
   background: #f7f7f7;
 
   .contain {
     max-width: 1180px;
-    width: 100%;
     margin: 0 auto;
   }
 
@@ -35,12 +40,11 @@
     padding: 40px 0;
 
     .contain {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      @include flex-between-center;
 
       .customer {
         width: 500px;
+
         h3 {
           color: #333;
           font-size: 22px;
@@ -80,7 +84,7 @@
         }
       }
 
-      .compInfo {
+      .companyInfo {
         width: 500px;
 
         address {
