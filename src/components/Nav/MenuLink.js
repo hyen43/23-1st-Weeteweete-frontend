@@ -4,19 +4,14 @@ import './Nav.scss';
 
 class MenuLink extends Component {
   render() {
-    const menuLink = [
-      { key: 0, content: 'NEW' },
-      { key: 1, content: 'PLANNER' },
-      { key: 2, content: 'NOTES' },
-      { key: 3, content: 'PEN' },
-    ];
     return (
       <div className="menuLink">
         <ul>
-          {menuLink.map(el => {
+          {MENU_LINK.map(el => {
+            const { key, content } = el;
             return (
-              <li key={el.key}>
-                <Link to="/">{el.content}</Link>
+              <li key={key}>
+                <Link to="/">{content}</Link>
               </li>
             );
           })}
@@ -25,5 +20,11 @@ class MenuLink extends Component {
     );
   }
 }
+const MENU_LINK = [
+  { key: 0, content: 'NEW' },
+  { key: 1, content: 'PLANNER' },
+  { key: 2, content: 'NOTES' },
+  { key: 3, content: 'PEN' },
+];
 
 export default MenuLink;

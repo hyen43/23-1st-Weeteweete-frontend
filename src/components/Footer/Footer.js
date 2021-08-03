@@ -5,7 +5,7 @@ import FooterLink from './FooterLink';
 class Footer extends Component {
   render() {
     return (
-      <footer>
+      <div className="Footer">
         <FooterLink />
         <div className="footerInfo">
           <div className="contain">
@@ -35,7 +35,7 @@ class Footer extends Component {
             </div>
           </div>
         </div>
-      </footer>
+      </div>
     );
   }
 }

@@ -1,10 +1,6 @@
-@mixin flex-between-center {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+@import 'src/styles/variable.scss';
 
-Footer {
+.Footer {
   background: #f7f7f7;
 
   .contain {
