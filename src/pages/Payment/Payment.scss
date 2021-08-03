@@ -1,1 +1,132 @@
-s
+.main {
+  text-align: center;
+
+  .orderProductList {
+    display: inline-block;
+    border-bottom: 1px solid black;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    width: 90%;
+  }
+
+  .btnToPrev {
+    text-align: right;
+    padding-bottom: 10px;
+  }
+
+  ul {
+    background-color: #ffdbd9;
+    border-top: 1px solid blue;
+    border-bottom: 1px solid blue;
+    padding: 10px;
+  }
+
+  li {
+    text-align: left;
+  }
+
+  h3 {
+    font-size: 12px;
+  }
+
+  .text {
+    font-size: 12px;
+    margin-right: 10px;
+  }
+
+  .text2 {
+    text-align: right;
+  }
+
+  .emailInfo {
+    font-size: 12px;
+    text-align: left;
+  }
+
+  table,
+  td,
+  th {
+    border: 1px solid gray;
+    background-color: #ffffff;
+    padding: 10px;
+  }
+
+  .totalPrice {
+    text-align: right;
+  }
+
+  table {
+    width: 100%; //여기 100프로로 해둬야 함.
+    height: 100px;
+    margin: auto;
+  }
+
+  .orderInfo {
+    color: red;
+  }
+
+  #checkoutInfo {
+    overflow: auto;
+    width: 470px;
+    height: 70px;
+    border: 1px solid gray;
+    border-radius: 5px;
+  }
+
+  .totalPayAmount {
+    width: 90%;
+    border: 1px solid gray;
+  }
+
+  .baseButton {
+    display: flex;
+    padding-top: 20px;
+  }
+  .orderArea {
+    display: inline-block;
+    width: 90%;
+
+    input {
+      text-align: left;
+      border: 1px solid black;
+    }
+
+    .orderer {
+      width: 190px;
+      text-align: left;
+    }
+    .btnAddress {
+      width: 60px;
+    }
+  }
+
+  .totalDiscount {
+    width: 90%;
+    margin-top: 20px;
+  }
+  .payArea {
+    width: 90%;
+  }
+
+  .payArea {
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    border: 1px solid blue;
+    width: 80%;
+
+    .total {
+      text-align: right;
+    }
+    ul {
+      width: 100%;
+
+      li strong {
+        text-align: right;
+      }
+      li span {
+        text-align: right;
+      }
+    }
+  }
+}
