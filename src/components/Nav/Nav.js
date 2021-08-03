@@ -8,7 +8,7 @@ class Nav extends Component {
       <nav className="nav">
         <div className="contain">
           <div className="siteLogo">
-            <h1>motemote</h1>
+            <h1>weeteweete</h1>
           </div>
           <div className="link">
             <div className="myPageLink">
