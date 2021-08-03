@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import './Login.scss';
 
 class Login extends React.Component {
@@ -20,8 +20,8 @@ class Login extends React.Component {
           </div>
           <button className="loginBtn">로그인</button>
           <div className="findIdPw">
-            <a href="#">- 아이디 찾기 </a>
-            <a href="#">- 비밀번호 찾기</a>
+            <Link to="/Findid">- 아이디 찾기 </Link>
+            <Link to="/Findpw">- 비밀번호 찾기</Link>
           </div>
           <button className="signUpBtn">회원가입</button>
         </form>

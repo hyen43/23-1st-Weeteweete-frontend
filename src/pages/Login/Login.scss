@@ -1,16 +1,18 @@
-@mixin loginInput {
+.loginInputCommon {
   display: block;
   margin: 0 auto;
-  padding: 6px 10px;
   width: 80%;
+}
+
+@mixin loginInput {
+  @extend .loginInputCommon;
+  padding: 6px 10px;
   height: 45px;
   border: 1px solid grey;
 }
 
 @mixin loginButton {
-  display: block;
-  margin: 0 auto;
-  width: 80%;
+  @extend .loginInputCommon;
   height: 40px;
 }
 
@@ -75,6 +77,7 @@
       font-size: 0.75em;
     }
   }
+
   .signUpBtn {
     @include loginButton;
     border: 1px solid lightgrey;
