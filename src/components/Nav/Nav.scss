@@ -1,1 +1,55 @@
-d
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 999;
+
+  .contain {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1180px;
+    margin: 0 auto;
+
+    .siteLogo {
+      h1 {
+        font-family: 'Georama', sans-serif;
+        color: #333;
+        font-size: 35px;
+        line-height: 1.3em;
+      }
+    }
+
+    .link {
+      ul {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .myPageLink {
+        margin-bottom: 10px;
+
+        ul {
+          li {
+            color: #222;
+            font-size: 12px;
+            margin-left: 15px;
+          }
+        }
+      }
+
+      .menuLink {
+        ul {
+          li {
+            color: #222;
+            font-size: 22px;
+            margin-left: 25px;
+          }
+        }
+      }
+    }
+  }
+}
