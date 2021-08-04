@@ -8,30 +8,6 @@
     margin: 0 auto;
   }
 
-  .footerLink {
-    border-bottom: 1px solid #ddd;
-
-    ul {
-      display: flex;
-      align-items: center;
-
-      li {
-        margin-right: 40px;
-
-        &:last-child {
-          margin-right: 0;
-        }
-
-        a {
-          display: inline-block;
-          color: rgb(71, 71, 71);
-          font-size: 15px;
-          padding: 12px 0;
-        }
-      }
-    }
-  }
-
   .footerInfo {
     padding: 40px 0;
 
