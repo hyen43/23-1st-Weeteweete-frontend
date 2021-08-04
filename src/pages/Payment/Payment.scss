@@ -1,5 +1,25 @@
 .main {
   text-align: center;
+  table {
+    width: 100%;
+    height: 100px;
+    margin: auto;
+    font-size: 10px;
+    border-collapse: collapse;
+  }
+
+  td {
+    text-align: left;
+  }
+
+  table,
+  td,
+  th {
+    border: 1px solid #e9e9e9;
+    background-color: #ffffff;
+    margin: 0px;
+    padding: 10px;
+  }
 
   .orderProductList {
     display: inline-block;
@@ -7,124 +27,244 @@
     padding-bottom: 20px;
     margin-bottom: 30px;
     width: 90%;
-  }
 
-  .btnToPrev {
-    text-align: right;
-    padding-bottom: 10px;
-  }
+    ul {
+      background-color: #fef8f3;
+      border-top: 1px solid #e7e4e3;
+      border-bottom: 1px solid #e7e4e3;
+      padding: 10px;
 
-  ul {
-    background-color: #ffdbd9;
-    border-top: 1px solid blue;
-    border-bottom: 1px solid blue;
-    padding: 10px;
-  }
+      li {
+        text-align: left;
+        color: #fa726f;
+        font-size: 11px;
 
-  li {
-    text-align: left;
+        .fa-exclamation {
+          border: 1px solid #e3e2e5;
+          padding: 2px 5px 2px 5px;
+          background-color: white;
+          margin-right: 10px;
+        }
+      }
+    }
+
+    .tableTitle {
+      border: 1px solid #fafafa;
+      background-color: #f6f6f6;
+      position: relative;
+      padding: 5px;
+      h3 {
+        display: inline-block;
+        font-size: 12px;
+      }
+      .btnToPrev {
+        position: absolute;
+        right: 0px;
+        padding-bottom: 10px;
+      }
+    }
+    .orderDetailsTable {
+      background-color: #ffffff;
+      padding: 10px;
+
+      .tablefix {
+        background-color: #fafafa;
+      }
+
+      .tableline {
+        border-right: 1px solid white;
+      }
+    }
+    .totalPrice {
+      text-align: right;
+      background-color: #fafafa;
+      span {
+        color: #008bcc;
+      }
+    }
   }
 
   h3 {
     font-size: 12px;
   }
 
-  .text {
-    font-size: 12px;
-    margin-right: 10px;
-  }
-
-  .text2 {
-    text-align: right;
-  }
-
-  .emailInfo {
-    font-size: 12px;
-    text-align: left;
-  }
-
-  table,
-  td,
-  th {
-    border: 1px solid gray;
-    background-color: #ffffff;
-    padding: 10px;
-  }
-
-  .totalPrice {
-    text-align: right;
-  }
-
-  table {
-    width: 100%; //여기 100프로로 해둬야 함.
-    height: 100px;
-    margin: auto;
-  }
-
-  .orderInfo {
-    color: red;
-  }
-
-  #checkoutInfo {
-    overflow: auto;
-    width: 470px;
-    height: 70px;
-    border: 1px solid gray;
-    border-radius: 5px;
-  }
-
-  .totalPayAmount {
-    width: 90%;
-    border: 1px solid gray;
-  }
-
   .baseButton {
     display: flex;
     padding-top: 20px;
+    position: relative;
+    .text {
+      font-size: 12px;
+      margin-right: 10px;
+    }
+    .btnToPrev {
+      position: absolute;
+      right: 0px;
+      padding-bottom: 10px;
+    }
   }
+
   .orderArea {
     display: inline-block;
     width: 90%;
+    margin-bottom: 40px;
 
-    input {
-      text-align: left;
-      border: 1px solid black;
+    .deliveryInfoTable {
+      border: 1px solid gray;
+      background-color: #ffffff;
+      padding: 10px;
+
+      .tablefix {
+        background-color: #fafafa;
+      }
+
+      label {
+        margin-right: 10px;
+      }
+
+      .emailInfo {
+        padding-top: 10px;
+        font-size: 12px;
+        text-align: left;
+      }
+      input {
+        text-align: left;
+        border: 1px solid #d5d5d5;
+      }
+      .orderer {
+        width: 190px;
+        text-align: left;
+      }
+      #btnAddress {
+        width: 60px;
+        padding-left: 10px;
+      }
+      .btnFindPostalCode {
+        border-style: none;
+      }
+      #btnAddress2,
+      #btnAddress3 {
+        width: 190px;
+      }
     }
-
-    .orderer {
-      width: 190px;
-      text-align: left;
+    .text {
+      font-size: 12px;
+      margin-right: 10px;
     }
-    .btnAddress {
-      width: 60px;
-    }
-  }
-
-  .totalDiscount {
-    width: 90%;
-    margin-top: 20px;
-  }
-  .payArea {
-    width: 90%;
-  }
-
-  .payArea {
-    display: flex;
-    flex-direction: row;
-    align-content: space-between;
-    border: 1px solid blue;
-    width: 80%;
-
-    .total {
+    .text2 {
       text-align: right;
     }
-    ul {
-      width: 100%;
-
-      li strong {
-        text-align: right;
+    .defaultAddress {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      input {
+        width: 100px;
       }
-      li span {
+      span {
+        margin-left: 10px;
+        font-size: 10px;
+      }
+    }
+    .detailAddress {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      input {
+        width: 100px;
+      }
+      span {
+        margin-left: 10px;
+        font-size: 10px;
+        color: red;
+      }
+    }
+    #numsSelect,
+    #emailOptions {
+      border: 1px solid #d5d5d5;
+    }
+
+    textarea {
+      width: 100%;
+      border: 1px solid #d5d5d5;
+    }
+  }
+
+  .totalPayAmountTable {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 10px;
+    border: 1px solid black;
+
+    .tablefix {
+      background-color: #fafafa;
+    }
+    td {
+      text-align: center;
+    }
+  }
+
+  .totalDiscountTable {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 20px;
+    .tablefix {
+      background-color: #fafafa;
+    }
+  }
+
+  .payArea {
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: space-evenly;
+    border: 1px solid black;
+
+    .payAreaInner {
+      border-right: 1px solid black;
+      width: 90%;
+      .checkoutMethod {
+        padding: 10px;
+        font-size: 12px;
+
+        .fa-exclamation {
+          border: 1px solid #e3e2e5;
+          padding: 2px 5px 2px 5px;
+          background-color: white;
+          margin-right: 10px;
+          color: red;
+        }
+      }
+      .textArea {
+        .contractCheckBox {
+          margin-top: 10px;
+        }
+        .textAreaInner {
+          display: flex;
+          flex-direction: row;
+          #checkoutInfo {
+            overflow: auto;
+            width: 900px;
+            height: 70px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            display: inline-block;
+            padding: 5px;
+          }
+          .btnToFullScreen {
+            display: inline-block;
+          }
+        }
+      }
+    }
+
+    .total {
+      background-color: #fafafa;
+      padding: 5px;
+      h3 {
+        margin-bottom: 30%;
         text-align: right;
       }
     }
