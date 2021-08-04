@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './Product.scss';
+import './Protab.scss';
 
 class ProTab extends Component {
   render() {

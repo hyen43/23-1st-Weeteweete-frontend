@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Product.scss';
 import ProTab from './Protab';
+import ProHead from './Prohead';
 
 class Product extends Component {
   render() {
     return (
       <div className="product">
-        <div className="proHead">
-          <h2>PLANNER</h2>
-        </div>
+        <ProHead />
         <ProTab />
         <div className="proList">
           <div className="wrap">
@@ -27,7 +26,10 @@ class Product extends Component {
                   <Link to="/">
                     <div className="thumb">
                       <div className="img">
-                        <img alt="product1" src="./images/main_pro1.jpeg"></img>
+                        <img
+                          alt="product1"
+                          src="./images/product_pro1.jpeg"
+                        ></img>
                       </div>
                     </div>
                     <div className="cnt">
@@ -43,7 +45,10 @@ class Product extends Component {
                   <Link to="/">
                     <div className="thumb">
                       <div className="img">
-                        <img alt="product1" src="./images/main_pro1.jpeg"></img>
+                        <img
+                          alt="product1"
+                          src="./images/product_pro1.jpeg"
+                        ></img>
                       </div>
                     </div>
                     <div className="cnt">
@@ -59,7 +64,10 @@ class Product extends Component {
                   <Link to="/">
                     <div className="thumb">
                       <div className="img">
-                        <img alt="product1" src="./images/main_pro1.jpeg"></img>
+                        <img
+                          alt="product1"
+                          src="./images/product_pro1.jpeg"
+                        ></img>
                       </div>
                     </div>
                     <div className="cnt">
@@ -87,34 +95,34 @@ class Product extends Component {
               <div className="colorFilter">
                 <ul>
                   <li>
-                    <div className="colorChip red active" data-color="red">
+                    <button className="colorChip red active" data-color="red">
                       <span>red</span>
-                    </div>
+                    </button>
                   </li>
                   <li>
-                    <div className="colorChip green" data-color="green">
-                      <span>red</span>
-                    </div>
+                    <button className="colorChip green" data-color="green">
+                      <span>green</span>
+                    </button>
                   </li>
                   <li>
-                    <div className="colorChip dream" data-color="dream">
+                    <button className="colorChip dream" data-color="dream">
                       <span>dream</span>
-                    </div>
+                    </button>
                   </li>
                   <li>
-                    <div className="colorChip violet" data-color="violet">
+                    <button className="colorChip violet" data-color="violet">
                       <span>violet</span>
-                    </div>
+                    </button>
                   </li>
                   <li>
-                    <div className="colorChip dark" data-color="dark">
+                    <button className="colorChip dark" data-color="dark">
                       <span>dark</span>
-                    </div>
+                    </button>
                   </li>
                   <li>
-                    <div className="colorChip yellow" data-color="yellow">
+                    <button className="colorChip yellow" data-color="yellow">
                       <span>yellow</span>
-                    </div>
+                    </button>
                   </li>
                 </ul>
               </div>
@@ -125,7 +133,10 @@ class Product extends Component {
                   <Link to="/">
                     <div className="thumb">
                       <div className="img">
-                        <img alt="product1" src="./images/main_pro1.jpeg"></img>
+                        <img
+                          alt="product1"
+                          src="./images/product_pro1.jpeg"
+                        ></img>
                       </div>
                     </div>
                     <div className="cnt">
@@ -141,7 +152,10 @@ class Product extends Component {
                   <Link to="/">
                     <div className="thumb">
                       <div className="img">
-                        <img alt="product1" src="./images/main_pro1.jpeg"></img>
+                        <img
+                          alt="product1"
+                          src="./images/product_pro1.jpeg"
+                        ></img>
                       </div>
                     </div>
                     <div className="cnt">
@@ -157,7 +171,10 @@ class Product extends Component {
                   <Link to="/">
                     <div className="thumb">
                       <div className="img">
-                        <img alt="product1" src="./images/main_pro1.jpeg"></img>
+                        <img
+                          alt="product1"
+                          src="./images/product_pro1.jpeg"
+                        ></img>
                       </div>
                     </div>
                     <div className="cnt">
@@ -189,7 +206,10 @@ class Product extends Component {
                   <Link to="/">
                     <div className="thumb">
                       <div className="img">
-                        <img alt="product1" src="./images/main_pro1.jpeg"></img>
+                        <img
+                          alt="product1"
+                          src="./images/product_pro1.jpeg"
+                        ></img>
                       </div>
                     </div>
                     <div className="cnt">
@@ -205,7 +225,10 @@ class Product extends Component {
                   <Link to="/">
                     <div className="thumb">
                       <div className="img">
-                        <img alt="product1" src="./images/main_pro1.jpeg"></img>
+                        <img
+                          alt="product1"
+                          src="./images/product_pro1.jpeg"
+                        ></img>
                       </div>
                     </div>
                     <div className="cnt">
@@ -221,7 +244,10 @@ class Product extends Component {
                   <Link to="/">
                     <div className="thumb">
                       <div className="img">
-                        <img alt="product1" src="./images/main_pro1.jpeg"></img>
+                        <img
+                          alt="product1"
+                          src="./images/product_pro1.jpeg"
+                        ></img>
                       </div>
                     </div>
                     <div className="cnt">
