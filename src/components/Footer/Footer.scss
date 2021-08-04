@@ -1,1 +1,80 @@
-d
+@import 'src/styles/variable.scss';
+
+.Footer {
+  background: #f7f7f7;
+
+  .contain {
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  .footerInfo {
+    padding: 40px 0;
+
+    .contain {
+      @include flex-between-center;
+
+      .customer {
+        width: 500px;
+
+        h3 {
+          color: #333;
+          font-size: 22px;
+          line-height: 1.3em;
+          padding-left: 30px;
+          position: relative;
+          margin-bottom: 10px;
+
+          &:after {
+            content: '';
+            display: block;
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 6px;
+            left: 0;
+            background-size: 100% 100%;
+            background-position: 0 0;
+            background-repeat: no-repeat;
+            background-image: url('https://s3.ap-northeast-2.amazonaws.com/motemoteweb/design/icon/kakao.svg');
+          }
+        }
+
+        h4 {
+          font-size: 16px;
+          font-weight: 400;
+          margin-bottom: 7px;
+
+          span {
+            font-weight: 700;
+          }
+        }
+
+        p {
+          color: #909090;
+          font-size: 14px;
+        }
+      }
+
+      .companyInfo {
+        width: 500px;
+
+        address {
+          font-style: normal;
+
+          span {
+            display: inline-block;
+            font-size: 12px;
+          }
+
+          .bar {
+            margin: 0 5px;
+            width: 1px;
+            height: 10px;
+            background: #333;
+          }
+        }
+      }
+    }
+  }
+}

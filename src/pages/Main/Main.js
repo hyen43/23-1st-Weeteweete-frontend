@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import './Main.scss';
 
-class Main extends React.Component {
+class Main extends Component {
   render() {
-    return <>main</>;
+    return <div className="main">메인페이지가 들어갑니다아아앙</div>;
   }
 }
 
