@@ -4,6 +4,51 @@ import './Signup.scss';
 import SIGNUP_LIST from './SignupData.js';
 
 class Signup extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      account: '',
+      password: '',
+      repassword: '',
+      name: '',
+      address: '',
+      phone_number: '',
+      email: '',
+    };
+  }
+
+  signupTest = () => {
+    fetch('http://10.58.7.133:8000/users/signup', {
+      method: 'POST',
+      body: JSON.stringify({
+        account: this.state.account,
+        password: this.state.password,
+        name: this.state.name,
+        address: this.state.address,
+        phone_number: this.state.phone_number,
+        email: this.state.email,
+      }),
+    })
+      .then(res => res.json())
+      .then(
+        data => console.log('통신 완료 데이터 : ', data)
+        // if (data.message === 'SUCCESS') {
+        //   alert('회원가입 성공!');
+        //   this.props.history.push('/login');
+        // } else {
+        //  alert('회원가입 실패!');
+        // }
+        //
+      );
+  };
+
+  handleInput = e => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value,
+    });
+  };
+
   render() {
     return (
       <main className="signUp">
@@ -24,15 +69,24 @@ class Signup extends React.Component {
                     {index}
                     <span className="signUpEssentialMark">*</span>
                   </span>
-                  <input type={type} name={name} className={className} />
-                  <span>{explain}</span>
+                  <div className="signUpInputBox">
+                    <input
+                      type={type}
+                      name={name}
+                      className={className}
+                      onChange={this.handleInput}
+                    />
+                    <span>{explain}</span>
+                  </div>
                 </div>
               );
             })}
           </form>
         </div>
         <div className="signUpBtnList">
-          <button className="signUpBtn">회원가입</button>
+          <button className="signUpBtn" onClick={this.signupTest}>
+            회원가입
+          </button>
           <button className="signUpFailBtn">회원가입취소</button>
         </div>
       </main>
