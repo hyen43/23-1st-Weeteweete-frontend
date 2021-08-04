@@ -16,14 +16,14 @@ class Signup extends React.Component {
         <div className="signUpContainer">
           <form className="signUpForm">
             <div className="signUpFormId">
-              <span className="signUpFormName">
+              <span className="signUpFormIndex">
                 아이디<span className="signUpEssentialMark">*</span>
               </span>
               <input type="text" />
               <span>(영문소문자/숫자, 4~16자)</span>
             </div>
             <div className="signUpFormPw">
-              <span className="signUpFormName">
+              <span className="signUpFormIndex">
                 비밀번호<span className="signUpEssentialMark">*</span>
               </span>
               <input type="password" />
@@ -32,37 +32,37 @@ class Signup extends React.Component {
               </span>
             </div>
             <div className="signUpFormRePw">
-              <span className="signUpFormName">
+              <span className="signUpFormIndex">
                 비밀번호 확인<span className="signUpEssentialMark">*</span>
               </span>
               <input type="password" />
             </div>
             <div className="signUpFormName">
-              <span className="signUpFormName">
+              <span className="signUpFormIndex">
                 이름<span className="signUpEssentialMark">*</span>
               </span>
               <input type="text" />
             </div>
             <div className="signUpFormAddress">
-              <span className="signUpFormName">
+              <span className="signUpFormIndex">
                 주소<span className="signUpEssentialMark">*</span>
               </span>
               <input type="text" />
             </div>
             <div className="signUpFormPhone">
-              <span className="signUpFormName">
+              <span className="signUpFormIndex">
                 전화번호<span className="signUpEssentialMark">*</span>
               </span>
               <input type="text" />
             </div>
             <div className="signUpFormMail">
-              <span className="signUpFormName">
+              <span className="signUpFormIndex">
                 이메일<span className="signUpEssentialMark">*</span>
               </span>
               <input type="text" />
             </div>
             <div>
-              <span className="signUpFormName">
+              <span className="signUpFormIndex">
                 이메일 수신여부<span className="signUpEssentialMark">*</span>
               </span>
               <input type="checkbox" />
