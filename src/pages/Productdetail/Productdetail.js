@@ -1,17 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ImageSlider from './ImageSlider';
 import './Productdetail.scss';
 
 class Productdetail extends React.Component {
   render() {
     return (
-      <div className="productDetailPage">
+      <main className="productDetailPage">
         <div className="productDetail">
           <div className="ProductDetailImgTable">
-            <section className="productDetailImg">
+            <ImageSlider />
+            {/* <section className="productDetailImg">
               <img
-                id="mainSlideImg"
-                alt="mainSlide"
+                className="mainSlideImg"
+                alt="mainSlclassNamee"
                 src="images/motemoteDetailImg1.jpg"
               />
               <div className="productSlideImg">
@@ -36,80 +38,86 @@ class Productdetail extends React.Component {
                   </li>
                 </ul>
               </div>
-            </section>
+            </section> */}
           </div>
           <section>
             <table className="productDetailTable">
-              <tr>
-                <td className="productDetailName">
-                  <span className="productDetailName">
-                    [오리지널] 텐미닛 플래너 31DAYS - 화이트
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td className="productDetailPrice">
-                  판매가
-                  <br />
-                  <span>2000원</span>
-                </td>
-              </tr>
-              <tr>
-                <td className="productDetailDiscount">
-                  할인가
-                  <br />
-                  <span id="DiscountPrice">1,800원</span>
-                  <span id="DiscountPercent"> (200원 할인)</span>
-                </td>
-              </tr>
-              <tr>
-                <td className="productDetailDeliveryFee">
-                  배송비
-                  <br />
-                  <span id="DeliveryFee">
-                    2500원 (30,000원 이상 구매 시 무료)
-                  </span>
-                </td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td className="productDetailName">
+                    <span className="productDetailName">
+                      [오리지널] 텐미닛 플래너 31DAYS - 화이트
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="productDetailPrice">
+                    판매가
+                    <br />
+                    <span>2000원</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="productDetailDiscount">
+                    할인가
+                    <br />
+                    <span className="DiscountPrice">1,800원</span>
+                    <span className="DiscountPercent"> (200원 할인)</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="productDetailDeliveryFee">
+                    배송비
+                    <br />
+                    <span className="DeliveryFee">
+                      2500원 (30,000원 이상 구매 시 무료)
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
             </table>
             <table className="productDetailOption">
-              <tr className="productDetailOptionTable">
-                <td id="optionName">
-                  [오리지널] 텐미닛 플래너 31DAYS - 화이트{' '}
-                </td>
-                <td>
-                  <span className="quantitiyBlock">
-                    <input
-                      id="quantity"
-                      type="text"
-                      value="1"
-                      randonly="randonly"
-                      min="1"
-                      max="100"
-                    />
-                    <div className="plus">
-                      <Link to="/">
-                        <i class="fas fa-sort-up"></i>
-                      </Link>
-                    </div>
-                    <div className="minus">
-                      <Link to="/">
-                        <i class="fas fa-sort-down"></i>
-                      </Link>
-                    </div>
-                  </span>
-                </td>
-                <td>2000원</td>
-              </tr>
+              <tbody>
+                <tr className="productDetailOptionTable">
+                  <td className="optionName">
+                    [오리지널] 텐미닛 플래너 31DAYS - 화이트
+                  </td>
+                  <td>
+                    <span className="quantitiyBlock">
+                      <input
+                        className="quantity"
+                        type="text"
+                        value="1"
+                        randonly="randonly"
+                        min="1"
+                        max="100"
+                      />
+                      <div className="plus">
+                        <Link to="/">
+                          <i class="fas fa-sort-up"></i>
+                        </Link>
+                      </div>
+                      <div className="minus">
+                        <Link to="/">
+                          <i class="fas fa-sort-down"></i>
+                        </Link>
+                      </div>
+                    </span>
+                  </td>
+                  <td>2000원</td>
+                </tr>
+              </tbody>
             </table>
             <table className="productDetailTotal">
-              <tr>
-                <td>
-                  <span>Total: </span>
-                  <span id="totalPrice">1,800원</span>
-                  <span> (1개)</span>
-                </td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td>
+                    <span>Total: </span>
+                    <span className="totalPrice">1,800원</span>
+                    <span> (1개)</span>
+                  </td>
+                </tr>
+              </tbody>
             </table>
             <div className="productDetailbuttons">
               <button className="buyNowButton" type="button">
@@ -138,7 +146,7 @@ class Productdetail extends React.Component {
             </Link>
           </div>
         </div>
-      </div>
+      </main>
     );
   }
 }
