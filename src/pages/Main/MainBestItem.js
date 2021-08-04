@@ -28,9 +28,10 @@ class MainBestItem extends Component {
                               Number(pro.discount) ? 'price sales' : 'price'
                             }
                           >
-                            <span className="cost">{pro.price}</span>
+                            <span className="cost">{pro.price} 원</span>
                             <span className="salePrice">
-                              {Number(pro.price) - Number(pro.discount)}
+                              할인 판매가 :{' '}
+                              {Number(pro.price) - Number(pro.discount)} 원
                             </span>
                           </div>
                         </div>
