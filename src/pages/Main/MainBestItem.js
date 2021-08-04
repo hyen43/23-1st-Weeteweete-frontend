@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './Main.scss';
+import './MainBestItem.scss';
 
 class MainBestItem extends Component {
   render() {
@@ -13,25 +13,31 @@ class MainBestItem extends Component {
             {bestList &&
               bestList.map(el => {
                 return el.information.map(pro => {
+                  const { id, name, image, discount, price } = pro;
                   return (
-                    <li key={pro.id}>
+                    <li key={id}>
                       <Link to="/">
                         <div className="thumb">
                           <div className="img">
-                            <img alt={pro.name} src={pro.image[0]}></img>
+                            <img alt={name} src={image[0]}></img>
                           </div>
                         </div>
-                        <div className="cnt">
-                          <div className="tit">{pro.name}</div>
+                        <div className="content">
+                          <div className="tit">{name}</div>
                           <div
                             className={
-                              Number(pro.discount) ? 'price sales' : 'price'
+                              Number(discount) ? 'price sales' : 'price'
                             }
                           >
-                            <span className="cost">{pro.price} 원</span>
+                            <span className="cost">
+                              {Number(price).toLocaleString()} 원
+                            </span>
                             <span className="salePrice">
-                              할인 판매가 :{' '}
-                              {Number(pro.price) - Number(pro.discount)} 원
+                              할인 판매가 :
+                              {(
+                                Number(price) - Number(discount)
+                              ).toLocaleString()}
+                              원
                             </span>
                           </div>
                         </div>

@@ -14,16 +14,19 @@ class MainVisual extends Component {
 
   visualSlide = () => {
     const { visualIndex } = this.state;
-    if (visualIndex < 2) {
-      this.setState({ visualIndex: visualIndex + 1 }, () => {
-        this.visualContainer.current.style.transition = 'transform 2s';
-        this.visualContainer.current.style.transform = `translateX(-${
-          50 * visualIndex
-        }%)`;
-      });
+    if (visualIndex < 1) {
+      this.setState({ visualIndex: visualIndex + 1 });
+      this.slide();
     } else {
       this.setState({ visualIndex: -1 });
     }
+  };
+
+  slide = () => {
+    this.visualContainer.current.style.transition = 'transform 2s';
+    this.visualContainer.current.style.transform = `translateX(-${
+      50 * this.state.visualIndex
+    }%)`;
   };
 
   componentDidMount() {
@@ -35,8 +38,13 @@ class MainVisual extends Component {
         });
       });
 
-    setInterval(this.visualSlide, 3000);
+    this.slideId = setInterval(this.visualSlide, 3000);
   }
+
+  componentWillUnmount() {
+    clearInterval(this.slideId);
+  }
+
   render() {
     return (
       <div className="visualContainer" ref={this.visualContainer}>
