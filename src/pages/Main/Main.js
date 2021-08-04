@@ -13,7 +13,7 @@ class Main extends Component {
 
   componentDidMount() {
     // fetch('http://10.58.1.209:8000/products/1/1/1', {
-    fetch('http://localhost:3000/data/BestItemData.json')
+    fetch('data/BestItemData.json')
       .then(data => data.json())
       .then(data => {
         this.setState({ bestList: data });

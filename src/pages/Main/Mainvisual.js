@@ -30,7 +30,7 @@ class MainVisual extends Component {
   };
 
   componentDidMount() {
-    fetch('http://localhost:3000/data/VisualImageData.json')
+    fetch('data/VisualImageData.json')
       .then(data => data.json())
       .then(data => {
         this.setState({
