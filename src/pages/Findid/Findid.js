@@ -5,44 +5,38 @@ import './Findid.scss';
 class Findid extends React.Component {
   render() {
     return (
-      <div className="findid">
+      <main className="findid">
         <h2 className="findidTitle">FIND ID</h2>
         <div className="findidContainer">
           <div className="findidMethod">
             <input type="radio" name="findidWhat" />
-            이메일로 찾기
+            <span className="selectfindWay">이메일로 찾기</span>
             <input type="radio" name="findidWhat" />
-            휴대폰 번호로 찾기
+            <span className="selectfindWay">휴대폰 번호로 찾기</span>
           </div>
-          <form>
-            <table className="findidTable">
-              <tbody>
-                <tr>
-                  <th scope="row">이름</th>
-                  <td>
-                    <input type="text" className="findidNameInput" />
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">이메일</th>
-                  <td>
-                    <input type="text" className="findidMailInput" />
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">휴대폰 번호</th>
-                  <td>
-                    <input type="text" className="findidPhoneInput" />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </form>
+          <div className="findidForm">
+            <form>
+              {/* radio button 클릭시 이메일 혹은 휴대폰 번호만 보이게 하기 */}
+              <div className="findidName">
+                <span className="findidFormName">이름</span>
+                <input type="text" className="findidNameInput" />
+              </div>
+              <div className="findidMail">
+                <span className="findidFormName">이메일로 찾기</span>
+                <input type="text" className="findidMailInput" />
+              </div>
+              <div className="findidPhone">
+                <span className="findidFormName">휴대폰 번호로 찾기</span>
+                <input type="text" className="findidPhoneInput" />
+              </div>
+            </form>
+          </div>
+
           <button className="findidBtn">확인</button>
         </div>
-      </div>
+      </main>
     );
   }
 }
 
-export default Findid;
+export default withRouter(Findid);
