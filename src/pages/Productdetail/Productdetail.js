@@ -1,47 +1,38 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ImageSlider from './ImageSlider';
+import ProductDetailInfo from './productDetailInfo';
 import './Productdetail.scss';
 
 class Productdetail extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      detailData: {},
+    };
+  }
+
+  componentDidMount() {
+    console.log('hello');
+    console.log(this.state.detailData);
+    fetch('data/ItemData.json')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          detailData: data,
+        });
+      });
+    console.log(this.state.detailData);
+  }
+
   render() {
     return (
       <main className="productDetailPage">
         <div className="productDetail">
-          <div className="ProductDetailImgTable">
-            <ImageSlider />
-            {/* <section className="productDetailImg">
-              <img
-                className="mainSlideImg"
-                alt="mainSlclassNamee"
-                src="images/motemoteDetailImg1.jpg"
-              />
-              <div className="productSlideImg">
-                <ul>
-                  <li>
-                    <img
-                      alt="productImg1"
-                      src="images/motemoteDetailImg1.jpg"
-                    />
-                  </li>
-                  <li>
-                    <img
-                      alt="productImg2"
-                      src="images/motemoteDetailImg2.jpg"
-                    />
-                  </li>
-                  <li>
-                    <img
-                      alt="productImg3"
-                      src="images/motemoteDetailImg3.jpg"
-                    />
-                  </li>
-                </ul>
-              </div>
-            </section> */}
-          </div>
+          <ImageSlider />
           <section>
-            <table className="productDetailTable">
+            <ProductDetailInfo detailData={this.state.detailData} />
+            {/* <table className="productDetailTable">
               <tbody>
                 <tr>
                   <td className="productDetailName">
@@ -75,7 +66,7 @@ class Productdetail extends React.Component {
                   </td>
                 </tr>
               </tbody>
-            </table>
+            </table> */}
             <table className="productDetailOption">
               <tbody>
                 <tr className="productDetailOptionTable">

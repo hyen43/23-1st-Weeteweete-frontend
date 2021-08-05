@@ -10,16 +10,6 @@
     .productDetailImg{
       display: flex;
       padding-right: 30px;
-
-      .mainSlideImg{
-        width: 500px;
-        padding-right: 10px;
-      }
-
-      .productSlideImg li{
-        padding-right: 10px;
-        width: 100px;
-      }
     }
 
     .productDetailTable{
@@ -27,8 +17,6 @@
       padding-left: 8px;
       line-height: 1.8;
       font-size: 12px;
-
-
 
       .productDetailName{
         font-size: 18px;
@@ -102,7 +90,7 @@
         .plus, .minus{
           position: absolute;
           left: 28px;
-          top: 0px;
+          top: 2px;
           color: black;
         } 
       }

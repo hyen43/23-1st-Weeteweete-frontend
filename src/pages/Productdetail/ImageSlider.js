@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 import './ImageSlider.scss';
 
 class ImageSlider extends React.Component {
@@ -36,7 +35,7 @@ class ImageSlider extends React.Component {
           <div className="productDetailImg">
             <div className="mainSlide">
               <div
-                className="mainSlideImg"
+                className="mainSlideImgs"
                 style={{
                   transform: `translate3d(${
                     -500 * this.state.sliderIndex
@@ -45,7 +44,7 @@ class ImageSlider extends React.Component {
               >
                 {productSlideImg?.map((element, index) => {
                   return (
-                    <div key={index}>
+                    <div className="mainSlideImg" key={index}>
                       <img alt={element.content} src={element.src} />
                     </div>
                   );
