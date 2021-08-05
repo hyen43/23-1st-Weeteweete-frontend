@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ImageSlider from './ImageSlider';
 import ProductDetailInfo from './productDetailInfo';
+import ProductDetailOption from './ProductDetailOption';
 import './Productdetail.scss';
 
 class Productdetail extends React.Component {
@@ -11,27 +12,28 @@ class Productdetail extends React.Component {
       detailData: {},
     };
   }
-
+  // http://10.58.1.209:8000/products/1
+  //data.results[0]
   componentDidMount() {
-    console.log('hello');
-    console.log(this.state.detailData);
     fetch('data/ItemData.json')
       .then(res => res.json())
       .then(data => {
         this.setState({
-          detailData: data,
+          detailData: data[0],
         });
       });
-    console.log(this.state.detailData);
   }
 
   render() {
+    const { detailData } = this.state;
+
+    console.log(detailData);
     return (
       <main className="productDetailPage">
         <div className="productDetail">
-          <ImageSlider />
+          <ImageSlider detailData={detailData} />
           <section>
-            <ProductDetailInfo detailData={this.state.detailData} />
+            <ProductDetailInfo detailData={detailData} />
             {/* <table className="productDetailTable">
               <tbody>
                 <tr>
@@ -67,7 +69,8 @@ class Productdetail extends React.Component {
                 </tr>
               </tbody>
             </table> */}
-            <table className="productDetailOption">
+            <ProductDetailOption detailData={detailData} />
+            {/* <table className="productDetailOption">
               <tbody>
                 <tr className="productDetailOptionTable">
                   <td className="optionName">
@@ -98,7 +101,7 @@ class Productdetail extends React.Component {
                   <td>2000원</td>
                 </tr>
               </tbody>
-            </table>
+            </table> */}
             <table className="productDetailTotal">
               <tbody>
                 <tr>

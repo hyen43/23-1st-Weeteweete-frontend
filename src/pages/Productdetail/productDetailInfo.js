@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class ProductDetailInfo extends Component {
-  render(props) {
+  render() {
     const { detailData } = this.props;
     return (
       <div className="productDetailInfo">
@@ -16,7 +16,7 @@ class ProductDetailInfo extends Component {
               <td className="productDetailPrice">
                 판매가
                 <br />
-                <span>{detailData.price}원</span>
+                <span>{Number(detailData.price).toLocaleString()}원</span>
               </td>
             </tr>
             <tr>
@@ -24,10 +24,10 @@ class ProductDetailInfo extends Component {
                 할인가
                 <br />
                 <span className="DiscountPrice">
-                  {detailData.discount_price}원
+                  {Number(detailData.discount_price).toLocaleString()}원
                 </span>
                 <span className="DiscountPercent">
-                  ({detailData.discount}원 할인)
+                  ({Number(detailData.discount).toLocaleString()}원 할인)
                 </span>
               </td>
             </tr>

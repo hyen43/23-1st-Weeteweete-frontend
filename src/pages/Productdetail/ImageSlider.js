@@ -6,29 +6,19 @@ class ImageSlider extends React.Component {
     super(props);
     this.state = {
       sliderIndex: 0,
-      productSlideImg: [],
     };
   }
 
-  componentDidMount() {
-    fetch('http://localhost:3000/data/productDetail.json', {})
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          productSlideImg: data,
-        });
-      });
-  }
-
   onChangeDetailImg = index => {
-    if (this.state.productSlideImg.length <= index) index = 0;
-    if (index < 0) index = this.state.productSlideImg.length - 1;
+    if (this.props.detailData.image.length <= index) index = 0;
+    if (index < 0) index = this.props.detailData.image.length - 1;
 
     this.setState({ sliderIndex: index });
   };
 
   render() {
-    const { productSlideImg } = this.state;
+    const { detailData } = this.props;
+    console.log(detailData);
     return (
       <div className="productDetail">
         <div className="ProductDetailImgTable">
@@ -42,10 +32,10 @@ class ImageSlider extends React.Component {
                   }px,0px,0px)`,
                 }}
               >
-                {productSlideImg?.map((element, index) => {
+                {detailData.image?.map((img, index) => {
                   return (
                     <div className="mainSlideImg" key={index}>
-                      <img alt={element.content} src={element.src} />
+                      <img alt={detailData.name} src={img} />
                     </div>
                   );
                 })}
@@ -59,16 +49,16 @@ class ImageSlider extends React.Component {
             // /> */}
             <div className="productSlideImgs">
               <ul>
-                {productSlideImg?.map((element, index) => {
+                {detailData.image?.map((img, index) => {
                   return (
                     <li
                       className="productSlideImg"
-                      key={element.key}
+                      key={index}
                       onClick={() => {
                         this.onChangeDetailImg(index);
                       }}
                     >
-                      <img alt={element.content} src={element.src}></img>
+                      <img alt={detailData.name} src={img}></img>
                     </li>
                   );
                 })}

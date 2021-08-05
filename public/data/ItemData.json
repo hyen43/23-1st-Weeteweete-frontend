@@ -1,9 +1,10 @@
-
+[
   {
     "id": 1,
     "name": "[오리지널] 태스크 매니저 31DAYS - 화이트",
     "price": "2000.00",
     "discount": "200.00",
     "discount_price": "1800.00",
-    "image": ["../images/motemoteDetailImg1.jpg"]
+    "image": ["../images/motemoteDetailImg1.jpg", "../images/motemoteDetailImg2.jpg", "../images/motemoteDetailImg3.jpg"]
   }
+]
