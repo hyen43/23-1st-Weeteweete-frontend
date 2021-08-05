@@ -8,9 +8,10 @@
       border-bottom: 1px solid #ddd;
       padding: 40px 0;
 
-      .desc {
+      .description {
         width: 300px;
         padding-top: 35px;
+        padding-right: 30px;
 
         h3 {
           color: #333;
@@ -32,17 +33,17 @@
             display: flex;
             flex-wrap: wrap;
             margin: 0 -2px;
-            padding-right: 30px;
 
             li {
               padding: 0 2px;
               margin-bottom: 10px;
               width: 20%;
 
-              .colorChip {
+              button {
                 position: relative;
                 width: 50px;
                 height: 50px;
+                margin: 0 auto;
                 padding: 3px;
                 border-radius: 100%;
                 border: 0;
@@ -70,8 +71,7 @@
               }
 
               .red {
-                &:hover:after,
-                &.active:after {
+                &:hover:after {
                   border: 1px solid #ff6c6c;
                 }
 
@@ -81,8 +81,7 @@
               }
 
               .green {
-                &:hover:after,
-                &.active:after {
+                &:hover:after {
                   border: 1px solid #53ff4ced;
                 }
 
@@ -92,8 +91,7 @@
               }
 
               .dream {
-                &:hover:after,
-                &.active:after {
+                &:hover:after {
                   border: 1px solid #b2ccff;
                 }
 
@@ -103,8 +101,7 @@
               }
 
               .violet {
-                &:hover:after,
-                &.active:after {
+                &:hover:after {
                   border: 1px solid #d1b2ff;
                 }
 
@@ -114,8 +111,7 @@
               }
 
               .dark {
-                &:hover:after,
-                &.active:after {
+                &:hover:after {
                   border: 1px solid #bdbdbd;
                 }
 
@@ -125,8 +121,7 @@
               }
 
               .yellow {
-                &:hover:after,
-                &.active:after {
+                &:hover:after {
                   border: 1px solid #faed7d;
                 }
 
@@ -154,6 +149,22 @@
             text-align: center;
 
             a {
+              position: relative;
+              display: block;
+
+              .soldOut {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                background: #000;
+                padding: 5px;
+                border-radius: 5px;
+                color: #fff;
+                font-size: 14px;
+                line-height: 1.3em;
+                z-index: 1;
+              }
+
               .thumb {
                 position: relative;
                 height: 0;
@@ -182,7 +193,7 @@
                   }
                 }
               }
-              .cnt {
+              .content {
                 .tit {
                   color: #000;
                   font-size: 18px;
@@ -205,6 +216,7 @@
                 .sales {
                   .salePrice {
                     display: block;
+                    margin-top: 5px;
                     color: rgb(241, 102, 102);
                   }
 
@@ -219,6 +231,14 @@
                 transform: scale(1.1);
               }
             }
+          }
+
+          .active {
+            display: block;
+          }
+
+          .hidden {
+            display: none;
           }
         }
       }
