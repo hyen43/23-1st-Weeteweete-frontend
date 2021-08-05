@@ -1,6 +1,6 @@
 .signUp {
   margin-top: 100px;
-  width: 100vw;
+  padding-bottom: 200px;
 
   .signUpTitle {
     margin-bottom: 30px;
@@ -28,8 +28,8 @@
     font-size: 13px;
 
     .signUpForm {
-      div {
-        height: 50px;
+      .signUpFormBox {
+        display: flex;
         padding: 10px 0;
         border-bottom: 1px solid lightgrey;
 
@@ -39,8 +39,15 @@
           margin-left: 10px;
         }
 
+        .signUpInputBox {
+          width: calc(100% - 120px);
+        }
         span {
           margin-left: 5px;
+        }
+
+        input {
+          border: 1px solid #ddd;
         }
       }
 

@@ -4,7 +4,7 @@ const SIGNUP_LIST = [
     index: '아이디',
     type: 'text',
     name: 'account',
-    explain: '(영문소문자/숫자, 4~16자)',
+    explain: '(영소문자 포함 10자리 이상)',
   },
 
   {
@@ -12,7 +12,7 @@ const SIGNUP_LIST = [
     index: '비밀번호',
     type: 'password',
     name: 'password',
-    explain: '(영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 10자~16자)',
+    explain: '(숫자 8자리 이상)',
   },
   {
     key: 3,
@@ -49,7 +49,7 @@ const SIGNUP_LIST = [
     type: 'text',
     name: 'email',
     className: 'signUpEmailInput',
-    explain: '',
+    explain: '(이메일 형식을 지켜주세요)',
   },
   {
     key: 8,

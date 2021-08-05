@@ -4,6 +4,89 @@ import './Signup.scss';
 import SIGNUP_LIST from './SignupData.js';
 
 class Signup extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userInfo: {
+        account: '',
+        password: '',
+        name: '',
+        address: '',
+        phone_number: '',
+        email: '',
+      },
+      repassword: '',
+      accountValid: true,
+      passwordValid: true,
+      emailValid: true,
+    };
+  }
+
+  handleInput = e => {
+    const { name, value } = e.target;
+    this.setState({
+      userInfo: { ...this.state.userInfo, [name]: value },
+    });
+  };
+
+  signUpValidationCheck = () => {
+    var accountCheck = /^[a-z0-9]{10,20}$/;
+    var passwordCheck = /^[0-9]{8,20}$/;
+    var emailCheck = /^[0-9a-zA-Z]+@[0-9a-zA-Z]*\.[a-zA-Z]{2,3}$/;
+
+    if (!accountCheck.test(this.state.userInfo.account)) {
+      this.setState({
+        accountValid: false,
+      });
+      alert('아이디는 영소문자 포함 10자리 이상이어야 합니다!');
+    }
+    if (!passwordCheck.test(this.state.userInfo.password)) {
+      this.setState({
+        passwordValid: false,
+      });
+      alert('비밀번호는 숫자 8자리 이상이어야 합니다!');
+    }
+    if (this.state.userInfo.password !== this.state.userInfo.repassword) {
+      this.setState({
+        passwordValid: false,
+      });
+      alert('비밀번호와 비밀번호 확인은 일치해야 합니다!');
+    }
+    if (!emailCheck.test(this.state.userInfo.email)) {
+      this.setState({
+        emailValid: false,
+      });
+      alert('이메일 형식을 지켜주세요!');
+    }
+
+    if (
+      this.state.accountValid &&
+      this.state.passwordValid &&
+      this.state.emailValid === true
+    ) {
+      this.signupTest();
+    } else {
+      alert('회원가입 요청에 실패하였습니다.');
+    }
+  };
+
+  signupTest = () => {
+    fetch('http://10.58.2.84:8000/users/singup', {
+      method: 'POST',
+      body: JSON.stringify(this.state.userInfo),
+    })
+      .then(res => res.json())
+      .then(result => {
+        if (result.MESSAGE === 'SUCCESS') {
+          alert('회원가입 성공! 로그인 페이지로 이동합니다!');
+          this.props.history.push('/login');
+          console.log('통신 데이터 성공', result);
+        } else {
+          alert('회원가입 실패!');
+          console.log('통신 데이터 실패', result);
+        }
+      });
+  };
   render() {
     return (
       <main className="signUp">
@@ -24,15 +107,24 @@ class Signup extends React.Component {
                     {index}
                     <span className="signUpEssentialMark">*</span>
                   </span>
-                  <input type={type} name={name} className={className} />
-                  <span>{explain}</span>
+                  <div className="signUpInputBox">
+                    <input
+                      type={type}
+                      name={name}
+                      className={className}
+                      onChange={this.handleInput}
+                    />
+                    <span>{explain}</span>
+                  </div>
                 </div>
               );
             })}
           </form>
         </div>
         <div className="signUpBtnList">
-          <button className="signUpBtn">회원가입</button>
+          <button className="signUpBtn" onClick={this.signUpValidationCheck}>
+            회원가입
+          </button>
           <button className="signUpFailBtn">회원가입취소</button>
         </div>
       </main>
