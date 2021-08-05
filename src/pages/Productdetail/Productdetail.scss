@@ -5,7 +5,6 @@
 
   .productDetail {
     @include detail-flex-center;
-    flex-wrap: nowrap;
 
     .productDetailImg{
       display: flex;
@@ -19,8 +18,8 @@
       font-size: 12px;
 
       .productDetailName{
-        font-size: 18px;
         padding-bottom: 5%; 
+        font-size: 18px;
       }
 
       .productDetailPrice{
@@ -52,6 +51,7 @@
       .productDetailDeliveryFee{
         padding-bottom: 5%; 
       }
+
         .DeliveryFee{
         font-size: 14px;
         font-weight: bold;
@@ -59,32 +59,33 @@
     }
     
     .productDetailOption{
+      padding: 9px;
+      width: 100%;
+      margin-bottom: 5%;
       border-top: 0.5px solid #ddd;
       border-bottom: 0.5px solid #ddd;
-      padding: 9px;
-      margin-bottom: 5%;
-      width: 100%;
 
       .productDetailOptionTable{
         display: flex;
-        justify-content: space-between;
-        align-items: center;
         flex-basis: auto;
         flex-grow: 1;
+        justify-content: space-between;
+        align-items: center;
+
       
       .optionName{
         font-size: 12px;
       }
 
       .quantitiyBlock{
-        display:inline-block;
+        display: inline-block;
         position: relative;
 
         .quantity{
+          padding-left: 5px;
           width: 45px;
           height: 23px;
           border: 1px solid #d4d8d9;
-          padding-left: 5px;
         }
 
         .plus, .minus{
@@ -138,7 +139,6 @@
     margin: 0;
 
     .detailInformation, .detailReview, .delivery{
-    box-sizing: border-box;
     flex:1;
     width: 33%;
     height: 45px;

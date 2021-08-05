@@ -10,10 +10,10 @@ class ProductDetailOption extends React.Component {
   }
 
   render() {
-    const { detailData } = this.props;
+    const { discount_price } = this.props.detailData;
 
     return (
-      <div className="productDetailInfo">
+      <section className="productDetailInfo">
         <table className="productDetailOption">
           <tbody>
             <tr className="productDetailOptionTable">
@@ -42,11 +42,11 @@ class ProductDetailOption extends React.Component {
                   </div>
                 </span>
               </td>
-              <td>{Number(detailData['discount_price']).toLocaleString()}원</td>
+              <td>{Number(discount_price).toLocaleString()}원</td>
             </tr>
           </tbody>
         </table>
-      </div>
+      </section>
     );
   }
 }

@@ -2,21 +2,22 @@ import React, { Component } from 'react';
 
 class ProductDetailInfo extends Component {
   render() {
-    const { detailData } = this.props;
+    const { price, discount_price, discount, name } = this.props.detailData;
+
     return (
-      <div className="productDetailInfo">
+      <section className="productDetailInfo">
         <table className="productDetailTable">
           <tbody>
             <tr>
               <td className="productDetailName">
-                <span className="productDetailName">{detailData.name}</span>
+                <span className="productDetailName">{name}</span>
               </td>
             </tr>
             <tr>
               <td className="productDetailPrice">
                 판매가
                 <br />
-                <span>{Number(detailData.price).toLocaleString()}원</span>
+                <span>{Number(price).toLocaleString()}원</span>
               </td>
             </tr>
             <tr>
@@ -24,10 +25,10 @@ class ProductDetailInfo extends Component {
                 할인가
                 <br />
                 <span className="DiscountPrice">
-                  {Number(detailData.discount_price).toLocaleString()}원
+                  {Number(discount_price).toLocaleString()}원
                 </span>
                 <span className="DiscountPercent">
-                  ({Number(detailData.discount).toLocaleString()}원 할인)
+                  ({Number(discount).toLocaleString()}원 할인)
                 </span>
               </td>
             </tr>
@@ -42,7 +43,7 @@ class ProductDetailInfo extends Component {
             </tr>
           </tbody>
         </table>
-      </div>
+      </section>
     );
   }
 }

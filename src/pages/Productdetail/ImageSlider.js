@@ -10,17 +10,18 @@ class ImageSlider extends React.Component {
   }
 
   onChangeDetailImg = index => {
-    if (this.props.detailData.image.length <= index) index = 0;
-    if (index < 0) index = this.props.detailData.image.length - 1;
+    let nextSlideIndex = index;
+    if (this.props.detailData.image.length <= index) nextSlideIndex = 0;
+    if (index < 0) nextSlideIndex = this.props.detailData.image.length - 1;
 
-    this.setState({ sliderIndex: index });
+    this.setState({ sliderIndex: nextSlideIndex });
   };
 
   render() {
-    const { detailData } = this.props;
-    console.log(detailData);
+    const { name, image } = this.props.detailData;
+
     return (
-      <div className="productDetail">
+      <section className="productDetail">
         <div className="ProductDetailImgTable">
           <div className="productDetailImg">
             <div className="mainSlide">
@@ -32,24 +33,19 @@ class ImageSlider extends React.Component {
                   }px,0px,0px)`,
                 }}
               >
-                {detailData.image?.map((img, index) => {
+                {image?.map((img, index) => {
                   return (
                     <div className="mainSlideImg" key={index}>
-                      <img alt={detailData.name} src={img} />
+                      <img alt={name} src={img} />
                     </div>
                   );
                 })}
               </div>
             </div>
 
-            {/* // <img
-            //   id="mainSlideImg"
-            //   alt="mainSlide"
-            //   src="images/motemoteDetailImg1.jpg"
-            // /> */}
             <div className="productSlideImgs">
               <ul>
-                {detailData.image?.map((img, index) => {
+                {image?.map((img, index) => {
                   return (
                     <li
                       className="productSlideImg"
@@ -58,7 +54,7 @@ class ImageSlider extends React.Component {
                         this.onChangeDetailImg(index);
                       }}
                     >
-                      <img alt={detailData.name} src={img}></img>
+                      <img alt={name} src={img} />
                     </li>
                   );
                 })}
@@ -66,7 +62,7 @@ class ImageSlider extends React.Component {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     );
   }
 }
