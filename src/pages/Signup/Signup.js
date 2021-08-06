@@ -7,14 +7,12 @@ class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userInfo: {
-        account: '',
-        password: '',
-        name: '',
-        address: '',
-        phone_number: '',
-        email: '',
-      },
+      account: '',
+      password: '',
+      name: '',
+      address: '',
+      phone_number: '',
+      email: '',
       repassword: '',
       accountValid: true,
       passwordValid: true,
@@ -25,45 +23,51 @@ class Signup extends React.Component {
   handleInput = e => {
     const { name, value } = e.target;
     this.setState({
-      userInfo: { ...this.state.userInfo, [name]: value },
+      [name]: value,
     });
   };
 
   signUpValidationCheck = () => {
+    const {
+      account,
+      password,
+      repassword,
+      email,
+      accountValid,
+      passwordValid,
+      emailValid,
+    } = this.state;
+
     var accountCheck = /^[a-z0-9]{10,20}$/;
     var passwordCheck = /^[0-9]{8,20}$/;
     var emailCheck = /^[0-9a-zA-Z]+@[0-9a-zA-Z]*\.[a-zA-Z]{2,3}$/;
 
-    if (!accountCheck.test(this.state.userInfo.account)) {
+    if (!accountCheck.test(account)) {
       this.setState({
         accountValid: false,
       });
       alert('아이디는 영소문자 포함 10자리 이상이어야 합니다!');
     }
-    if (!passwordCheck.test(this.state.userInfo.password)) {
+    if (!passwordCheck.test(password)) {
       this.setState({
         passwordValid: false,
       });
       alert('비밀번호는 숫자 8자리 이상이어야 합니다!');
     }
-    if (this.state.userInfo.password !== this.state.userInfo.repassword) {
+    if (password !== repassword) {
       this.setState({
         passwordValid: false,
       });
       alert('비밀번호와 비밀번호 확인은 일치해야 합니다!');
     }
-    if (!emailCheck.test(this.state.userInfo.email)) {
+    if (!emailCheck.test(email)) {
       this.setState({
         emailValid: false,
       });
       alert('이메일 형식을 지켜주세요!');
     }
 
-    if (
-      this.state.accountValid &&
-      this.state.passwordValid &&
-      this.state.emailValid === true
-    ) {
+    if (accountValid && passwordValid && emailValid === true) {
       this.signupTest();
     } else {
       alert('회원가입 요청에 실패하였습니다.');
@@ -73,7 +77,14 @@ class Signup extends React.Component {
   signupTest = () => {
     fetch('http://10.58.2.84:8000/users/singup', {
       method: 'POST',
-      body: JSON.stringify(this.state.userInfo),
+      body: JSON.stringify({
+        account: this.state.account,
+        password: this.state.password,
+        name: this.state.name,
+        address: this.state.address,
+        phone_number: this.state.phone_number,
+        email: this.state.email,
+      }),
     })
       .then(res => res.json())
       .then(result => {
