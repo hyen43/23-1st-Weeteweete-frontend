@@ -6,7 +6,7 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      acccount: '',
+      account: '',
       password: '',
     };
   }
@@ -20,11 +20,12 @@ class Login extends React.Component {
 
   goToMain = e => {
     e.preventDefault();
+    const { account, password } = this.state;
     fetch('http://10.58.2.84:8000/users/singin', {
       method: 'POST',
       body: JSON.stringify({
-        account: this.state.account,
-        password: this.state.password,
+        account,
+        password,
       }),
     })
       .then(res => res.json())
