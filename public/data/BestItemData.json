@@ -1,0 +1,52 @@
+[
+  {
+    "concept": "오리지널",
+    "concpet_id": 1,
+    "information": [
+      {
+        "id": 1,
+        "name": "[오리지널] 태스크 매니저 31DAYS - 화이트",
+        "price": "2000",
+        "discount": "200",
+        "stock": 100,
+        "color": "화이트",
+        "image": ["./images/main_pro1.jpeg", "./images/main_pro1.jpeg"]
+      }
+    ]
+  },
+  {
+    "concept": "컬러칩",
+    "concpet_id": 2,
+    "information": [
+      {
+        "id": 2,
+        "name": "[컬러칩] 태스크 매니저 31DAYS - 로즈쿼츠",
+        "price": "2500",
+        "discount": "250",
+        "stock": 100,
+        "color": "로즈쿼츠",
+        "image": ["./images/main_pro1.jpeg"]
+      }
+    ]
+  },
+  {
+    "concept": "스페셜",
+    "concpet_id": 3,
+    "information": [
+      {
+        "id": 3,
+        "name": "[스페셜] 태스크 매니저 31DAYS - 샤인피치",
+        "price": "3500",
+        "discount": "0",
+        "stock": 0,
+        "color": "샤인피치",
+        "image": ["./images/main_pro1.jpeg"]
+      }
+    ]
+  },
+  {
+    "concept": "플래너 에드온",
+    "concpet_id": 4,
+    "information": []
+  }
+]
