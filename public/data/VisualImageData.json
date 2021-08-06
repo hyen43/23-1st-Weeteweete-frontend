@@ -1,0 +1,12 @@
+[
+  {
+    "key": 0,
+    "content": "메인비쥬얼1",
+    "src": "https://motemoteweb.s3.ap-northeast-2.amazonaws.com/banner/index_banner/210326/210326_home_main_banner_3.jpg"
+  },
+  {
+    "key": 1,
+    "content": "메인비쥬얼2",
+    "src": "https://motemoteweb.s3.ap-northeast-2.amazonaws.com/banner/index_banner/210326/210326_home_main_banner_3.jpg"
+  }
+]
