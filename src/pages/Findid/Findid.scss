@@ -1,10 +1,3 @@
-@mixin findidInput {
-  margin-bottom: 10px;
-  width: 210px;
-  height: 30px;
-  border: 1px solid lightgrey;
-}
-
 .findid {
   margin-top: 100px;
   padding-bottom: 285px;
@@ -36,21 +29,13 @@
 
     .findidForm {
       margin: 0px 29px 29px 30px;
-      .findidName {
-        .findidNameInput {
-          @include findidInput;
-        }
+      .findidInput {
+        margin-bottom: 10px;
+        width: 210px;
+        height: 30px;
+        border: 1px solid lightgrey;
       }
-      .findidMail {
-        .findidMailInput {
-          @include findidInput;
-        }
-      }
-      .findidPhone {
-        .findidPhoneInput {
-          @include findidInput;
-        }
-      }
+
       .findidFormName {
         display: inline-block;
         width: 130px;

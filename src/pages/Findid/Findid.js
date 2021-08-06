@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import './Findid.scss';
+import FINDID_LIST from './FindidData';
 
 class Findid extends React.Component {
   render() {
@@ -16,19 +17,19 @@ class Findid extends React.Component {
           </div>
           <div className="findidForm">
             <form>
-              {/* radio button 클릭시 이메일 혹은 휴대폰 번호만 보이게 하기 */}
-              <div className="findidName">
-                <span className="findidFormName">이름</span>
-                <input type="text" className="findidNameInput" />
-              </div>
-              <div className="findidMail">
-                <span className="findidFormName">이메일로 찾기</span>
-                <input type="text" className="findidMailInput" />
-              </div>
-              <div className="findidPhone">
-                <span className="findidFormName">휴대폰 번호로 찾기</span>
-                <input type="text" className="findidPhoneInput" />
-              </div>
+              {FINDID_LIST.map(list => {
+                const { key, index, type, name } = list;
+                return (
+                  <div className="findidName" key={key}>
+                    <span className="findidFormName">{index}</span>
+                    <input
+                      type={type}
+                      name={name}
+                      className="findidInput"
+                    ></input>
+                  </div>
+                );
+              })}
             </form>
           </div>
 
