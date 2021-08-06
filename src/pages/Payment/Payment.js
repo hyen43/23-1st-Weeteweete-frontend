@@ -1,19 +1,29 @@
 import React from 'react';
 import './Payment.scss';
-import '../../styles/common.scss';
+import DELIVERYINFO_LIST from './DeliveryInfoData';
 
 class Payment extends React.Component {
   render() {
+    const list = [
+      '이미지',
+      '상품정보',
+      '판매가',
+      '수량',
+      '적립금',
+      '배송구분',
+      '배송비',
+      '합계',
+    ];
     return (
-      <div className="main">
+      <main>
         <div className="orderProductList">
           <ul className="orderInfo">
             <li>
-              <i class="fas fa-exclamation"></i>
+              <i className="fa-exclamation">!</i>
               상품의 옵션 및 수량 변경은 상품상세 또는 장바구니에서 가능합니다.
             </li>
           </ul>
-          <div className="tableTitle">
+          <header className="tableTitle">
             <h3>국내배송상품 주문내역</h3>
 
             <img
@@ -21,19 +31,18 @@ class Payment extends React.Component {
               alt="botton to prev"
               src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/btn_prev.gif"
             />
-          </div>
+          </header>
           <table className="orderDetailsTable">
             <th className="tablefix">
               <input type="checkbox" />
             </th>
-            <th className="tablefix productImg">이미지</th>
-            <th className="tablefix product">상품정보</th>
-            <th className="tablefix price">판매가</th>
-            <th className="tablefix quantity">수량</th>
-            <th className="tablefix mileage">적립금</th>
-            <th className="tablefix delivery">배송구분</th>
-            <th className="tablefix charge">배송비</th>
-            <th className="tablefix total">합계</th>
+            {list.map((ele, idx) => {
+              return (
+                <th className="tableStyle" key={idx}>
+                  {ele}
+                </th>
+              );
+            })}
             <tr>
               <th className="tableline">
                 <input type="checkbox" />
@@ -53,7 +62,7 @@ class Payment extends React.Component {
             </tr>
             <th colspan="9" className="totalPrice">
               <strong>기본배송</strong> 상품구매금액 3,500+ 배송비 2,500 -
-              상품할인금액 350 = 합계:{' '}
+              상품할인금액 350 = 합계:
               <span>
                 5,650
                 <strong>원</strong>
@@ -62,7 +71,7 @@ class Payment extends React.Component {
           </table>
           <ul>
             <li>
-              <i class="fas fa-exclamation"></i>
+              <i className="fa-exclamation">!</i>
               상품의 옵션 및 수량 변경은 상품상세 또는 장바구니에서 가능합니다.
             </li>
           </ul>
@@ -80,18 +89,52 @@ class Payment extends React.Component {
             />
           </div>
         </div>
-
-        <div className="orderArea">
+        <header>
           <h3>배송 정보</h3>
-          <div className="text text2">
-            <img
-              alt="red star"
-              src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/ico_required.gif"
-            />
-            필수입력사항
-          </div>
-          <table className="deliveryInfoTable">
-            <th className="tablefix">배송지 선택</th>
+        </header>
+        <div className="text text2">
+          <img
+            alt="red star"
+            src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/ico_required.gif"
+          />
+          필수입력사항
+        </div>
+        {/* {SIGNUP_LIST.map(list => {
+          const { key, index, type, explain, name, className } = list;
+          return (
+            <div className="signUpFormBox" key={key}>
+              <span className="signUpFormIndex">
+                {index}
+                <span className="signUpEssentialMark">*</span>
+              </span>
+              <input type={type} name={name} className={className} />
+              <span>{explain}</span>
+            </div>
+          );
+
+           {list.map((ele, idx) => {
+              return (
+                <th className="tableStyle" key={idx}>
+                  {ele}
+                </th>
+              );
+            })}
+        })} */}
+        <section className="orderArea">
+          <form className="deliveryInfoTable">
+            {DELIVERYINFO_LIST.map(ele => {
+              const { key, index, type, name, className, explain } = ele;
+              return (
+                <div key={key}>
+                  <span className="deliveryInfo">{index}</span>
+                  <input type={type} name={name} className={className} />
+                  {/* <span>{explain}</span> */}
+                </div>
+              );
+            })}
+          </form>
+          {/* <table className="deliveryInfoTable">
+            <th className="tableStyle">배송지 선택</th>
             <td>
               <input type="checkbox" name="userInfo" id="userInfo" />
               <label for="userInfo">회원 정보와 동일</label>
@@ -107,76 +150,54 @@ class Payment extends React.Component {
             </td>
 
             <tr>
-              <th className="tablefix">받으시는 분</th>
+              <th className="tableStyle">
+                <img
+                  alt="red star"
+                  src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/ico_required.gif"
+                />
+                받으시는 분
+              </th>
               <td>
                 <input type="text" className="orderer" />
               </td>
             </tr>
             <tr>
-              <th className="tablefix">주소</th>
+              <th className="tableStyle">
+                <img
+                  alt="red star"
+                  src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/ico_required.gif"
+                />
+                주소
+              </th>
               <td>
-                <input type="text" name="btnAddress" id="btnAddress" />
-                <label for="btnAddress">
-                  <button className="btnFindPostalCode">
-                    <img
-                      alt="button to find postal code"
-                      src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/btn_zipcode.gif"
-                    />
-                  </button>
-                </label>
-                <div className="defaultAddress">
-                  <input type="text" name="btnAddress2" id="btnAddress2" />
-                  <span>기본주소</span>
-                </div>
-                <div className="detailAddress">
-                  <input type="text" name="btnAddress3" id="btnAddress3" />
-                  <span>
-                    <b>동, 호수</b>가 없을시 <b>주문자명</b>을 적어주세요
-                  </span>
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <th className="tablefix">휴대전화</th>
-              <td>
-                <select name="Nums" id="numsSelect">
-                  <option value="010">010</option>
-                  <option value="011">011</option>
-                  <option value="016">016</option>
-                  <option value="018">018</option>
-                  <option value="017">017</option>
-                  <option value="019">019</option>
-                </select>
-                <span>-</span>
-                <input type="text" />
-                <span>-</span>
                 <input type="text" />
               </td>
             </tr>
 
             <tr>
-              <th className="tablefix">이메일</th>
+              <th className="tableStyle">
+                <img
+                  alt="red star"
+                  src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/ico_required.gif"
+                />
+                휴대전화
+              </th>
               <td>
-                <input type="text" /> <span>@</span>
-                <label for="emailOptions">
-                  <input type="text" id="emailAddressInput" />
-                </label>
-                <select name="emailOptions" id="emailOptions">
-                  <option value="">-이메일 선택-</option>
-                  <option value="naver.com" selected>
-                    naver.com
-                  </option>
-                  <option value="daum.net">daum.net</option>
-                  <option value="nate.com">nate.com</option>
-                  <option value="hotmail.com">hotmail.com</option>
-                  <option value="empas.com">empas.com</option>
-                  <option value="yahoo.com">yahoo.com</option>
-                  <option value="korea.com">korea.com</option>
-                  <option value="dreamwiz.com">dreamwiz.com</option>
-                  <option value="gmail.com">gmail.com</option>
-                  <option value="">직접입력</option>
-                </select>
+                <input type="text" className="numsBox" />
+              </td>
+            </tr>
+
+            <tr>
+              <th className="tableStyle">
+                <img
+                  alt="red star"
+                  src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/ico_required.gif"
+                />
+                이메일
+              </th>
+              <td>
+                <input type="text" />
+
                 <p className="emailInfo">
                   이메일을 통해 주문처리과정을 보내드립니다. <br />
                   이메일 주소란에는 반드시 수신가능한 이메일주소를 입력해주세요.
@@ -184,17 +205,17 @@ class Payment extends React.Component {
               </td>
             </tr>
             <tr>
-              <th className="tablefix">배송메시지</th>
+              <th className="tableStyle">배송메시지</th>
               <td>
                 <textarea></textarea>
               </td>
             </tr>
-          </table>
-        </div>
+          </table> */}
+        </section>
         <h3>결제 예정 금액</h3>
         <table className="totalPayAmountTable">
           <tr>
-            <th className="tablefix">
+            <th className="tableStyle">
               총 주문 금액
               <img
                 className="btnToDetails"
@@ -202,8 +223,8 @@ class Payment extends React.Component {
                 src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/btn_list.gif"
               />
             </th>
-            <th className="tablefix">총 할인 + 부가결제 금액</th>
-            <th className="tablefix">총 결제예정 금액</th>
+            <th className="tableStyle">총 할인 + 부가결제 금액</th>
+            <th className="tableStyle">총 결제예정 금액</th>
           </tr>
           <tr>
             <td>6,000원</td>
@@ -214,11 +235,11 @@ class Payment extends React.Component {
 
         <table className="totalDiscountTable">
           <tr>
-            <th className="tablefix">총 할인금액</th>
+            <th className="tableStyle">총 할인금액</th>
             <td>350원</td>
           </tr>
           <tr>
-            <th className="tablefix">추가할인금액</th>
+            <th className="tableStyle">추가할인금액</th>
             <td>
               350원
               <img
@@ -229,13 +250,13 @@ class Payment extends React.Component {
             </td>
           </tr>
           <tr>
-            <th className="tablefix">총 부가결제금액</th>
+            <th className="tableStyle">총 부가결제금액</th>
             <td>0원</td>
           </tr>
         </table>
 
         <h3>결제수단</h3>
-        <div className="payArea">
+        <section className="payArea">
           <div className="payAreaInner">
             <div className="checkoutMethod">
               <img
@@ -243,11 +264,11 @@ class Payment extends React.Component {
                 src="https://img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_kakaopay_disabled.gif"
               />
               <p>
-                <i class="fas fa-exclamation"></i>
+                <i className="fa-exclamation">!</i>
                 최소 결제 가능 금액은 결제금액에서 배송비를 제외한 금액입니다.
               </p>
               <p>
-                <i class="fas fa-exclamation"></i>
+                <i className="fa-exclamation">!</i>
                 소액결제의 경우 PC사 정책에 따라 결제 금액 제한이 있을 수
                 있습니다.
               </p>
@@ -296,7 +317,7 @@ class Payment extends React.Component {
                       발송비를 부담한 경우에 “몰”은 청약 철회시 그 비용을 누가
                       부담하는지를 이용자가 알기 쉽도록 명확하게 표시합니다.
                     </textarea>
-                    <a href="#" onClick="www.naver.com">
+                    <a href="#">
                       <img
                         className="btnToFullScreen"
                         alt="button to check info on full screen"
@@ -337,8 +358,8 @@ class Payment extends React.Component {
               </li>
             </ul>
           </div>
-        </div>
-      </div>
+        </section>
+      </main>
     );
   }
 }

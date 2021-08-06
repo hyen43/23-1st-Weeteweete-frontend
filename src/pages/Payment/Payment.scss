@@ -1,5 +1,10 @@
-.main {
-  text-align: center;
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  //text-align: center;
+  margin-bottom: 100px;
+
   table {
     width: 100%;
     height: 100px;
@@ -12,62 +17,69 @@
     text-align: left;
   }
 
+  .text2 {
+    text-align: right;
+  }
+
   table,
   td,
   th {
-    border: 1px solid #e9e9e9;
-    background-color: #ffffff;
     margin: 0px;
     padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #e9e9e9;
   }
 
   .orderProductList {
     display: inline-block;
-    border-bottom: 1px solid black;
-    padding-bottom: 20px;
-    margin-bottom: 30px;
     width: 90%;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid black;
 
     ul {
+      padding: 10px;
       background-color: #fef8f3;
       border-top: 1px solid #e7e4e3;
       border-bottom: 1px solid #e7e4e3;
-      padding: 10px;
 
       li {
-        text-align: left;
         color: #fa726f;
         font-size: 11px;
+        text-align: left;
 
         .fa-exclamation {
-          border: 1px solid #e3e2e5;
-          padding: 2px 5px 2px 5px;
-          background-color: white;
           margin-right: 10px;
+          padding: 2px 5px 2px 5px;
+          border: 1px solid #e3e2e5;
+          background-color: white;
         }
       }
     }
 
     .tableTitle {
-      border: 1px solid #fafafa;
-      background-color: #f6f6f6;
       position: relative;
       padding: 5px;
+      background-color: #f6f6f6;
+      border: 1px solid #fafafa;
+
       h3 {
         display: inline-block;
         font-size: 12px;
       }
+
       .btnToPrev {
         position: absolute;
         right: 0px;
         padding-bottom: 10px;
       }
     }
-    .orderDetailsTable {
-      background-color: #ffffff;
-      padding: 10px;
 
-      .tablefix {
+    .orderDetailsTable {
+      padding: 10px;
+      background-color: #ffffff;
+
+      .tableStyle {
         background-color: #fafafa;
       }
 
@@ -75,9 +87,11 @@
         border-right: 1px solid white;
       }
     }
+
     .totalPrice {
-      text-align: right;
       background-color: #fafafa;
+      text-align: right;
+
       span {
         color: #008bcc;
       }
@@ -89,13 +103,15 @@
   }
 
   .baseButton {
+    position: relative;
     display: flex;
     padding-top: 20px;
-    position: relative;
+
     .text {
-      font-size: 12px;
       margin-right: 10px;
+      font-size: 12px;
     }
+
     .btnToPrev {
       position: absolute;
       right: 0px;
@@ -104,16 +120,17 @@
   }
 
   .orderArea {
-    display: inline-block;
-    width: 90%;
+    display: flex;
+    width: 100%;
     margin-bottom: 40px;
 
     .deliveryInfoTable {
-      border: 1px solid gray;
-      background-color: #ffffff;
+      width: 100%;
       padding: 10px;
+      background-color: #ffffff;
+      border: 1px solid gray;
 
-      .tablefix {
+      .tableStyle {
         background-color: #fafafa;
       }
 
@@ -126,59 +143,16 @@
         font-size: 12px;
         text-align: left;
       }
+
       input {
-        text-align: left;
         border: 1px solid #d5d5d5;
-      }
-      .orderer {
-        width: 190px;
         text-align: left;
       }
-      #btnAddress {
-        width: 60px;
-        padding-left: 10px;
-      }
-      .btnFindPostalCode {
-        border-style: none;
-      }
-      #btnAddress2,
-      #btnAddress3 {
-        width: 190px;
-      }
     }
+
     .text {
-      font-size: 12px;
       margin-right: 10px;
-    }
-    .text2 {
-      text-align: right;
-    }
-    .defaultAddress {
-      padding-top: 10px;
-      padding-bottom: 10px;
-      input {
-        width: 100px;
-      }
-      span {
-        margin-left: 10px;
-        font-size: 10px;
-      }
-    }
-    .detailAddress {
-      padding-top: 10px;
-      padding-bottom: 10px;
-      input {
-        width: 100px;
-      }
-      span {
-        margin-left: 10px;
-        font-size: 10px;
-        color: red;
-      }
-    }
-    #numsSelect,
-    #emailOptions {
-      border: 1px solid #d5d5d5;
+      font-size: 12px;
     }
 
     textarea {
@@ -193,9 +167,10 @@
     margin-bottom: 10px;
     border: 1px solid black;
 
-    .tablefix {
+    .tableStyle {
       background-color: #fafafa;
     }
+
     td {
       text-align: center;
     }
@@ -205,54 +180,60 @@
     width: 90%;
     margin: auto;
     margin-bottom: 20px;
-    .tablefix {
+
+    .tableStyle {
       background-color: #fafafa;
     }
   }
 
   .payArea {
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
-    text-align: center;
     display: flex;
     flex-direction: row;
     align-items: center;
     align-content: space-evenly;
+    width: 90%;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
     border: 1px solid black;
+    text-align: center;
 
     .payAreaInner {
       border-right: 1px solid black;
       width: 90%;
+
       .checkoutMethod {
         padding: 10px;
         font-size: 12px;
 
         .fa-exclamation {
-          border: 1px solid #e3e2e5;
-          padding: 2px 5px 2px 5px;
-          background-color: white;
           margin-right: 10px;
+          padding: 2px 5px 2px 5px;
           color: red;
+          background-color: white;
+          border: 1px solid #e3e2e5;
         }
       }
+
       .textArea {
         .contractCheckBox {
           margin-top: 10px;
         }
+
         .textAreaInner {
           display: flex;
           flex-direction: row;
+
           #checkoutInfo {
-            overflow: auto;
-            width: 900px;
+            display: inline-block;
+            padding: 5px;
+            width: 700px;
             height: 70px;
             border: 1px solid gray;
             border-radius: 5px;
-            display: inline-block;
-            padding: 5px;
+            overflow: auto;
           }
+
           .btnToFullScreen {
             display: inline-block;
           }
@@ -261,8 +242,9 @@
     }
 
     .total {
-      background-color: #fafafa;
       padding: 5px;
+      background-color: #fafafa;
+
       h3 {
         margin-bottom: 30%;
         text-align: right;
