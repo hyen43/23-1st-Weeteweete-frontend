@@ -14,7 +14,6 @@ class Signup extends React.Component {
       address: '',
       phone_number: '',
       email: '',
-      repassword: '',
       accountValid: true,
       passwordValid: true,
       emailValid: true,
@@ -69,6 +68,7 @@ class Signup extends React.Component {
     }
 
     if (accountValid && passwordValid && emailValid === true) {
+      alert('회원가입을 진행합니다.');
       this.signupTest();
     } else {
       alert('회원가입 요청에 실패하였습니다.');
@@ -92,10 +92,8 @@ class Signup extends React.Component {
         if (result.MESSAGE === 'SUCCESS') {
           alert('회원가입 성공! 로그인 페이지로 이동합니다!');
           this.props.history.push('/login');
-          console.log('통신 데이터 성공', result);
         } else {
           alert('회원가입 실패!');
-          console.log('통신 데이터 실패', result);
         }
       });
   };
