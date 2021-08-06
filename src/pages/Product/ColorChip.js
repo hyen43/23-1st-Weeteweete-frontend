@@ -4,15 +4,20 @@ import './ColorChip.scss';
 class ColorChip extends Component {
   clickColorDefault = e => {
     const { selectColorSet, sectionIndex } = this.props;
-    const targetColor = e.target.className;
+    const targetColor = e.target.getAttribute('data-color');
     selectColorSet(targetColor, sectionIndex);
   };
+
   render() {
-    return this.props.uniqueColor.map(el => {
-      const { color } = el;
+    return this.props.uniqueColor.map(colorElement => {
+      const { color } = colorElement;
       return (
         <li key={color}>
-          <button className={color} onClick={this.clickColorDefault}>
+          <button
+            className={color}
+            onClick={this.clickColorDefault}
+            data-color={color}
+          >
             <span>{color}</span>
           </button>
         </li>

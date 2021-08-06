@@ -14,10 +14,10 @@ class ProList extends Component {
 
   selectColorSet = (targetColor, sectionIndex) => {
     const { selectColor } = this.state;
-    const newArray = [...selectColor];
-    newArray[sectionIndex] = targetColor;
+    const selectColorArry = [...selectColor];
+    selectColorArry[sectionIndex] = targetColor;
     this.setState({
-      selectColor: newArray,
+      selectColor: selectColorArry,
     });
   };
 
@@ -25,20 +25,22 @@ class ProList extends Component {
     const { prolist } = this.props;
     return (
       <div className="proList">
-        {prolist.map((el, index) => {
+        {prolist.map((sectionContent, index) => {
           const colorArry = [];
-          const uniqueColor = el.information.filter((el, i) => {
-            colorArry.push(el.color);
-            return colorArry.indexOf(el.color) === i;
-          });
+          const uniqueColor = sectionContent.information.filter(
+            (colorElement, i) => {
+              colorArry.push(colorElement.color);
+              return colorArry.indexOf(colorElement.color) === i;
+            }
+          );
           return (
-            <div className="wrap" key={el.concpet_id}>
+            <div className="wrap" key={sectionContent.concpet_id}>
               <div className="description">
-                <h3>{el.concept}</h3>
-                <p>{el.concpet_desc}</p>
+                <h3>{sectionContent.concept}</h3>
+                <p>{sectionContent.concpet_desc}</p>
                 <div className="colorFilter">
                   <ul>
-                    {el.information[0].color && (
+                    {sectionContent.information[0].color && (
                       <ColorChip
                         uniqueColor={uniqueColor}
                         selectColorSet={this.selectColorSet}
@@ -52,19 +54,17 @@ class ProList extends Component {
               </div>
               <div className="list">
                 <ul>
-                  {el.information[0].color
-                    ? el.information.map(list => {
-                        return (
-                          <ProListInList
-                            list={list}
-                            key={list.id}
-                            selectColor={this.state.selectColor[index]}
-                          />
-                        );
-                      })
-                    : el.information.map(list => {
-                        return <ProListInList list={list} key={list.id} />;
-                      })}
+                  {sectionContent.information.map(list => {
+                    return sectionContent.information[0].color ? (
+                      <ProListInList
+                        list={list}
+                        key={list.id}
+                        selectColor={this.state.selectColor[index]}
+                      />
+                    ) : (
+                      <ProListInList list={list} key={list.id} />
+                    );
+                  })}
                 </ul>
               </div>
             </div>

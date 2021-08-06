@@ -13,7 +13,7 @@ class Product extends Component {
   }
 
   componentDidMount() {
-    fetch('data/ListItemData.json')
+    fetch('/data/ListItemData.json')
       .then(data => data.json())
       .then(data => {
         this.setState({ prolist: data });
