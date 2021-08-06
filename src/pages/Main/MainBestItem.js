@@ -12,42 +12,38 @@ class MainBestItem extends Component {
           <ul>
             {bestList &&
               bestList.map(el => {
-                return el.information.map(pro => {
-                  const { id, name, image, discount, price, stock } = pro;
-                  return (
-                    <li key={id}>
-                      <Link to="/">
-                        {stock === 0 && <div className="soldOut">SOLD OUT</div>}
-                        <div className="thumb">
-                          <div className="img">
-                            <img alt={name} src={image[0]}></img>
-                          </div>
+                const { id, name, image, discount, price, stock } = el;
+                return (
+                  <li key={id}>
+                    <Link to="/">
+                      {stock === 0 && <div className="soldOut">SOLD OUT</div>}
+                      <div className="thumb">
+                        <div className="img">
+                          <img alt={name} src={image[0]}></img>
                         </div>
-                        <div className="content">
-                          <div className="tit">{name}</div>
-                          <div
-                            className={
-                              Number(discount) ? 'price sales' : 'price'
-                            }
-                          >
-                            <span className="cost">
-                              {Number(price).toLocaleString()} 원
+                      </div>
+                      <div className="content">
+                        <div className="tit">{name}</div>
+                        <div
+                          className={Number(discount) ? 'price sales' : 'price'}
+                        >
+                          <span className="cost">
+                            {Number(price).toLocaleString()} 원
+                          </span>
+                          {discount !== '0' && (
+                            <span className="salePrice">
+                              할인 판매가 :
+                              {(
+                                Number(price) - Number(discount)
+                              ).toLocaleString()}
+                              원
                             </span>
-                            {discount !== '0' && (
-                              <span className="salePrice">
-                                할인 판매가 :
-                                {(
-                                  Number(price) - Number(discount)
-                                ).toLocaleString()}
-                                원
-                              </span>
-                            )}
-                          </div>
+                          )}
                         </div>
-                      </Link>
-                    </li>
-                  );
-                });
+                      </div>
+                    </Link>
+                  </li>
+                );
               })}
           </ul>
         </div>

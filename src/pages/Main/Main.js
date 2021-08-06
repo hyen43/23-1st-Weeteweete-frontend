@@ -12,11 +12,12 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    // fetch('http://10.58.1.209:8000/products/1/1/1', {
-    fetch('data/BestItemData.json')
+    fetch('http://10.58.4.206:8000/products/main')
+      //fetch('data/BestItemData.json')
       .then(data => data.json())
       .then(data => {
-        this.setState({ bestList: data });
+        console.log(data.RESULTS);
+        this.setState({ bestList: data.RESULTS });
       });
   }
 
