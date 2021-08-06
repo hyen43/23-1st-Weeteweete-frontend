@@ -1,0 +1,114 @@
+.bestItem {
+  margin-top: 50px;
+  padding-bottom: 70px;
+
+  .contain {
+    max-width: 1180px;
+    width: 100%;
+    margin: 0 auto;
+
+    h2 {
+      color: #333;
+      font-size: 25px;
+      border-bottom: 2px solid #333;
+      padding-bottom: 15px;
+      margin-bottom: 35px;
+    }
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -10px;
+
+      li {
+        width: 25%;
+        padding: 0 10px;
+        margin-bottom: 50px;
+        text-align: center;
+
+        a {
+          position: relative;
+          display: block;
+
+          .soldOut {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #000;
+            padding: 5px;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 14px;
+            line-height: 1.3em;
+            z-index: 1;
+          }
+          .thumb {
+            position: relative;
+            height: 0;
+            padding-bottom: 100%;
+            overflow: hidden;
+            margin-bottom: 20px;
+
+            .img {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              transform: scale(1);
+              transition: 0.3s ease-in-out;
+
+              img {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                -webkit-transform: translateY(-50%);
+                width: 100%;
+                object-fit: contain;
+              }
+            }
+          }
+          .content {
+            .tit {
+              color: #000;
+              font-size: 18px;
+              margin-bottom: 15px;
+            }
+            .price {
+              color: #333;
+              font-size: 19px;
+              font-weight: 700;
+
+              .const {
+                display: block;
+              }
+
+              .salePrice {
+                display: none;
+              }
+            }
+
+            .sales {
+              .salePrice {
+                display: block;
+                color: rgb(241, 102, 102);
+                margin-top: 5px;
+              }
+
+              .cost {
+                text-decoration: line-through;
+              }
+            }
+          }
+        }
+        a:hover {
+          .img {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+}
