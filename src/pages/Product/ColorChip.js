@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Prolist.scss';
+import './ColorChip.scss';
 
 class ColorChip extends Component {
   clickColorDefault = e => {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './Prolist.scss';
+import './ProListInList.scss';
 
 class ProListInList extends Component {
   render() {
