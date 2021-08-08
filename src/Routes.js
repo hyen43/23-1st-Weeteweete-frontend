@@ -6,8 +6,7 @@ import Login from './pages/Login/Login';
 import Main from './pages/Main/Main';
 import Payment from './pages/Payment/Payment';
 import Signup from './pages/Signup/Signup';
-import Findid from './pages/Findid/Findid';
-import Findpw from './pages/Findpw/Findpw';
+import Productdetail from './pages/Productdetail/Productdetail';
 
 class Routes extends React.Component {
   render() {
@@ -19,8 +18,7 @@ class Routes extends React.Component {
           <Route exact path="/Login" component={Login} />
           <Route exact path="/Payment" component={Payment} />
           <Route exact path="/Signup" component={Signup} />
-          <Route exact path="/Findid" component={Findid} />
-          <Route exact path="/Findpw" component={Findpw} />
+          <Route exact path="/Productdetail" component={Productdetail} />
         </Switch>
         <Footer />
       </Router>
