@@ -1,0 +1,82 @@
+.reviewWrite {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+
+  .reviewTitle {
+    margin-bottom: 40px;
+
+    h3 {
+      color: #333;
+      font-size: 32px;
+      line-height: 1.4em;
+      letter-spacing: 0;
+    }
+  }
+
+  .starInput {
+    margin-bottom: 30px;
+
+    h3 {
+      color: #333;
+      font-size: 22px;
+      line-height: 1.3em;
+      letter-spacing: -0.04em;
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+
+    .rating {
+      &:hover {
+        .starItem {
+          &:before {
+            color: red;
+          }
+        }
+      }
+
+      .rate {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        margin-top: -0.2em;
+
+        .input {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0;
+          height: 0;
+          border: 0;
+          opacity: 0;
+          z-index: -1;
+        }
+
+        .starItem {
+          display: inline-block;
+
+          &:before {
+            content: '★';
+            display: inline-block;
+            font-size: 30px;
+            color: #ddd;
+          }
+
+          &:hover:before {
+            color: red;
+          }
+        }
+
+        .selected {
+          &:before {
+            color: red;
+          }
+        }
+      }
+    }
+  }
+
+  .reviewInput {
+    //h3 {color}
+  }
+}
