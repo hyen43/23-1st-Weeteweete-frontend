@@ -1,4 +1,4 @@
-const FINDPW_LIST = [
+const FINDPW_DATA = [
   {
     key: 1,
     index: '아이디',
@@ -14,9 +14,9 @@ const FINDPW_LIST = [
   {
     key: 3,
     index: '이메일',
-    type: 'text',
+    type: 'email',
     name: 'email',
   },
 ];
 
-export default FINDPW_LIST;
+export default FINDPW_DATA;
