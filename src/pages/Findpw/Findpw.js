@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import FindFormLayout from '../Findid/FindFormLayout';
+import FINDPW_DATA from './FindpwData';
 import './Findpw.scss';
-import FINDPW_LIST from './FindpwData.js';
 
-class Findpw extends React.Component {
+class Findpw extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,7 +13,8 @@ class Findpw extends React.Component {
       email: '',
     };
   }
-  findpwInput = e => {
+
+  inputTovalue = e => {
     const { name, value } = e.target;
     this.setState({
       [name]: value,
@@ -21,13 +23,10 @@ class Findpw extends React.Component {
 
   findpwTest = e => {
     e.preventDefault();
+    const { account, name, email } = this.state;
     fetch('http://10.58.4.206:8000/users/password', {
       method: 'PATCH',
-      body: JSON.stringify({
-        account: this.state.account,
-        name: this.state.name,
-        email: this.state.email,
-      }),
+      body: JSON.stringify({ account, name, email }),
     })
       .then(res => res.json())
       .then(result => {
@@ -37,38 +36,23 @@ class Findpw extends React.Component {
         }
       });
   };
-
   render() {
     return (
       <main className="findpw">
         <h2 className="findpwTitle">FIND PW</h2>
         <div className="findpwContainer">
           <div className="findpwMethod">
-            <input type="radio" name="findpwWhat" />
-            <span className="selectfindWay">이메일로 찾기</span>
+            <span className="selectfindWay">
+              가입시 등록한 아이디, 이름, 이메일이 필요합니다.
+            </span>
           </div>
-          <div className="findpwForm">
-            <form>
-              {FINDPW_LIST.map(list => {
-                const { key, index, type, name } = list;
-                return (
-                  <div className="findpwName" key={key}>
-                    <span className="findpwFormName">{index}</span>
-                    <input
-                      onChange={this.findpwInput}
-                      type={type}
-                      name={name}
-                      className="findpwInput"
-                    ></input>
-                  </div>
-                );
-              })}
-            </form>
-          </div>
-
-          <button className="findpwBtn" onClick={this.findpwTest}>
-            확인
-          </button>
+          <FindFormLayout
+            type="findpw"
+            title="비밀번호 찾기"
+            inputData={FINDPW_DATA}
+            btnOnClick={this.findpwTest}
+            inputTovalue={this.inputTovalue}
+          />
         </div>
       </main>
     );
