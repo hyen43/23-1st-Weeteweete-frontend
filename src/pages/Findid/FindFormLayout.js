@@ -3,14 +3,8 @@ import './FindFormLayout.scss';
 import { withRouter } from 'react-router-dom';
 
 class FindFormLayout extends Component {
-  idbuttonORpwbutton = e => {
-    this.props.title === '아이디 찾기'
-      ? this.props.findidTest(e)
-      : this.props.findpwTest(e);
-  };
-
   render() {
-    const { title, inputData } = this.props;
+    const { title, inputData, inputTovalue, btnOnClick } = this.props;
 
     return (
       <div className="findFormLayoutContainer">
@@ -24,7 +18,7 @@ class FindFormLayout extends Component {
                   className="findFormLayoutInput"
                   name={name}
                   type={type}
-                  onChange={this.props.inputTovalue}
+                  onChange={inputTovalue}
                 />
               </div>
             );
@@ -33,7 +27,7 @@ class FindFormLayout extends Component {
         <button
           className="findFormLayoutBtn"
           value={title}
-          onClick={this.idbuttonORpwbutton}
+          onClick={btnOnClick}
         >
           {title}
         </button>
