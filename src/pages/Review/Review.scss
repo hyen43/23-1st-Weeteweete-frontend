@@ -1,0 +1,141 @@
+.review {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+
+  .totalTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .total {
+      display: flex;
+      margin-bottom: 20px;
+
+      .totalStar {
+        position: relative;
+        padding-left: 38px;
+        margin-right: 30px;
+        color: #000;
+        font-size: 30px;
+        line-height: 1.5em;
+
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 7px;
+          left: 0;
+          width: 30px;
+          height: 30px;
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          background-position: 50% 50%;
+          background-image: url('star.svg');
+          fill: red;
+        }
+      }
+
+      .totalReview {
+        color: #333;
+        font-size: 30px;
+        line-height: 1.5em;
+        letter-spacing: -0.04em;
+      }
+    }
+
+    button {
+      display: block;
+      text-align: center;
+      padding: 5px;
+      border-radius: 3px;
+      width: 90px;
+      border: 1px solid #ddd;
+      background: transparent;
+      color: #333;
+      font-size: 16px;
+      line-height: 1.3em;
+      letter-spacing: -0.04em;
+
+      &:hover {
+        background: #ff6b6b;
+        color: #fff;
+        border: 0;
+      }
+    }
+  }
+
+  .reviewList {
+    ul {
+      border-top: 1px solid #ddd;
+
+      li {
+        cursor: pointer;
+        border-bottom: 1px solid #ddd;
+
+        .title {
+          padding: 25px 0;
+          display: flex;
+          align-items: center;
+          color: #222;
+          font-size: 15px;
+          line-height: 1.4em;
+
+          .stars {
+            width: 140px;
+            text-align: center;
+
+            span {
+              color: #ddd;
+            }
+
+            span.active {
+              color: red;
+            }
+          }
+
+          .content {
+            width: calc(100% - 340px);
+
+            p {
+              display: inline-block;
+              vertical-align: top;
+              max-width: calc(100% - 10px);
+              overflow: hidden;
+              word-break: break-all;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+            }
+          }
+
+          .date {
+            width: 100px;
+            text-align: center;
+          }
+
+          .name {
+            width: 100px;
+            text-align: center;
+          }
+        }
+
+        .subContnet {
+          display: none;
+          background: #f5f5f5;
+          padding: 30px;
+
+          .text {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 15px;
+            line-height: 1.5em;
+          }
+        }
+
+        .subContnet.active {
+          display: block;
+        }
+      }
+    }
+  }
+}
