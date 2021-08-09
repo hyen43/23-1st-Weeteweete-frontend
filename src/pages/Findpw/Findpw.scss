@@ -1,1 +1,30 @@
-d
+.findpw {
+  margin-top: 100px;
+  padding-bottom: 285px;
+
+  .findpwTitle {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .findpwContainer {
+    margin: 0 auto;
+    padding: 20px;
+    width: 450px;
+    border: 1px solid lightgrey;
+
+    .findpwMethod {
+      margin-bottom: 40px;
+      text-align: center;
+
+      input {
+        margin-right: 3px;
+        margin-left: 10px;
+      }
+
+      .selectfindWay {
+        margin-right: 5px;
+      }
+    }
+  }
+}

@@ -4,7 +4,7 @@ import FindFormLayout from './FindFormLayout';
 import FINDID_LIST from './FindidData';
 import './FindidPage.scss';
 
-class FindidPage extends Component {
+class Findid extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -59,4 +59,4 @@ class FindidPage extends Component {
   }
 }
 
-export default withRouter(FindidPage);
+export default withRouter(Findid);

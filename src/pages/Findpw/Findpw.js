@@ -1,0 +1,31 @@
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import FindFormLayout from '../Findid/FindFormLayout';
+import FINDPW_DATA from './FindpwData';
+import './Findpw.scss';
+
+class Findpw extends Component {
+  render() {
+    return (
+      <main className="findpw">
+        <h2 className="findpwTitle">FIND PW</h2>
+        <div className="findpwContainer">
+          <div className="findpwMethod">
+            <span className="selectfindWay">
+              가입시 등록한 아이디, 이름, 이메일이 필요합니다.
+            </span>
+          </div>
+          <FindFormLayout
+            type="findpw"
+            title="비밀번호 찾기"
+            inputData={FINDPW_DATA}
+            btnOnClick={this.findpwTest}
+            inputTovalue={this.inputTovalue}
+          />
+        </div>
+      </main>
+    );
+  }
+}
+
+export default withRouter(Findpw);
