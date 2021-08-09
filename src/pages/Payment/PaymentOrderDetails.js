@@ -3,15 +3,6 @@ import './PaymentOrderDetails.scss';
 
 class PaymentOrderDetails extends React.Component {
   render() {
-    const list = [
-      '이미지',
-      '상품정보',
-      '판매가',
-      '수량',
-      '배송구분',
-      '배송비',
-      '합계',
-    ];
     return (
       <main className="paymentOrderDetails">
         <section className="orderProductList">
@@ -25,10 +16,11 @@ class PaymentOrderDetails extends React.Component {
             <h3>국내배송상품 주문내역</h3>
           </header>
           <table className="orderDetailsTable">
-            {list.map((list, idx) => {
+            {ORDER_DETAILS_LIST.map(list => {
+              const { key, content } = list;
               return (
-                <th className="tableStyle" key={idx}>
-                  {list}
+                <th className="tableStyle" key={key}>
+                  {content}
                 </th>
               );
             })}
@@ -61,4 +53,15 @@ class PaymentOrderDetails extends React.Component {
     );
   }
 }
+
+const ORDER_DETAILS_LIST = [
+  { key: 0, content: '이미지' },
+  { key: 1, content: '상품정보' },
+  { key: 2, content: '판매가' },
+  { key: 3, content: '수량' },
+  { key: 4, content: '배송구분' },
+  { key: 5, content: '배송비' },
+  { key: 6, content: '합계' },
+];
+
 export default PaymentOrderDetails;

@@ -2,6 +2,17 @@ import React from 'react';
 import './PaymentTotalPayment.scss';
 
 class PaymentTotalPayment extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      total_price: '',
+    };
+  }
+
+  componentDidMount() {
+    //fetch() {};
+  }
   render() {
     return (
       <main className="paymentTotalPayment">

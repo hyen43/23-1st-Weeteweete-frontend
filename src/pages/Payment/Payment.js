@@ -10,6 +10,23 @@ class Payment extends React.Component {
 
     this.state = {};
   }
+
+  componentDidMount() {
+    // fetch('https://api.google.com/user', {
+    //   method: 'post',
+    //   body: JSON.stringify({
+    //     name: this.state.,
+    //     batch: ,
+    //   }),
+    // })
+    //   .then(res => res.json())
+    //   .then(res => {
+    //     if (res.success) {
+    //       alert('저장 완료');
+    //     }
+    //   });
+  }
+
   render() {
     return (
       <main className="payment">
