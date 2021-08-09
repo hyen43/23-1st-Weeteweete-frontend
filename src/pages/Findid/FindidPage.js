@@ -5,6 +5,39 @@ import FINDID_LIST from './FindidData';
 import './FindidPage.scss';
 
 class FindidPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      email: '',
+    };
+  }
+
+  inputTovalue = e => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  findidTest = e => {
+    e.preventDefault();
+    fetch('http://10.58.4.206:8000/users/account', {
+      method: 'POST',
+      body: JSON.stringify({
+        name: this.state.name,
+        email: this.state.email,
+      }),
+    })
+      .then(res => res.json())
+      .then(result => {
+        if (result.RESULT) {
+          alert('당신의 아이디는 ' + result.RESULT[0].account + ' 입니다.');
+          console.log('통신 데이터 보기', result.RESULT);
+        }
+      });
+  };
+
   render() {
     return (
       <main className="findid">
@@ -19,6 +52,8 @@ class FindidPage extends Component {
             type="findid"
             title="아이디 찾기"
             inputData={FINDID_LIST}
+            findidTest={this.findidTest}
+            inputTovalue={this.inputTovalue}
           />
         </div>
       </main>
