@@ -1,0 +1,39 @@
+@mixin detail-flex-center{
+  display: flex;
+  justify-content: center;
+}
+
+.productDetailImg{
+  position: relative;
+  padding-bottom: 30px;
+
+  .mainSlide{
+    position: relative;
+    justify-content: center;
+    padding-right: 10px;
+    width: 500px;
+    overflow-x: hidden;
+
+    .mainSlideImgs{
+      width: 2800px;
+      transition: all 300ms ease 0s;
+      overflow: hidden;
+
+      .mainSlideImg{
+        display: inline-block;
+        width: 500px;
+        height: 500px;
+      }
+    }
+  }
+
+  .productSlideImgs {
+      width: 100px;
+      margin-left: 10px;
+      
+    .productSlideImg{
+      padding-right: 10px;
+      padding-bottom: 5px;
+    }
+  }
+}

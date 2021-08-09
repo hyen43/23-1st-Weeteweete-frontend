@@ -32,10 +32,10 @@ class Findpw extends Component {
       .then(result => {
         if (result.MESSAGE) {
           alert('당신의 비밀번호는 ' + result.MESSAGE + ' 입니다.');
-          console.log('통신 데이터 보기', result.MESSAGE);
         }
       });
   };
+
   render() {
     return (
       <main className="findpw">

@@ -1,0 +1,46 @@
+.proList {
+  .wrap {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    padding: 40px 0;
+
+    .description {
+      width: 300px;
+      padding-top: 35px;
+      padding-right: 30px;
+
+      h3 {
+        color: #333;
+        font-size: 18px;
+        line-height: 1.3em;
+        margin-bottom: 12px;
+      }
+
+      p {
+        color: #888;
+        font-size: 14px;
+        line-height: 1.5em;
+      }
+
+      .colorFilter {
+        margin-top: 30px;
+
+        ul {
+          display: flex;
+          flex-wrap: wrap;
+          margin: 0 -2px;
+        }
+      }
+    }
+
+    .list {
+      width: calc(100% - 300px);
+
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -10px;
+      }
+    }
+  }
+}
