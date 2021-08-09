@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import './Findid.scss';
+import FindFormLayout from './FindFormLayout';
 import FINDID_LIST from './FindidData';
+import './FindidPage.scss';
 
-class Findid extends React.Component {
+class FindidPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: '',
-      account: '',
       email: '',
     };
   }
-  findidInput = e => {
+
+  inputTovalue = e => {
     const { name, value } = e.target;
     this.setState({
       [name]: value,
@@ -21,12 +22,10 @@ class Findid extends React.Component {
 
   findidTest = e => {
     e.preventDefault();
+    const { name, email } = this.state;
     fetch('http://10.58.4.206:8000/users/account', {
       method: 'POST',
-      body: JSON.stringify({
-        name: this.state.name,
-        email: this.state.email,
-      }),
+      body: JSON.stringify({ name, email }),
     })
       .then(res => res.json())
       .then(result => {
@@ -47,32 +46,17 @@ class Findid extends React.Component {
               가입시 등록한 이름과 이메일이 필요합니다.
             </span>
           </div>
-          <div className="findidForm">
-            <form>
-              {FINDID_LIST.map(list => {
-                const { key, index, type, name } = list;
-                return (
-                  <div className="findidName" key={key}>
-                    <span className="findidFormName">{index}</span>
-                    <input
-                      onChange={this.findidInput}
-                      type={type}
-                      name={name}
-                      className="findidInput"
-                    />
-                  </div>
-                );
-              })}
-            </form>
-          </div>
-
-          <button className="findidBtn" onClick={this.findidTest}>
-            확인
-          </button>
+          <FindFormLayout
+            type="findid"
+            title="아이디 찾기"
+            inputData={FINDID_LIST}
+            btnOnClick={this.findidTest}
+            inputTovalue={this.inputTovalue}
+          />
         </div>
       </main>
     );
   }
 }
 
-export default withRouter(Findid);
+export default withRouter(FindidPage);

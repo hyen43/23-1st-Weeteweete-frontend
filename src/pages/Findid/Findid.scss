@@ -26,35 +26,5 @@
         margin-right: 5px;
       }
     }
-
-    .findidForm {
-      margin: 0px 29px 29px 30px;
-      .findidInput {
-        margin-bottom: 10px;
-        width: 210px;
-        height: 30px;
-        border: 1px solid lightgrey;
-      }
-
-      .findidFormName {
-        display: inline-block;
-        width: 130px;
-      }
-    }
-  }
-  .findidBtn {
-    display: block;
-    margin: 0 auto;
-    padding: 8px auto;
-    width: 350px;
-    height: 40px;
-    border: 1px solid lightgrey;
-    text-align: center;
-    color: white;
-    background-color: black;
-
-    &:hover {
-      background-color: grey;
-    }
   }
 }
