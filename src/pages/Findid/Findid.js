@@ -59,7 +59,7 @@ class Findid extends React.Component {
                       type={type}
                       name={name}
                       className="findidInput"
-                    ></input>
+                    />
                   </div>
                 );
               })}
