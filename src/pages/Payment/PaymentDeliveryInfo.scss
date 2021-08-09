@@ -1,0 +1,71 @@
+.paymentDeliveryInfo {
+  width: 90%;
+  margin-bottom: 40px;
+  padding: 10px 0px;
+
+  h3 {
+    font-size: 12px;
+  }
+
+  .text {
+    font-size: 10px;
+  }
+  .madatoryStar {
+    color: red;
+  }
+
+  .orderArea {
+    .deliveryInfoTable {
+      width: 100%;
+      padding: 10px 0px;
+      background-color: #ffffff;
+      border: 1px solid #e3e2e5;
+
+      &:last-child {
+        border: none;
+      }
+
+      &:first-child {
+        border-top: 1px solid #e3e2e5;
+      }
+
+      .table {
+        display: grid;
+        grid-template-columns: 100px auto;
+        column-gap: 0px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #d5d5d5;
+
+        .deliveryInfo {
+          background-color: white;
+          margin-left: 20px;
+          padding-top: 5px;
+          text-align: left;
+
+          span {
+            font-size: 12px;
+          }
+        }
+
+        input {
+          width: 90%;
+          padding-left: 10px;
+          border: 1px solid #d5d5d5;
+        }
+
+        .emailInput {
+          position: relative;
+          padding-bottom: 20px;
+          p {
+            position: absolute;
+            left: 5%;
+            padding-top: 5px;
+            font-size: 12px;
+            color: #fa726f;
+          }
+        }
+      }
+    }
+  }
+}
