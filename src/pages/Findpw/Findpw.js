@@ -5,6 +5,37 @@ import FINDPW_DATA from './FindpwData';
 import './Findpw.scss';
 
 class Findpw extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      account: '',
+      email: '',
+    };
+  }
+
+  inputTovalue = e => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  findpwTest = e => {
+    e.preventDefault();
+    const { account, name, email } = this.state;
+    fetch('http://10.58.4.206:8000/users/password', {
+      method: 'PATCH',
+      body: JSON.stringify({ account, name, email }),
+    })
+      .then(res => res.json())
+      .then(result => {
+        if (result.MESSAGE) {
+          alert('당신의 비밀번호는 ' + result.MESSAGE + ' 입니다.');
+        }
+      });
+  };
+
   render() {
     return (
       <main className="findpw">
