@@ -7,15 +7,9 @@ const FINDID_LIST = [
   },
   {
     key: 2,
-    index: '이메일로 찾기',
+    index: '이메일',
     type: 'text',
     name: 'email',
-  },
-  {
-    key: 3,
-    index: '휴대폰 번호로 찾기',
-    type: 'text',
-    name: 'phone_number',
   },
 ];
 
