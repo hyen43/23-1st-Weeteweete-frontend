@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import FindFormLayout from '../Findid/FindFormLayout';
-import FINDPW_LIST from './FindpwData';
+import FINDPW_DATA from './FindpwData';
 import './FindpwPage.scss';
 
 class FindpwPage extends Component {
@@ -18,7 +18,9 @@ class FindpwPage extends Component {
           <FindFormLayout
             type="findpw"
             title="비밀번호 찾기"
-            inputData={FINDPW_LIST}
+            inputData={FINDPW_DATA}
+            findpwTest={this.findpwTest}
+            inputTovalue={this.inputTovalue}
           />
         </div>
       </main>
