@@ -5,6 +5,7 @@
 }
 
 .payment {
-  @include layout margin-bottom: 100px;
+  @include layout;
+  margin-bottom: 100px;
   text-align: center;
 }
