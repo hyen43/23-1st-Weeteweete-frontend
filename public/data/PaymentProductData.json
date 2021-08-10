@@ -1,0 +1,49 @@
+{
+  "data": [
+    {
+      "order_number": "1",
+      "quantity": "2",
+      "name": "홍길동",
+      "phone_number": "0100000000",
+      "address": "주문자 주소",
+      "information": [
+        {
+          "product_name": "사탕",
+          "product_image": "사탕 이미지",
+          "product_price": "2000",
+          "product_discount": "1000"
+        }
+      ]
+    },
+    {
+      "order_number": "2",
+      "quantity": "3",
+      "name": "홍길동",
+      "phone_number": "0100000000",
+      "address": "주문자 주소",
+      "information": [
+        {
+          "product_name": "초콜릿",
+          "product_image": "초콜릿 이미지",
+          "product_price": "3000",
+          "product_discount": "2000"
+        }
+      ]
+    },
+    {
+      "order_number": "3",
+      "quantity": "4",
+      "name": "홍길동",
+      "phone_number": "0100000000",
+      "address": "주문자 주소",
+      "information": [
+        {
+          "product_name": "젤리",
+          "product_image": "젤리 이미지",
+          "product_price": "5000",
+          "product_discount": "4000"
+        }
+      ]
+    }
+  ]
+}
