@@ -1,90 +1,68 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import './Signup.scss';
 import SIGNUP_LIST from './SignupData.js';
+import './Signup.scss';
+import { validationFunction } from '../../utils/validation.js';
 
 class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      account: '',
-      password: '',
+      userInfo: {
+        account: '',
+        password: '',
+        name: '',
+        address: '',
+        phone_number: '',
+        email: '',
+      },
       repassword: '',
-      name: '',
-      address: '',
-      phone_number: '',
-      email: '',
-      accountValid: true,
-      passwordValid: true,
-      emailValid: true,
     };
   }
 
   handleInput = e => {
     const { name, value } = e.target;
     this.setState({
-      [name]: value,
+      userInfo: { ...this.state.userInfo, [name]: value },
     });
   };
 
-  signUpValidationCheck = () => {
-    const {
-      account,
-      password,
-      repassword,
-      email,
-      accountValid,
-      passwordValid,
-      emailValid,
-    } = this.state;
+  isAllValid = property => {
+    const alertMessage = {
+      account: '아이디가 유효하지 않습니다!',
+      password: '비밀번호가 유효하지 않습니다!',
+      email: '이메일이 유효하지 않습니다!',
+    };
 
-    var accountCheck = /^[a-z0-9]{10,20}$/;
-    var passwordCheck = /^[0-9]{8,20}$/;
-    var emailCheck = /^[0-9a-zA-Z]+@[0-9a-zA-Z]*\.[a-zA-Z]{2,3}$/;
+    // for - in 으로 validationFunction 의 key 값을 가져온다.
+    for (property in validationFunction) {
+      // 작동시 key에 맞는 함수 호출
+      const validationKey = validationFunction[property];
 
-    if (!accountCheck.test(account)) {
-      this.setState({
-        accountValid: false,
-      });
-      alert('아이디는 영소문자 포함 10자리 이상이어야 합니다!');
-    }
-    if (!passwordCheck.test(password)) {
-      this.setState({
-        passwordValid: false,
-      });
-      alert('비밀번호는 숫자 8자리 이상이어야 합니다!');
-    }
-    if (password !== repassword) {
-      this.setState({
-        passwordValid: false,
-      });
-      alert('비밀번호와 비밀번호 확인은 일치해야 합니다!');
-    }
-    if (!emailCheck.test(email)) {
-      this.setState({
-        emailValid: false,
-      });
-      alert('이메일 형식을 지켜주세요!');
-    }
+      // 작동시 key에 맞는 value 값 호출
+      const validationValue = this.state.userInfo[property];
 
-    if (accountValid && passwordValid && emailValid === true) {
-      alert('회원가입을 진행합니다.');
-      this.signupTest();
-    } else {
-      alert('회원가입 요청에 실패하였습니다.');
+      // 함수의 value 값이 유효성을 만족하지 않으면 실행
+      if (!validationKey(validationValue)) {
+        console.log(!validationKey(validationValue));
+        return console.log(alertMessage[property]);
+      }
     }
   };
 
   signupTest = () => {
+    const { account, password, name, address, phone_number, email } =
+      this.state;
     fetch('http://10.58.2.84:8000/users/singup', {
       method: 'POST',
+      // userInfo 객체 자체를 POST 보내려고 하면 통신 연결 안됨
       body: JSON.stringify({
-        account: this.state.account,
-        password: this.state.password,
-        name: this.state.name,
-        address: this.state.address,
-        phone_number: this.state.phone_number,
-        email: this.state.email,
+        account,
+        password,
+        name,
+        address,
+        phone_number,
+        email,
       }),
     })
       .then(res => res.json())
@@ -97,6 +75,7 @@ class Signup extends React.Component {
         }
       });
   };
+
   render() {
     return (
       <main className="signUp">
@@ -123,6 +102,13 @@ class Signup extends React.Component {
                       name={name}
                       className={className}
                       onChange={this.handleInput}
+                      onBlur={
+                        name === 'account' ||
+                        name === 'password' ||
+                        name === 'email'
+                          ? this.isAllValid()
+                          : null
+                      }
                     />
                     <span>{explain}</span>
                   </div>
@@ -132,7 +118,7 @@ class Signup extends React.Component {
           </form>
         </div>
         <div className="signUpBtnList">
-          <button className="signUpBtn" onClick={this.signUpValidationCheck}>
+          <button className="signUpBtn" onClick={this.signupTest}>
             회원가입
           </button>
           <button className="signUpFailBtn">회원가입취소</button>
