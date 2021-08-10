@@ -80,7 +80,6 @@ class Cart extends React.Component {
           </section>
           {carts}
           <CartTotalSectionFooter total={total[total.length - 1]} />
-          {/* <CartListSection cartData={cartData} /> */}
           <CartTotalSection
             cartData={cartData}
             total={total[total.length - 1]}
