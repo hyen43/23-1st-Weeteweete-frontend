@@ -1,0 +1,27 @@
+.cartTotalSection {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 1180px;
+  border-collapse: collapse;
+
+
+  .cartTotalTable{
+    width: 100%;
+    text-align: center;
+    border: 1px solid #e9e9e9;
+    border-collapse: collapse;
+  }
+
+  tr, td, th{
+    border: 1px solid #e9e9e9;
+  }
+
+  th{
+    padding: 10px 0 10px 0;
+    background: #fbfafa;
+  }
+  
+  td{
+    padding: 20px 0 20px 0;
+  }
+}

@@ -1,63 +1,81 @@
 import React from 'react';
+import './CartListSection.scss';
 
 class CartListSection extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      quantity: this.props.quantity,
+    };
+  }
+
+  add = () => {
+    this.setState({
+      quantity: this.state.quantity + 1,
+    });
+    this.props.calculateTotal(Number(this.props.price));
+  };
+
+  substract = () => {
+    this.setState(prevState => {
+      if (prevState.quantity > 1) {
+        return {
+          quantity: prevState.quantity - 1,
+        };
+      } else {
+        return alert('최소 주문수량은 1개 입니다.');
+      }
+    });
+    this.props.calculateTotal(-1 * Number(this.props.price));
+  };
+
+  childFunction = () => {
+    this.props.parentFunction(this.childData);
+  };
+
   render() {
+    const { name, price, discount, image } = this.props;
+
     return (
       <section className="cartListSetion">
         <div className="cartList">
-          <div className="cartListTableTitleBox">
-            <p className="cartListTableTitle"> 일반상품 (5)</p>
-          </div>
           <table className="cartListTable">
-            <thead className="cartListTableIndex">
-              <tr>
-                <th> 이미지 </th>
-                <th> 상품정보 </th>
-                <th> 판매가 </th>
-                <th> 수량 </th>
-                <th> 배송비 </th>
-                <th> 합계 </th>
-                <th> 선택 </th>
-              </tr>
-            </thead>
-            {/* </div> */}
             <tbody className="cartListTableBody">
               <tr>
                 <td>
-                  <img
-                    className="cartImage"
-                    alt="cartImg"
-                    src="../images/motemoteDetailImg1.jpg"
-                  />
+                  <img className="cartImage" alt={name} src={image} />
                 </td>
-                <td className="productInfo">
-                  (name 으로 변경 필요) [오리지널] 텐미닛 플래너 31DAYS - 화이트
-                </td>
+                <td className="productInfo">{name}</td>
                 <td>
-                  <p className="realPrice"> 2000원 </p>
-                  <p> 1800원 </p>
+                  <p className="realPrice">
+                    {Number(price).toLocaleString()}원
+                  </p>
+                  <p> {Number(discount).toLocaleString()}원 </p>
                 </td>
                 <td>
                   <div className="quantityTable">
                     <input
                       className="cartQuantity"
-                      value="1"
+                      value={this.state.quantity}
                       type="text"
                       min="1"
                       max="100"
                       disabled
                     />
                     <div className="quantitybtn">
-                      <button className="quantityPlus">
+                      <button className="quantityPlus" onClick={this.add}>
                         <img
                           alt="plusQuantity"
-                          src="https://img.echosting.cafe24.com/skin/base_ko_KR/product/btn_count_up.gif"
+                          src="https:img.echosting.cafe24.com/skin/base_ko_KR/product/btn_count_up.gif"
                         />
                       </button>
-                      <button className="quantityMinus">
+                      <button
+                        className="quantityMinus"
+                        onClick={this.substract}
+                      >
                         <img
                           alt="plusQuantity"
-                          src="https://img.echosting.cafe24.com/skin/base_ko_KR/product/btn_count_down.gif"
+                          src="https:img.echosting.cafe24.com/skin/base_ko_KR/product/btn_count_down.gif"
                         />
                       </button>
                       <button className="quantityChange"> 변경</button>
@@ -65,7 +83,9 @@ class CartListSection extends React.Component {
                   </div>
                 </td>
                 <td> 무료(조건 필수)</td>
-                <td> 16,200원</td>
+                <td>
+                  {(Number(discount) * this.state.quantity).toLocaleString()}원
+                </td>
                 <td className="selecteMenu">
                   <p>
                     <button className="cartOrder">주문하기</button>
@@ -77,16 +97,6 @@ class CartListSection extends React.Component {
               </tr>
             </tbody>
           </table>
-
-          <div className="CartFooter">
-            <span className="deliveryDes">
-              [기본배송/총 상품 금액 30,000원 이상 구매 시 무료배송]
-            </span>
-            <span className="totalDes">
-              상품구매금액 00원 + 배송비 0원(무료/유료)-상품할인금액 00원 =
-              합계: 00000원
-            </span>
-          </div>
         </div>
       </section>
     );

@@ -1,7 +1,15 @@
 import React from 'react';
+import './CartTotalSection.scss';
 
 class CartTotalSection extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
+    // const { name, price, discount, image } = this.props.cartData;
+    const total = this.props.total;
+
     return (
       <section>
         <div className="cartTotalSection">
@@ -16,10 +24,10 @@ class CartTotalSection extends React.Component {
             </thead>
             <tbody>
               <tr>
-                <td> 00000원</td>
+                <td> {}원</td>
                 <td> +0원(유료일 땐, 2500원)</td>
                 <td> 0000원</td>
-                <td> = 0000원 </td>
+                <td> = {total}원 </td>
               </tr>
             </tbody>
           </table>
