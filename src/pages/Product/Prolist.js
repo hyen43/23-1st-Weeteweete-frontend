@@ -33,8 +33,9 @@ class ProList extends Component {
               return colorArry.indexOf(colorElement.color) === i;
             }
           );
+          console.log(sectionContent.concept_id);
           return (
-            <div className="wrap" key={sectionContent.concpet_id}>
+            <div className="wrap" key={sectionContent.concept_id}>
               <div className="description">
                 <h3>{sectionContent.concept}</h3>
                 <p>{sectionContent.concpet_desc}</p>

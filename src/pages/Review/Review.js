@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Total from './Total';
+import { withRouter } from 'react-router-dom';
 import ReviewList from './ReviewList';
+import { BASE_URL } from '../../config.js';
 import './Review.scss';
 
 class Review extends Component {
@@ -13,36 +15,58 @@ class Review extends Component {
   }
 
   componentDidMount() {
-    fetch('data/ReviewData.json')
+    fetch(`${BASE_URL}/products/${this.props.match.params.id}`)
       .then(data => data.json())
       .then(data => {
-        console.log(data[1].reviews);
+        console.log(data.RESULT);
         this.setState({
-          reviewList: data[1].reviews,
-          itemId: data[0].item_id,
+          reviewList: data.RESULT.review,
+          itemId: this.props.match.params.id,
         });
       });
   }
 
   reviewWriteBtn = () => {
-    // fetch('url', {
-    //   method: 'POST',
-    //   body: JSON.stringify({
-    //     token: localStorage.getItem('token'),
-    //     itemId :this.state.itemId,
-    //   }),
-    // })
-    //   .then(response => response.json())
-    //   .then(result => {
-    //     if (result.message === 'SUCCESS') {
-    //       pathname: 'ReviewWrite',
-    //       state: { itemId: this.state.itemId },
-    //     }
-    //   });
-    this.props.history.push({
-      pathname: 'ReviewWrite',
-      state: { itemId: this.state.itemId },
-    });
+    fetch(`${BASE_URL}/products/${this.props.match.params.id}`, {
+      method: 'POST',
+      body: JSON.stringify({
+        //token: localStorage.getItem('TOKKEN'),
+        itemId: this.state.itemId,
+      }),
+      headers: {
+        Authorization: localStorage.getItem('TOKKEN'),
+        Accept: 'application / json',
+      },
+    })
+      .then(response => response.json())
+      .then(result => {
+        if (result.MESSAGE === 'UNATHORIZED') {
+          alert('리뷰 권한이 없습니다!');
+          return;
+        }
+        if (result.MESSAGE === 'INVALIDTOKEN') {
+          alert('로그인 후 이용해주세요!');
+          return;
+        }
+        if (result.MESSAGE === 'EXIST') {
+          alert('이미 작성하신 상품입니다!');
+          return;
+        } else {
+          console.log(this.state.itemId);
+          this.props.history.push({
+            pathname: `/ReviewWrite`,
+            state: { itemId: this.state.itemId },
+          });
+        }
+      });
+    // .catch(err => {
+    //   alert('버튼 누르고 이동 실패');
+    // });
+    // this.props.history.push({
+    //   pathname: 'ReviewWrite',
+    //   state: { itemId: this.state.itemId },
+    // });
+    //this.props.history.push('/ReviewWrite');
   };
 
   render() {
@@ -56,7 +80,7 @@ class Review extends Component {
         <div className="reviewList">
           <ul>
             {reviewList.map(review => {
-              return <ReviewList review={review} key={review.id} />;
+              return <ReviewList review={review} key={review.review_id} />;
             })}
           </ul>
         </div>
@@ -64,4 +88,4 @@ class Review extends Component {
     );
   }
 }
-export default Review;
+export default withRouter(Review);

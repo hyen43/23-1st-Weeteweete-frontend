@@ -22,12 +22,12 @@ class ReviewList extends Component {
       <li onClick={this.toggleAccordion}>
         <div className="title">
           <div className="stars">
-            <StarRating star={review.star} />
+            <StarRating star={review.grade} />
           </div>
           <div className="content">
             <p>{review.content}</p>
           </div>
-          <div className="date">{review.date}</div>
+          <div className="date">{review.create_at.slice(0, 10)}</div>
           <div className="name">{review.name}</div>
         </div>
         <div className={`subContnet${this.state.isActive ? ' active' : ''}`}>

@@ -1,11 +1,11 @@
-.list {
+.bestItem {
   li {
-    width: 33.333333%;
+    width: 25%;
     padding: 0 10px;
     margin-bottom: 50px;
     text-align: center;
 
-    .productWrap {
+    .wrap {
       position: relative;
       display: block;
 
@@ -21,7 +21,6 @@
         line-height: 1.3em;
         z-index: 1;
       }
-
       .thumb {
         position: relative;
         height: 0;
@@ -73,8 +72,8 @@
         .sales {
           .salePrice {
             display: block;
-            margin-top: 5px;
             color: rgb(241, 102, 102);
+            margin-top: 5px;
           }
 
           .cost {
@@ -88,13 +87,5 @@
         transform: scale(1.1);
       }
     }
-  }
-
-  .active {
-    display: block;
-  }
-
-  .hidden {
-    display: none;
   }
 }

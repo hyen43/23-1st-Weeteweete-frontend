@@ -3,9 +3,7 @@ import './ReviewWrite.scss';
 
 class StarInput extends Component {
   inputValue = e => {
-    console.log(e.target.value);
-    console.log(e.target.dataset.idx);
-    this.props.handleStar(e.target.value);
+    this.props.handleStar(e.target.dataset.idx);
   };
 
   render() {
@@ -25,9 +23,9 @@ class StarInput extends Component {
                 checked={this.props.value === item}
                 className="input"
                 onChange={this.inputValue}
-                // onMouseOver={this.inputValue}
                 type="radio"
                 value={item}
+                data-idx={item}
               />
             </label>
           );

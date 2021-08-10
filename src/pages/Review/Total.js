@@ -13,7 +13,9 @@ class Total extends Component {
     const starAverage = starSum / starArry.length;
     return (
       <div className="total">
-        <div className="totalStar">{starAverage}</div>
+        <div className="totalStar">
+          {String(starAverage) === 'NaN' ? '0' : String(starAverage)}
+        </div>
         <div className="totalReview">후기 {starArry.length}개</div>
       </div>
     );
