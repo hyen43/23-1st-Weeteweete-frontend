@@ -23,13 +23,15 @@ class PaymentOrderDetails extends React.Component {
   }
 
   render() {
-    const totalPrice = this.state.paymentList.map(el => {
+    const totalPrice = this.state.paymentList.map(product => {
       return (this.state.totalPrice +=
-        Number(el.information[0].product_discount) * Number(el.quantity));
+        Number(product.information[0].product_discount) *
+        Number(product.quantity));
     });
-    const productPrice = this.state.paymentList.map(el => {
+    const productPrice = this.state.paymentList.map(product => {
       return (this.state.productPrice +=
-        Number(el.information[0].product_price) * Number(el.quantity));
+        Number(product.information[0].product_price) *
+        Number(product.quantity));
     });
     return (
       <main className="paymentOrderDetails">
@@ -57,29 +59,29 @@ class PaymentOrderDetails extends React.Component {
               </tr>
             </thead>
             <tbody>
-              {this.state.paymentList.map(el => {
+              {this.state.paymentList.map(product => {
                 return (
-                  <tr key={el.order_number}>
+                  <tr key={product.order_number}>
                     <td className="tableline">
-                      {el.information[0].product_image}
+                      {product.information[0].product_image}
                     </td>
                     <td className="tableline">
-                      {el.information[0].product_name}
+                      {product.information[0].product_name}
                     </td>
                     <td className="tableline">
-                      {el.information[0].product_price}
+                      {product.information[0].product_price}
                     </td>
-                    <td className="tableline">{el.quantity}</td>
+                    <td className="tableline">{product.quantity}</td>
                     <td className="tableline">
-                      {Number(el.information[0].product_discount) *
-                        Number(el.quantity) >=
+                      {Number(product.information[0].product_discount) *
+                        Number(product.quantity) >=
                       30000
                         ? 0
                         : 2500}
                     </td>
                     <td className="tableline">
-                      {Number(el.information[0].product_discount) *
-                        Number(el.quantity)}
+                      {Number(product.information[0].product_discount) *
+                        Number(product.quantity)}
                     </td>
                   </tr>
                 );
