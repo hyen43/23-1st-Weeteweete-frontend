@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import FindFormLayout from './FindFormLayout';
 import FINDID_LIST from './FindidData';
-import './FindidPage.scss';
+import './Findid.scss';
 
 class Findid extends Component {
   constructor(props) {
