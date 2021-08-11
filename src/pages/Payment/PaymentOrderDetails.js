@@ -16,31 +16,32 @@ class PaymentOrderDetails extends React.Component {
             <h3>국내배송상품 주문내역</h3>
           </header>
           <table className="orderDetailsTable">
-            {ORDER_DETAILS_LIST.map(list => {
-              const { key, content } = list;
-              return (
-                <th className="tableStyle" key={key}>
-                  {content}
-                </th>
-              );
-            })}
-            <tr>
-              <td className="tableline">{'img'}</td>
-              <td className="tableline">{'product'}</td>
-              <th className="tableline">{'price'}</th>
-              <th className="tableline">{'quantity'}</th>
-              <th className="tableline">{'delivery'}</th>
-              <th className="tableline">{'delivery fee'}</th>
-              <th className="tableline">{'total'}</th>
-            </tr>
-            <th colspan="9" className="totalPrice">
-              <strong>기본배송</strong> 상품구매금액 {''}+ 배송비 {''} -
-              상품할인금액 {''} = 합계:
-              <span>
-                {''}
-                <strong>원</strong>
-              </span>
-            </th>
+            <tbody>
+              {ORDER_DETAILS_LIST.map(list => {
+                const { key, content } = list;
+                return (
+                  <th className="tableStyle" key={key}>
+                    {content}
+                  </th>
+                );
+              })}
+              <tr>
+                <th className="tableline">{'img'}</th>
+                <th className="tableline">{'product'}</th>
+                <th className="tableline">{'price'}</th>
+                <th className="tableline">{'quantity'}</th>
+                <th className="tableline">{'delivery fee'}</th>
+                <th className="tableline">{'total'}</th>
+              </tr>
+              <th colSpan="9" className="totalPrice">
+                <strong>기본배송</strong> 상품구매금액 {''}+ 배송비 {''} -
+                상품할인금액 {''} = 합계:
+                <span>
+                  {''}
+                  <strong>원</strong>
+                </span>
+              </th>
+            </tbody>
           </table>
           <ul>
             <li>
@@ -59,9 +60,8 @@ const ORDER_DETAILS_LIST = [
   { key: 1, content: '상품정보' },
   { key: 2, content: '판매가' },
   { key: 3, content: '수량' },
-  { key: 4, content: '배송구분' },
-  { key: 5, content: '배송비' },
-  { key: 6, content: '합계' },
+  { key: 4, content: '배송비' },
+  { key: 5, content: '합계' },
 ];
 
 export default PaymentOrderDetails;
