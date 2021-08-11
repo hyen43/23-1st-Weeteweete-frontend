@@ -3,8 +3,8 @@
     "cart_id": 1,
     "item_id": 1,
     "name": "[오리지널] 태스크 매니저 31DAYS - 화이트",
-    "price": "2000.00",
-    "discount": "1800.00",
+    "price": 2000,
+    "discount": 1800,
     "image": ["../images/motemoteDetailImg1.jpg"],
     "quantity": 2
   },
@@ -12,8 +12,8 @@
     "cart_id": 1,
     "item_id": 2,
     "name": "[오리지널] 태스크 매니저 31DAYS - 화이트",
-    "price": "2000.00",
-    "discount": "1800.00",
+    "price": 2000,
+    "discount": 1800,
     "image": ["../images/motemoteDetailImg1.jpg"],
     "quantity": 3
   }

@@ -3,6 +3,7 @@ import CartListSection from './CartListSection';
 import CartTotalSection from './CartTotalSection';
 import CartButton from './CartButton';
 import CartTotalSectionFooter from './CartTotalSectionFooter';
+import { BASE_URL } from '../../config';
 import './Cart.scss';
 
 class Cart extends React.Component {
@@ -11,7 +12,7 @@ class Cart extends React.Component {
     this.state = {
       cartData: [],
       totalAmount: 0,
-      sum: 0,
+      delivery: 0,
     };
   }
 
@@ -31,23 +32,117 @@ class Cart extends React.Component {
     });
   };
 
-  render() {
-    const total = this.state.cartData.map(el => {
-      return (this.state.sum += Number(el.discount * el.quantity));
+  quantityUpdate = idx => {
+    let copy = this.state.cartData.map((el, index) => {
+      if (idx === index) {
+        return { ...el, quantity: el.quantity + 1 };
+      } else {
+        return el;
+      }
     });
-    const { cartData } = this.state;
-    const component = this;
+    this.setState({
+      cartData: copy,
+    });
+  };
 
-    const carts = this.state.cartData.map(function (cart) {
+  quantitySubstract = idx => {
+    let copySub = this.state.cartData.map((el, index) => {
+      if (idx === index) {
+        return { ...el, quantity: el.quantity - 1 };
+      } else {
+        return el;
+      }
+    });
+    this.setState({
+      cartData: copySub,
+    });
+  };
+
+  orderFunction = idx => {
+    fetch(`${BASE_URL}/orders/cart`, {
+      headers: {
+        Authorization: localStorage.getItem('TOKKEN'),
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        item_id: this.state.cartData[idx].item_id,
+        quantity: this.state.cartData[idx].quantity,
+      }),
+    })
+      .then(res => res.json())
+      .then(order => {
+        alert('성공');
+        //   this.props.push.history('/Payment');
+      });
+  };
+
+  deleteFunction = idx => {
+    fetch(`${BASE_URL}/orders/cart`, {
+      headers: {
+        Authorization: localStorage.getItem('TOKKEN'),
+      },
+      method: 'DELETE',
+      body: JSON.stringify({
+        item_id: this.state.cartData[idx].item_id,
+        quantity: this.state.cartData[idx].quantity,
+      }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        alert('성공');
+      });
+  };
+
+  reviseFunction = idx => {
+    fetch(`${BASE_URL}/orders/cart`, {
+      headers: {
+        Authorization: localStorage.getItem('TOKKEN'),
+      },
+      method: 'PATCH',
+      body: JSON.stringify({
+        item_id: this.state.cartData[idx].item_id,
+        quantity: this.state.cartData[idx].quantity,
+      }),
+    })
+      .then(res => res.json())
+      .then(revise => {
+        alert('성공');
+      });
+  };
+
+  render() {
+    const { cartData } = this.state;
+
+    let originTotal = 0;
+    for (let i = 0; i < cartData.length; i++) {
+      originTotal += cartData[i].price * cartData[i].quantity;
+    }
+
+    let total = 0;
+    for (let i = 0; i < cartData.length; i++) {
+      total += cartData[i].discount * cartData[i].quantity;
+    }
+
+    let delivery = total > 30000 ? 0 : 2500;
+
+    const component = this;
+    const carts = this.state.cartData.map(function (cart, index) {
       return (
         <CartListSection
           name={cart.name}
           price={cart.price}
           discount={cart.discount}
           image={cart.image}
+          total={total}
+          delivery={delivery}
           quantity={cart.quantity}
           calculateTotal={component.calculateTotal}
-          parentFunction={component.parentFunction}
+          quantityUpdate={component.quantityUpdate}
+          quantitySubstract={component.quantitySubstract}
+          index={index}
+          orderFunction={component.orderFunction}
+          deleteFunction={component.deleteFunction}
+          reviseFunction={component.reviseFunction}
         />
       );
     });
@@ -61,7 +156,9 @@ class Cart extends React.Component {
           <section className="cartListSetion">
             <div className="cartList">
               <div className="cartListTableTitleBox">
-                <p className="cartListTableTitle"> 일반상품 (개수)</p>
+                <p className="cartListTableTitle">
+                  일반상품 ({cartData.length})
+                </p>
               </div>
               <table className="cartListTable">
                 <thead className="cartListTableIndex">
@@ -79,10 +176,17 @@ class Cart extends React.Component {
             </div>
           </section>
           {carts}
-          <CartTotalSectionFooter total={total[total.length - 1]} />
+          <CartTotalSectionFooter
+            cartData={cartData}
+            originTotal={originTotal}
+            total={total}
+            delivery={delivery}
+          />
           <CartTotalSection
             cartData={cartData}
-            total={total[total.length - 1]}
+            originTotal={originTotal}
+            total={total}
+            delivery={delivery}
           />
           <CartButton cartData={cartData} />
         </div>

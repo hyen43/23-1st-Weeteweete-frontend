@@ -2,39 +2,23 @@ import React from 'react';
 import './CartListSection.scss';
 
 class CartListSection extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      quantity: this.props.quantity,
-    };
-  }
-
   add = () => {
-    this.setState({
-      quantity: this.state.quantity + 1,
-    });
-    this.props.calculateTotal(Number(this.props.price));
+    this.props.quantityUpdate(this.props.index);
+    this.props.calculateTotal(this.props.price);
   };
 
   substract = () => {
-    this.setState(prevState => {
-      if (prevState.quantity > 1) {
-        return {
-          quantity: prevState.quantity - 1,
-        };
-      } else {
-        return alert('최소 주문수량은 1개 입니다.');
-      }
-    });
-    this.props.calculateTotal(-1 * Number(this.props.price));
-  };
-
-  childFunction = () => {
-    this.props.parentFunction(this.childData);
+    if (this.props.quantity > 1) {
+      this.props.quantitySubstract(this.props.index);
+      this.props.calculateTotal(-1 * this.props.price);
+    } else {
+      alert('최소 수량은 1개입니다. ');
+    }
   };
 
   render() {
-    const { name, price, discount, image } = this.props;
+    const { name, price, discount, image, quantity, delivery, index } =
+      this.props;
 
     return (
       <section className="cartListSetion">
@@ -47,16 +31,14 @@ class CartListSection extends React.Component {
                 </td>
                 <td className="productInfo">{name}</td>
                 <td>
-                  <p className="realPrice">
-                    {Number(price).toLocaleString()}원
-                  </p>
-                  <p> {Number(discount).toLocaleString()}원 </p>
+                  <p className="realPrice">{price.toLocaleString()}원</p>
+                  <p> {discount.toLocaleString()}원 </p>
                 </td>
                 <td>
                   <div className="quantityTable">
                     <input
                       className="cartQuantity"
-                      value={this.state.quantity}
+                      value={quantity}
                       type="text"
                       min="1"
                       max="100"
@@ -78,20 +60,33 @@ class CartListSection extends React.Component {
                           src="https:img.echosting.cafe24.com/skin/base_ko_KR/product/btn_count_down.gif"
                         />
                       </button>
-                      <button className="quantityChange"> 변경</button>
+                      <button
+                        className="quantityChange"
+                        onClick={() => this.props.reviseFunction(index)}
+                      >
+                        변경
+                      </button>
                     </div>
                   </div>
                 </td>
-                <td> 무료(조건 필수)</td>
-                <td>
-                  {(Number(discount) * this.state.quantity).toLocaleString()}원
-                </td>
+                <td> {delivery.toLocaleString()}</td>
+                <td>{(discount * quantity).toLocaleString()}원</td>
                 <td className="selecteMenu">
                   <p>
-                    <button className="cartOrder">주문하기</button>
+                    <button
+                      className="cartOrder"
+                      onClick={() => this.props.orderFunction(index)}
+                    >
+                      주문하기
+                    </button>
                   </p>
                   <p>
-                    <button className="cartDelete">x 삭제</button>
+                    <button
+                      className="cartDelete"
+                      onClick={() => this.props.deleteFunction(index)}
+                    >
+                      x 삭제
+                    </button>
                   </p>
                 </td>
               </tr>
