@@ -1,52 +1,67 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import './Signup.scss';
 import SIGNUP_LIST from './SignupData.js';
+import './Signup.scss';
+import { validationFunction } from '../../utils/validation';
 
 class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      account: '',
-      password: '',
-      repassword: '',
+      userInfo: {
+        account: '',
+        password: '',
+        email: '',
+      },
       name: '',
       address: '',
       phone_number: '',
-      email: '',
+      repassword: '',
     };
   }
-
-  signupTest = () => {
-    fetch('http://10.58.7.133:8000/users/signup', {
-      method: 'POST',
-      body: JSON.stringify({
-        account: this.state.account,
-        password: this.state.password,
-        name: this.state.name,
-        address: this.state.address,
-        phone_number: this.state.phone_number,
-        email: this.state.email,
-      }),
-    })
-      .then(res => res.json())
-      .then(
-        data => console.log('통신 완료 데이터 : ', data)
-        // if (data.message === 'SUCCESS') {
-        //   alert('회원가입 성공!');
-        //   this.props.history.push('/login');
-        // } else {
-        //  alert('회원가입 실패!');
-        // }
-        //
-      );
-  };
 
   handleInput = e => {
     const { name, value } = e.target;
     this.setState({
+      userInfo: {
+        ...this.state.userInfo,
+        [name]: value,
+      },
       [name]: value,
     });
+  };
+
+  testValidation = () => {
+    const validInfo = Object.entries(this.state.userInfo);
+
+    return validInfo.every(info => validationFunction[info[0]](info[1]));
+  };
+
+  signupTest = () => {
+    if (this.testValidation()) {
+      fetch('http://10.58.5.153:8000/users/signup', {
+        method: 'POST',
+        body: JSON.stringify({
+          account: this.state.userInfo.account,
+          password: this.state.userInfo.password,
+          name: this.state.name,
+          address: this.state.address,
+          phone_number: this.state.phone_number,
+          email: this.state.userInfo.email,
+        }),
+      })
+        .then(res => res.json())
+        .then(result => {
+          if (result.MESSAGE === 'SUCCESS') {
+            alert('회원가입 성공! 로그인 페이지로 이동합니다!');
+            this.props.history.push('/login');
+          } else {
+            alert('회원가입 실패!');
+          }
+        });
+    } else {
+      return alert('회원가입 조건을 지켜주세요!');
+    }
   };
 
   render() {

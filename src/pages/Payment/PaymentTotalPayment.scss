@@ -1,0 +1,45 @@
+.paymentTotalPayment {
+  width: 90%;
+  margin-bottom: 10px;
+
+  h3 {
+    font-size: 12px;
+  }
+
+  .totalPayAmountTable {
+    width: 100%;
+    height: 100px;
+    margin: auto;
+    border-collapse: collapse;
+    font-size: 10px;
+
+    td,
+    th {
+      border: 1px solid #e9e9e9;
+    }
+    .tableStyle {
+      background-color: #fafafa;
+    }
+  }
+
+  .payArea {
+    width: 100%;
+    background-color: white;
+    text-align: right;
+    margin-top: 50px;
+
+    p {
+      color: #008bcc;
+      margin-bottom: 10px;
+    }
+
+    button {
+      width: 300px;
+      border: none;
+      color: white;
+      background-color: #3a4050;
+      border-radius: 5px;
+      padding: 10px;
+    }
+  }
+}
