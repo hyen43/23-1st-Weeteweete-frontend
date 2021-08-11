@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Main.scss';
 import MainVisual from './Mainvisual';
 import MainBestItem from './MainBestItem';
+import { BASE_URL } from '../../config.js';
 
 class Main extends Component {
   constructor() {
@@ -12,11 +13,14 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    // fetch('http://10.58.1.209:8000/products/1/1/1', {
-    fetch('data/BestItemData.json')
+    fetch(`${BASE_URL}/products?main=True`, {
+      headers: {
+        Accept: 'application/json',
+      },
+    })
       .then(data => data.json())
       .then(data => {
-        this.setState({ bestList: data });
+        this.setState({ bestList: data.RESULTS });
       });
   }
 

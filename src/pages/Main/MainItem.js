@@ -1,24 +1,16 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import './ProListInList.scss';
+import './MainItem.scss';
 
-class ProListInList extends Component {
+class MainItem extends Component {
   goToDetail = () => {
-    this.props.history.push(`/products/${this.props.list.id}`);
+    this.props.history.push(`/products/${this.props.id}`);
   };
-
   render() {
-    const { id, name, image, price, discount, stock, color } = this.props.list;
+    const { name, image, discount, price, stock } = this.props;
     return (
-      <li
-        className={
-          this.props.selectColor === undefined ||
-          this.props.selectColor === color
-            ? 'active'
-            : 'hidden'
-        }
-      >
-        <div className="productWrap" onClick={this.goToDetail}>
+      <li>
+        <div className="wrap" onClick={this.goToDetail}>
           {stock === 0 && <div className="soldOut">SOLD OUT</div>}
           <div className="thumb">
             <div className="img">
@@ -28,7 +20,7 @@ class ProListInList extends Component {
           <div className="content">
             <div className="tit">{name}</div>
             <div className={Number(discount) ? 'price sales' : 'price'}>
-              <span className="cost">{Number(price).toLocaleString()}원</span>
+              <span className="cost">{Number(price).toLocaleString()} 원</span>
               {discount !== '0' && (
                 <span className="salePrice">
                   할인 판매가 :
@@ -42,5 +34,4 @@ class ProListInList extends Component {
     );
   }
 }
-
-export default withRouter(ProListInList);
+export default withRouter(MainItem);

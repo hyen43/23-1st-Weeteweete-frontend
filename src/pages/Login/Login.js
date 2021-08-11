@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
+import { BASE_URL } from '../../config.js';
 import './Login.scss';
 
 class Login extends React.Component {
@@ -21,7 +22,7 @@ class Login extends React.Component {
   goToMain = e => {
     e.preventDefault();
     const { account, password } = this.state;
-    fetch('http://10.58.2.84:8000/users/singin', {
+    fetch(`${BASE_URL}/users/signin`, {
       method: 'POST',
       body: JSON.stringify({
         account,
