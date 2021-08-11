@@ -6,9 +6,6 @@ class PaymentOrderDetails extends React.Component {
     super(props);
     this.state = {
       paymentList: [],
-      productPrice: 0,
-      discountPrice: 0,
-      totalPrice: 0,
     };
   }
 
@@ -23,16 +20,21 @@ class PaymentOrderDetails extends React.Component {
   }
 
   render() {
-    const totalPrice = this.state.paymentList.map(product => {
-      return (this.state.totalPrice +=
-        Number(product.information[0].product_discount) *
-        Number(product.quantity));
-    });
-    const productPrice = this.state.paymentList.map(product => {
-      return (this.state.productPrice +=
-        Number(product.information[0].product_price) *
-        Number(product.quantity));
-    });
+    const productList = this.state.paymentList;
+    const totalPrice = productList.reduce((total, array) => {
+      total =
+        total +
+        Number(array.quantity) * Number(array.information[0].product_price);
+      return total;
+    }, 0);
+
+    const discountPrice = productList.reduce((sale, array) => {
+      sale =
+        sale +
+        Number(array.quantity) * Number(array.information[0].product_discount);
+      return sale;
+    }, 0);
+
     return (
       <main className="paymentOrderDetails">
         <section className="orderProductList">
@@ -71,14 +73,10 @@ class PaymentOrderDetails extends React.Component {
                     <td className="tableline">
                       {product.information[0].product_price}
                     </td>
-                    <td className="tableline">{product.quantity}</td>
                     <td className="tableline">
-                      {Number(product.information[0].product_discount) *
-                        Number(product.quantity) >=
-                      30000
-                        ? 0
-                        : 2500}
+                      {product.information[0].product_discount}
                     </td>
+                    <td className="tableline">{product.quantity}</td>
                     <td className="tableline">
                       {Number(product.information[0].product_discount) *
                         Number(product.quantity)}
@@ -88,25 +86,20 @@ class PaymentOrderDetails extends React.Component {
               })}
               <tr>
                 <td colSpan="9" className="totalPrice">
-                  상품구매금액 {productPrice[productPrice.length - 1]}{' '}
+                  상품구매금액 {totalPrice}
                   <span>
                     <strong> 원</strong>
                   </span>
-                  - 상품할인금액{' '}
-                  {productPrice[productPrice.length - 1] -
-                    totalPrice[totalPrice.length - 1]}{' '}
+                  - 상품할인금액 {totalPrice - discountPrice}
                   <span>
                     <strong> 원</strong>
                   </span>
-                  + 배송비{' '}
-                  {totalPrice[totalPrice.length - 1] < 30000 ? 2500 : 0}{' '}
+                  + 배송비 {discountPrice < 30000 ? 2500 : 0}
                   <span>
                     <strong> 원</strong>
                   </span>
-                  =
-                  {totalPrice[totalPrice.length - 1] < 30000
-                    ? totalPrice[totalPrice.length - 1] + 2500
-                    : totalPrice[totalPrice.length - 1]}
+                  ={' '}
+                  {discountPrice < 30000 ? discountPrice + 2500 : discountPrice}
                   <span>
                     <strong> 원</strong>
                   </span>
@@ -131,9 +124,9 @@ const ORDER_DETAILS_LIST = [
   { key: 0, content: '이미지' },
   { key: 1, content: '상품정보' },
   { key: 2, content: '판매가' },
-  { key: 3, content: '수량' },
-  { key: 5, content: '배송비' },
-  { key: 6, content: '합계' },
+  { key: 3, content: '할인가' },
+  { key: 4, content: '수량' },
+  { key: 5, content: '합계' },
 ];
 
 export default PaymentOrderDetails;
