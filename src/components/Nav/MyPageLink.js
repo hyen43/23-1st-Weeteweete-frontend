@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { TOKEN_KEY } from '../../config.js';
 import { withRouter } from 'react-router-dom';
 import './Nav.scss';
 
 class myPageLink extends Component {
   logOut = () => {
-    localStorage.removeItem('TOKKEN');
+    localStorage.removeItem(TOKEN_KEY);
     this.props.history.push('/');
   };
   render() {
-    const token = localStorage.getItem('TOKKEN');
+    const token = localStorage.getItem(TOKEN_KEY);
     return (
       <div className="myPageLink">
         <ul>

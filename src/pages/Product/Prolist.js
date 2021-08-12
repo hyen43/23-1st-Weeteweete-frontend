@@ -33,7 +33,7 @@ class ProList extends Component {
               return colorArry.indexOf(colorElement.color) === i;
             }
           );
-          console.log(sectionContent.concept_id);
+          //console.log('>>>>>>' + sectionContent.concept_id);
           return (
             <div className="wrap" key={sectionContent.concept_id}>
               <div className="description">
