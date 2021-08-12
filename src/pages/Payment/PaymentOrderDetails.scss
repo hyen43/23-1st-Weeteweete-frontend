@@ -60,6 +60,10 @@
 
       .tableline {
         border-right: 1px solid white;
+
+        &:last-child {
+          border-right: 1px solid #e3e2e5;
+        }
       }
     }
 
