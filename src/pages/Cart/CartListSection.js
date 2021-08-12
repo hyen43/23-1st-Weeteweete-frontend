@@ -17,7 +17,7 @@ class CartListSection extends React.Component {
   };
 
   render() {
-    const { name, price, discount, image, quantity, delivery, index } =
+    const { name, price, discount, image, quantity, deliveryFee, index } =
       this.props;
 
     return (
@@ -31,8 +31,10 @@ class CartListSection extends React.Component {
                 </td>
                 <td className="productInfo">{name}</td>
                 <td>
-                  <p className="realPrice">{price.toLocaleString()}원</p>
-                  <p> {discount.toLocaleString()}원 </p>
+                  <p className="realPrice">
+                    {Number(price).toLocaleString()}원
+                  </p>
+                  <p> {Number(price - discount).toLocaleString()}원 </p>
                 </td>
                 <td>
                   <div className="quantityTable">
@@ -62,20 +64,22 @@ class CartListSection extends React.Component {
                       </button>
                       <button
                         className="quantityChange"
-                        onClick={() => this.props.reviseFunction(index)}
+                        onClick={() => this.props.reviseQuantity(index)}
                       >
                         변경
                       </button>
                     </div>
                   </div>
                 </td>
-                <td> {delivery.toLocaleString()}</td>
-                <td>{(discount * quantity).toLocaleString()}원</td>
+                <td> {deliveryFee.toLocaleString()}</td>
+                <td>
+                  {(Number(price - discount) * quantity).toLocaleString()}원
+                </td>
                 <td className="selecteMenu">
                   <p>
                     <button
                       className="cartOrder"
-                      onClick={() => this.props.orderFunction(index)}
+                      onClick={() => this.props.ordered(index)}
                     >
                       주문하기
                     </button>
@@ -83,7 +87,7 @@ class CartListSection extends React.Component {
                   <p>
                     <button
                       className="cartDelete"
-                      onClick={() => this.props.deleteFunction(index)}
+                      onClick={() => this.props.deleteproduct(index)}
                     >
                       x 삭제
                     </button>

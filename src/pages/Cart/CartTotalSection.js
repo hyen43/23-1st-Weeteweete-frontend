@@ -3,7 +3,7 @@ import './CartTotalSection.scss';
 
 class CartTotalSection extends React.Component {
   render() {
-    const { total, originTotal, delivery } = this.props;
+    const { total, originTotal, deliveryFee } = this.props;
 
     return (
       <section>
@@ -20,9 +20,9 @@ class CartTotalSection extends React.Component {
             <tbody>
               <tr>
                 <td> {originTotal.toLocaleString()}원</td>
-                <td> +{delivery.toLocaleString()}원</td>
+                <td> +{deliveryFee.toLocaleString()}원</td>
                 <td> {(originTotal - total).toLocaleString()}원</td>
-                <td> = {(total + delivery).toLocaleString()}원 </td>
+                <td> = {(total + deliveryFee).toLocaleString()}원 </td>
               </tr>
             </tbody>
           </table>
