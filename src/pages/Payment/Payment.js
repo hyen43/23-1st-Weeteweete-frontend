@@ -3,7 +3,7 @@ import './Payment.scss';
 import PaymentOrderDetails from './PaymentOrderDetails';
 import PaymentDeliveryInfo from './PaymentDeliveryInfo';
 import PaymentTotalPayment from './PaymentTotalPayment';
-import { BASE_URL } from '../../config';
+import { BASE_URL, TOKEN_KEY } from '../../config';
 
 class Payment extends React.Component {
   constructor(props) {
@@ -55,7 +55,7 @@ class Payment extends React.Component {
   };
 
   handleSubmit = () => {
-    // const token = localStorage.getItem(`${TOKEN_KEY}`);
+    //const token = localStorage.getItem(`${TOKEN_KEY}`);
     fetch(`${BASE_URL}/orders`, {
       method: 'POST',
       headers: {},
