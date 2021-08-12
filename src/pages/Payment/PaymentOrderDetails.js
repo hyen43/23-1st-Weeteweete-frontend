@@ -65,7 +65,9 @@ class PaymentOrderDetails extends React.Component {
                 } = product.information[0];
                 return (
                   <tr key={product.order_number}>
-                    <td className="tableline">{product_image}</td>
+                    <td className="tableline">
+                      <img src={product_image} />
+                    </td>
                     <td className="tableline">{product_name}</td>
                     <td className="tableline">{product_price}</td>
                     <td className="tableline">
