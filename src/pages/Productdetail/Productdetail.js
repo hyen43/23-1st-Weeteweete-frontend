@@ -76,7 +76,12 @@ class Productdetail extends React.Component {
   };
 
   onClickPlusQuantity = () => {
-    this.setState({ quantity: this.state.quantity + 1 });
+    console.log(this.state.detailData[0]);
+    if (this.state.detailData[0].information.stock < this.state.quantity) {
+      return alert('재고수량이 부족합니다. ');
+    } else {
+      this.setState({ quantity: this.state.quantity + 1 });
+    }
   };
 
   onClickMiunsQuantity = () => {
