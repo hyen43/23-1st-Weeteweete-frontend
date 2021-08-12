@@ -16,31 +16,37 @@ class PaymentOrderDetails extends React.Component {
             <h3>국내배송상품 주문내역</h3>
           </header>
           <table className="orderDetailsTable">
-            <tbody>
-              {ORDER_DETAILS_LIST.map(list => {
-                const { key, content } = list;
-                return (
-                  <th className="tableStyle" key={key}>
-                    {content}
-                  </th>
-                );
-              })}
+            <thead>
               <tr>
-                <th className="tableline">{'img'}</th>
-                <th className="tableline">{'product'}</th>
-                <th className="tableline">{'price'}</th>
-                <th className="tableline">{'quantity'}</th>
-                <th className="tableline">{'delivery fee'}</th>
-                <th className="tableline">{'total'}</th>
+                {ORDER_DETAILS_LIST.map(list => {
+                  const { key, content } = list;
+                  return (
+                    <th className="tableStyle" key={key}>
+                      {content}
+                    </th>
+                  );
+                })}
               </tr>
-              <th colSpan="9" className="totalPrice">
-                <strong>기본배송</strong> 상품구매금액 {''}+ 배송비 {''} -
-                상품할인금액 {''} = 합계:
-                <span>
-                  {''}
-                  <strong>원</strong>
-                </span>
-              </th>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="tableline">{'img'}</td>
+                <td className="tableline">{'product'}</td>
+                <td className="tableline">{'price'}</td>
+                <td className="tableline">{'quantity'}</td>
+                <td className="tableline">{'delivery fee'}</td>
+                <td className="tableline">{'total'}</td>
+              </tr>
+              <tr>
+                <td colSpan="9" className="totalPrice">
+                  <strong>기본배송</strong> 상품구매금액 {''}+ 배송비 {''} -
+                  상품할인금액 {''} = 합계:
+                  <span>
+                    {''}
+                    <strong>원</strong>
+                  </span>
+                </td>
+              </tr>
             </tbody>
           </table>
           <ul>

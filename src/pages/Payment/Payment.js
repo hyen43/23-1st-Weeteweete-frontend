@@ -3,6 +3,7 @@ import './Payment.scss';
 import PaymentOrderDetails from './PaymentOrderDetails';
 import PaymentDeliveryInfo from './PaymentDeliveryInfo';
 import PaymentTotalPayment from './PaymentTotalPayment';
+import { BASE_URL } from '../../config';
 
 class Payment extends React.Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class Payment extends React.Component {
   };
 
   componentDidMount() {
-    fetch('data/paymenTotalPayment.json')
+    fetch('data/paymentTotalPayment.json')
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -54,29 +55,32 @@ class Payment extends React.Component {
   };
 
   handleSubmit = () => {
-    const token = localStorage.getItem('TOKKEN');
-    fetch('http://10.58.2.84:8000/orders', {
+    const token = localStorage.getItem('TOKEN');
+    fetch(`${BASE_URL}/orders`, {
       method: 'POST',
-      headers: {
-        typ: 'JWT',
-        alg: 'HS256',
-      },
+      headers: {},
       body: JSON.stringify({
         cart: this.state.cartItem,
         user_info: this.state.userInformaiton,
-      })
-        .then(res => res.json())
-        .then(res => {
-          if (res.token) {
-            localStorage.setItem('TOKKEN', res.token);
-          }
-        }),
-    });
+      }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.MESSAGE === 'SUCCESS') {
+          alert('결제 성공');
+        } else if (res.MESSAGE === 'INSUFFICIENT_POINTS') {
+          alert('잔액이 부족합니다!');
+        } else {
+          alert('결제에 실패했습니다.');
+        }
+      });
   };
 
   render() {
+    const token = localStorage.getItem('TOKEN');
     const { cartItem } = this.state;
     const [totalPrice, totalDiscount] = this.getTotalPrice(cartItem);
+
     return (
       <main className="payment">
         <PaymentOrderDetails />
