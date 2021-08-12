@@ -77,8 +77,10 @@ class Productdetail extends React.Component {
 
   onClickPlusQuantity = () => {
     console.log(this.state.detailData[0]);
-    if (this.state.detailData[0].information.stock < this.state.quantity) {
-      return alert('재고수량이 부족합니다. ');
+    if (this.state.detailData.stock < this.state.quantity) {
+      return alert(
+        `구매하실 수 있는 재고 수량은 ${this.state.detailData.stock}개 입니다. `
+      );
     } else {
       this.setState({ quantity: this.state.quantity + 1 });
     }
@@ -95,6 +97,7 @@ class Productdetail extends React.Component {
       }
     });
   };
+
   handleChange = e => {
     this.setState({
       quantity: e.target.value,

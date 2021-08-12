@@ -32,7 +32,7 @@ class ProductDetailOption extends React.Component {
                     </button>
                   </div>
                   <div className="minus">
-                    <button onClick={this.onClickMiunsQuantity}>
+                    <button onClick={this.props.onClickMiunsQuantity}>
                       <img
                         alt="plusQuantity"
                         src="https://img.echosting.cafe24.com/skin/base_ko_KR/product/btn_count_down.gif"
