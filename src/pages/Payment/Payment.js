@@ -55,7 +55,7 @@ class Payment extends React.Component {
   };
 
   handleSubmit = () => {
-    // const token = localStorage.getItem('TOKEN');
+    // const token = localStorage.getItem(`${TOKEN_KEY}`);
     fetch(`${BASE_URL}/orders`, {
       method: 'POST',
       headers: {},
@@ -82,7 +82,7 @@ class Payment extends React.Component {
   };
 
   render() {
-    // const token = localStorage.getItem('TOKEN');
+    // const token = localStorage.getItem(`${TOKEN_KEY}`);
     const { cartItem } = this.state;
     const [totalPrice, totalDiscount] = this.getTotalPrice(cartItem);
 
