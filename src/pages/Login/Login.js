@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
+import { TOKEN_KEY } from '../../config.js';
 import { BASE_URL } from '../../config.js';
 import './Login.scss';
 
@@ -31,8 +32,8 @@ class Login extends React.Component {
     })
       .then(res => res.json())
       .then(result => {
-        if (result.TOKKEN) {
-          localStorage.setItem('TOKKEN', result.TOKKEN);
+        if (result.TOKEN) {
+          localStorage.setItem(TOKEN_KEY, result.TOKEN);
           this.props.history.push('/');
         } else {
           alert('정보가 없습니다.');

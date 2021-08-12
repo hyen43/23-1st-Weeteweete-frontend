@@ -41,29 +41,17 @@ class Cart extends React.Component {
     });
   };
 
-  quantityUpdate = idx => {
+  changeQuantity = (idx, id) => {
+    id === 'quantityMinus' ? (id = -1) : (id = 1);
     const copy = this.state.cartData.map((product, index) => {
       if (idx === index) {
-        return { ...product, quantity: product.quantity + 1 };
+        return { ...product, quantity: product.quantity + id };
       } else {
         return product;
       }
     });
     this.setState({
       cartData: copy,
-    });
-  };
-
-  quantitySubstract = idx => {
-    const copySub = this.state.cartData.map((product, index) => {
-      if (idx === index) {
-        return { ...product, quantity: product.quantity - 1 };
-      } else {
-        return product;
-      }
-    });
-    this.setState({
-      cartData: copySub,
     });
   };
 
@@ -139,7 +127,6 @@ class Cart extends React.Component {
 
     let deliveryFee = total > 30000 ? 0 : 2500;
 
-    const component = this;
     const carts = this.state.cartData.map(function (cart, index) {
       return (
         <CartListSection
@@ -150,14 +137,13 @@ class Cart extends React.Component {
           total={total}
           deliveryFee={deliveryFee}
           quantity={cart.quantity}
-          calculateTotal={component.calculateTotal}
-          quantityUpdate={component.quantityUpdate}
-          quantitySubstract={component.quantitySubstract}
+          calculateTotal={this.calculateTotal}
+          changeQuantity={this.changeQuantity}
           index={index}
           key={cart.cart_id}
-          ordered={component.ordered}
-          deleteproduct={component.deleteproduct}
-          reviseQuantity={component.reviseQuantity}
+          ordered={this.ordered}
+          deleteproduct={this.deleteproduct}
+          reviseQuantity={this.reviseQuantity}
         />
       );
     });

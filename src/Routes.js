@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
 import Login from './pages/Login/Login';
+import Findid from './pages/Findid/Findid';
+import Findpw from './pages/Findpw/Findpw';
 import Main from './pages/Main/Main';
 import Product from './pages/Product/Product';
 import Payment from './pages/Payment/Payment';
@@ -20,6 +22,8 @@ class Routes extends React.Component {
         <Switch>
           <Route exact path="/" component={Main} />
           <Route exact path="/Login" component={Login} />
+          <Route exact path="/Findid" component={Findid} />
+          <Route exact path="/Findpw" component={Findpw} />
           {/* <Route
             exact
             path="/products"
@@ -33,6 +37,8 @@ class Routes extends React.Component {
           <Route exact path="/Review" component={Review} />
           <Route exact path="/ReviewWrite" component={ReviewWrite} />
           <Route exact path="/products/:id" component={Productdetail} />
+          <Route exact path="/orders/cart" component={Cart} />
+          {/* <Route exact path="/productsdetail" component={Productdetail} /> */}
         </Switch>
         <Footer />
       </Router>

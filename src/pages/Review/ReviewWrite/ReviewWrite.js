@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import StarInput from './StarInput';
+import { TOKEN_KEY } from '../../../config.js';
 import { BASE_URL } from '../../../config.js';
 import './ReviewWrite.scss';
 
@@ -35,30 +36,30 @@ class ReviewWrite extends Component {
     });
   };
 
-  // handlePost = () => {
-  //   const formData = new FormData();
-  //   formData.append('image', this.state.file);
-  //   formData.append('content', this.state.text);
-  //   formData.append('grade', this.state.grade);
+  handlePost = () => {
+    const formData = new FormData();
+    formData.append('image', this.state.file);
+    formData.append('content', this.state.text);
+    formData.append('grade', this.state.grade);
 
-  //   return axios
-  //     .post(`${BASE_URL}/users/${this.state.itemId}`, formData, {
-  //       headers: {
-  //         Authorization: localStorage.getItem('TOKKEN'),
-  //         'Content-Type': 'multipart/form-data',
-  //       },
-  //     })
-  //     .then(res => {
-  //       res.json();
-  //       alert('성공');
-  //     })
-  //     .catch(err => {
-  //       //alert('리뷰쓰기 실패');
-  //       for (var pair of formData.entries()) {
-  //         console.log(pair[0] + ', >>>>>' + pair[1]);
-  //       }
-  //     });
-  // };
+    return axios
+      .post(`${BASE_URL}/products/review/${this.state.itemId}`, formData, {
+        headers: {
+          Authorization: localStorage.getItem(TOKEN_KEY),
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+      .then(res => {
+        //res.json();
+        alert('리뷰쓰기 성공');
+        this.props.history.push('/');
+      })
+      .catch(err => {
+        for (var pair of formData.entries()) {
+          console.log(pair[0] + ', >>>>>' + pair[1]);
+        }
+      });
+  };
 
   handleStar = selectStar => {
     this.setState({
