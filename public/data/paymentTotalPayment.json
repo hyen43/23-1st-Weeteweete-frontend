@@ -1,0 +1,49 @@
+{
+  "data": [
+    {
+      "order_number": "주문 아이템 번호",
+      "quantity": "2",
+      "name": "홍길동",
+      "phone_number": "0100000000",
+      "address": "주문자 주소",
+      "information": [
+        {
+          "product_name": "사탕",
+          "product_image": "사탕 이미지",
+          "product_price": "10000",
+          "product_discount": "8000"
+        }
+      ]
+    },
+    {
+      "order_number": "주문 아이템 번호",
+      "quantity": "2",
+      "name": "홍길동",
+      "phone_number": "0100000000",
+      "address": "주문자 주소",
+      "information": [
+        {
+          "product_name": "사탕",
+          "product_image": "사탕 이미지",
+          "product_price": "1000",
+          "product_discount": "800"
+        }
+      ]
+    },
+    {
+      "order_number": "주문 아이템 번호",
+      "quantity": "2",
+      "name": "홍길동",
+      "phone_number": "0100000000",
+      "address": "주문자 주소",
+      "information": [
+        {
+          "product_name": "사탕",
+          "product_image": "사탕 이미지",
+          "product_price": "1000",
+          "product_discount": "800"
+        }
+      ]
+    }
+  ]
+}

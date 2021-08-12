@@ -2,37 +2,42 @@ import React from 'react';
 import './PaymentTotalPayment.scss';
 
 class PaymentTotalPayment extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      total_price: '',
-    };
-  }
-
-  componentDidMount() {
-    //fetch() {};
-  }
   render() {
+    const { totalPrice, totalDiscount } = this.props;
+    const shippingFee = totalDiscount < 30000 ? 2500 : 0;
+    const calculateTotal = totalDiscount + shippingFee;
+
     return (
       <main className="paymentTotalPayment">
         <h3>결제 예정 금액</h3>
         <table className="totalPayAmountTable">
-          <tr>
-            <th className="tableStyle">총 주문 금액</th>
-            <th className="tableStyle">총 할인 + 부가결제 금액</th>
-            <th className="tableStyle">총 결제예정 금액</th>
-          </tr>
-          <tr>
-            <td>{'total order price'}</td>
-            <td>{'total price + extra fee'}</td>
-            <td>{'total price'}</td>
-          </tr>
+          <thead>
+            <tr>
+              <th className="tableStyle">총 주문 금액</th>
+              <th className="tableStyle">총 할인</th>
+              <th className="tableStyle">배송비</th>
+              <th className="tableStyle">총 결제예정 금액</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{totalPrice}원</td>
+              <td>{totalDiscount}원</td>
+              <td>{shippingFee}원</td>
+              <td>{calculateTotal}원</td>
+            </tr>
+          </tbody>
         </table>
         <section className="payArea">
           <h3>최종결제 금액</h3>
-          <p>{''}원</p>
-          <button>결제하기</button>
+          <p>{calculateTotal}원</p>
+          <button
+            type="submit"
+            formMethod="POST"
+            onClick={this.props.handleSubmit}
+          >
+            결제하기
+          </button>
         </section>
       </main>
     );

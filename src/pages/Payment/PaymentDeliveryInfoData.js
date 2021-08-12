@@ -39,6 +39,7 @@ export const DELIVERYINFO_LIST = [
     key: 5,
     lable: '배송메시지',
     type: 'text',
+    name: 'content',
     className: 'msgInput',
     content: '',
   },
