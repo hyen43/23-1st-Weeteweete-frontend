@@ -11,13 +11,14 @@ class Payment extends React.Component {
 
     this.state = {
       userInformation: {
-        order_id: '',
+        order_number: '',
         name: '',
         phone_number: '',
         content: '',
         email: '',
       },
       cartItem: [],
+      totalprice: 0,
     };
   }
 
@@ -31,18 +32,33 @@ class Payment extends React.Component {
   };
 
   componentDidMount() {
-    fetch('data/paymentTotalPayment.json')
+    console.log(this.props);
+    fetch(`${BASE_URL}/orders?${this.props.location.state.itemId}`, {
+      headers: {
+        Authorization: localStorage.getItem(TOKEN_KEY),
+      },
+    })
       .then(res => res.json())
       .then(res => {
         this.setState({
-          cartItem: res.data,
+          cartItem: res.RESULT,
         });
+        console.log(this.state.cartItem);
       });
   }
+  //       .then(res => res.json())
+  //       .then(res => {
+  //         this.setState({
+  //           cartItem: res.data,
+  //         });
+  //       }),
+  //   });
+  // }
 
   getTotalPrice = cartItems => {
     let totalPrice = 0;
     let totalDiscount = 0;
+    console.log(cartItems);
     for (let cartItem of cartItems) {
       const { quantity } = cartItem;
       const productPrice = cartItem.information[0].product_price;
@@ -51,17 +67,21 @@ class Payment extends React.Component {
       totalPrice += quantity * productPrice;
       totalDiscount += quantity * productDiscount;
     }
-    return [totalPrice, totalDiscount];
+    return (
+      [totalPrice, totalDiscount], this.setState({ totalprice: totalPrice })
+    );
   };
 
   handleSubmit = () => {
     //const token = localStorage.getItem(`${TOKEN_KEY}`);
-    fetch(`${BASE_URL}/orders`, {
+    fetch(`${BASE_URL}/orders/purchase`, {
+      headers: {
+        Authorization: localStorage.getItem(TOKEN_KEY),
+      },
       method: 'POST',
-      headers: {},
       body: JSON.stringify({
-        total_price: this.state.cartItem,
-        order_id: this.state.userInfomation.order_id,
+        total_price: this.state.totalPrice,
+        order_number: this.state.cartItem[0].order_number,
         name: this.state.userInformation.name,
         address: this.state.userInformation.address,
         email: this.state.userInformation.email,
@@ -86,9 +106,11 @@ class Payment extends React.Component {
     const { cartItem } = this.state;
     const [totalPrice, totalDiscount] = this.getTotalPrice(cartItem);
 
+    console.log(this.state.cartItem);
+
     return (
       <main className="payment">
-        <PaymentOrderDetails />
+        <PaymentOrderDetails cartItem={this.state.cartItem} />
         <PaymentDeliveryInfo onChange={this.handleInputs} />
         <PaymentTotalPayment
           userInformation={this.state.userInformation}

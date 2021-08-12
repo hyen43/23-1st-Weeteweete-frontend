@@ -21,21 +21,20 @@ class Routes extends React.Component {
         <Nav />
         <Switch>
           <Route exact path="/" component={Main} />
-          <Route exact path="/Login" component={Login} />
-          <Route exact path="/Findid" component={Findid} />
-          <Route exact path="/Findpw" component={Findpw} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/findid" component={Findid} />
+          <Route exact path="/findpw" component={Findpw} />
           {/* <Route
             exact
             path="/products"
             component={Product}
           /> */}
           <Route exact path="/products" component={Product} />
-          <Route exact path="/Payment" component={Payment} />
-          <Route exact path="/Signup" component={Signup} />
-          <Route exact path="/Productdetail" component={Productdetail} />
-          <Route exact path="/Cart" component={Cart} />
-          <Route exact path="/Review" component={Review} />
-          <Route exact path="/ReviewWrite" component={ReviewWrite} />
+          <Route exact path="/payment" component={Payment} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/productdetail" component={Productdetail} />
+          <Route exact path="/review" component={Review} />
+          <Route exact path="/reviewWrite" component={ReviewWrite} />
           <Route exact path="/products/:id" component={Productdetail} />
           <Route exact path="/orders/cart" component={Cart} />
           {/* <Route exact path="/productsdetail" component={Productdetail} /> */}
