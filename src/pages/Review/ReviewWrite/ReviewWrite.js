@@ -43,18 +43,18 @@ class ReviewWrite extends Component {
     formData.append('grade', this.state.grade);
 
     return axios
-      .post(`${BASE_URL}/users/${this.state.itemId}`, formData, {
+      .post(`${BASE_URL}/products/review/${this.state.itemId}`, formData, {
         headers: {
           Authorization: localStorage.getItem(TOKEN_KEY),
           'Content-Type': 'multipart/form-data',
         },
       })
       .then(res => {
-        res.json();
-        alert('성공');
+        //res.json();
+        alert('리뷰쓰기 성공');
+        this.props.history.push('/');
       })
       .catch(err => {
-        //alert('리뷰쓰기 실패');
         for (var pair of formData.entries()) {
           console.log(pair[0] + ', >>>>>' + pair[1]);
         }

@@ -2,14 +2,14 @@ import React from 'react';
 import './CartListSection.scss';
 
 class CartListSection extends React.Component {
-  add = () => {
-    this.props.quantityUpdate(this.props.index);
+  add = e => {
+    this.props.changeQuantity(this.props.index, e.target.name);
     this.props.calculateTotal(this.props.price);
   };
 
-  substract = () => {
+  substract = e => {
     if (this.props.quantity > 1) {
-      this.props.quantitySubstract(this.props.index);
+      this.props.changeQuantity(this.props.index, e.target.name);
       this.props.calculateTotal(-1 * this.props.price);
     } else {
       alert('최소 수량은 1개입니다. ');
@@ -47,7 +47,11 @@ class CartListSection extends React.Component {
                       disabled
                     />
                     <div className="quantitybtn">
-                      <button className="quantityPlus" onClick={this.add}>
+                      <button
+                        className="quantityPlus"
+                        onClick={this.add}
+                        name="quantityPlus"
+                      >
                         <img
                           alt="plusQuantity"
                           src="https:img.echosting.cafe24.com/skin/base_ko_KR/product/btn_count_up.gif"
@@ -56,6 +60,7 @@ class CartListSection extends React.Component {
                       <button
                         className="quantityMinus"
                         onClick={this.substract}
+                        name="quantityMinus"
                       >
                         <img
                           alt="plusQuantity"

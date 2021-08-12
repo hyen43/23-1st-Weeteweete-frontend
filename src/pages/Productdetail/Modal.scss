@@ -1,18 +1,40 @@
-.modal{
-  display:flex;
+.modal {
+  display: flex;
   align-items: center;
   justify-content: center;
-  position:fixed;
-  left:0;
-  top:0;
-  right:0;
-  bottom:0;
-  background:rgba(0,0,0,0.5);
-  z-index:999;
-
-  .content{
-    padding:30px;
-    background:#fff;
-    text-align:center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  .content {
+    position: relative;
+    padding: 30px;
+    background: #fff;
+    color: #333;
+    font-size: 22px;
+    line-height: 1.5em;
+    letter-spacing: -0.04em;
+    text-align: center;
+    .close {
+      position: absolute;
+      top: 0;
+      right: 15px;
+      background-color: transparent;
+      border: 0;
+      font-size: 26px;
+      line-height: 1.2em;
+    }
+    .goto {
+      display: block;
+      width: 100%;
+      border: 0;
+      background-color: #ddd;
+      border-radius: 5px;
+      margin-top: 15px;
+      padding: 5px 0;
+    }
   }
 }
