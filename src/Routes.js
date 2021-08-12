@@ -9,6 +9,7 @@ import Payment from './pages/Payment/Payment';
 import Signup from './pages/Signup/Signup';
 import Review from './pages/Review/Review';
 import ReviewWrite from './pages/Review/ReviewWrite/ReviewWrite';
+import Cart from './pages/Cart/Cart';
 import Productdetail from './pages/Productdetail/Productdetail';
 
 class Routes extends React.Component {
@@ -30,6 +31,8 @@ class Routes extends React.Component {
           <Route exact path="/Review" component={Review} />
           <Route exact path="/ReviewWrite" component={ReviewWrite} />
           <Route exact path="/products/:id" component={Productdetail} />
+          <Route exact path="/orders/cart" component={Cart} />
+          {/* <Route exact path="/productsdetail" component={Productdetail} /> */}
         </Switch>
         <Footer />
       </Router>

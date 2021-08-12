@@ -3,28 +3,21 @@ import './Modal.scss';
 
 class Modal extends React.Component {
   render() {
-    // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
-    const { open, close, header } = this.props;
-
+    const { open, close, cartText } = this.props;
+    console.log(cartText);
     return (
       <div className={open ? 'openModal modal' : 'modal'}>
-        {open ? (
-          <section>
-            <header>
-              {header}
-              <button className="close" onClick={close}>
-                {' '}
-                &times;{' '}
-              </button>
-            </header>
-            {/* <main>{this.props.children}</main> */}
-            <footer>
-              <button className="close" onClick={close}>
-                close
-              </button>
-            </footer>
-          </section>
-        ) : null}
+        {open && (
+          <div className="content">
+            {cartText}
+            <button className="close" onClick={close}>
+              X
+            </button>
+            <button className="goto" onClick={this.props.goToCart}>
+              장바구니이동
+            </button>
+          </div>
+        )}
       </div>
     );
   }

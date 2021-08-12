@@ -1,0 +1,25 @@
+.cartButton{
+  display: flex;
+  margin-bottom: 40px;
+
+  .cartOrderbtn, .cartKeepShopping{
+    margin: 2px;
+    padding: 8px 0;
+    width: 140px;
+    font-size: 15px;
+
+    :hover {
+      cursor: pointer;
+    }
+  }
+
+  .cartOrderbtn{
+    background: #000;
+    color: white;
+  }
+
+  .cartKeepShopping{
+    background: white;
+    border: 1px solid #e9e9e9;
+  }
+}
