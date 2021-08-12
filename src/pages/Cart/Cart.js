@@ -58,20 +58,22 @@ class Cart extends React.Component {
     });
   };
 
-  ordered = idx => {
-    fetch(`${BASE_URL}/orders?item_id=${this.state.cartData[idx].item_id}`, {
+  orderedAll = idx => {
+    const token = localStorage.getItem(TOKEN_KEY);
+    fetch(`${BASE_URL}/orders`, {
       headers: {
         Authorization: localStorage.getItem(TOKEN_KEY),
       },
       method: 'POST',
       body: JSON.stringify({
+        token: token,
         //item_id: this.state.cartData[idx].item_id,
-        quantity: this.state.cartData[idx].quantity,
+        // quantity: this.state.cartData.quantity,
       }),
     }).then(() => {
       this.props.history.push({
         pathname: `/payment`,
-        state: { itemId: this.state.cartData[idx].item_id },
+        state: { itemId: this.state.cartData.item_id },
       });
     });
   };
@@ -198,7 +200,7 @@ class Cart extends React.Component {
               total={total}
               deliveryFee={deliveryFee}
             />
-            <CartButton cartData={cartData} />
+            <CartButton cartData={cartData} orderedAll={this.orderedAll} />
           </div>
         </main>
       </>

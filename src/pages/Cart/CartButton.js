@@ -6,7 +6,15 @@ class CartButton extends React.Component {
     return (
       <section>
         <div className="cartButton">
-          <button className="cartOrderbtn"> 전체상품주문</button>
+          <button
+            className="cartOrderbtn"
+            onClick={() => {
+              this.props.orderedAll();
+            }}
+          >
+            {' '}
+            전체상품주문
+          </button>
           <button className="cartKeepShopping"> 쇼핑계속하기</button>
         </div>
       </section>

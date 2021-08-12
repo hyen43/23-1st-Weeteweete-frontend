@@ -17,7 +17,7 @@ class PaymentTotalPayment extends React.Component {
           </thead>
           <tbody>
             <tr>
-              <td>{this.props.totalprice}원</td>
+              <td>{this.props.totalPrice}원</td>
               <td>{this.props.totalDiscount}원</td>
               <td>{this.props.shippingFee}원</td>
               <td>{this.props.calculateTotal}원</td>

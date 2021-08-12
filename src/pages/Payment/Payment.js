@@ -28,6 +28,7 @@ class Payment extends React.Component {
     this.setState({
       userInformation: { ...this.state.userInformation, [name]: value },
     });
+    console.log(this.state.userInformation);
   };
 
   componentDidMount() {
@@ -79,7 +80,7 @@ class Payment extends React.Component {
       method: 'POST',
       body: JSON.stringify({
         total_price: calculateTotal,
-        order_number: this.state.cartItem[0].order_number,
+        order_id: this.state.cartItem[0].order_number,
         name: this.state.userInformation.name,
         address: this.state.userInformation.address,
         email: this.state.userInformation.email,
