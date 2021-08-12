@@ -55,13 +55,18 @@ class Payment extends React.Component {
   };
 
   handleSubmit = () => {
-    const token = localStorage.getItem('TOKEN');
+    // const token = localStorage.getItem('TOKEN');
     fetch(`${BASE_URL}/orders`, {
       method: 'POST',
       headers: {},
       body: JSON.stringify({
-        cart: this.state.cartItem,
-        user_info: this.state.userInformaiton,
+        total_price: this.state.cartItem,
+        order_id: this.state.userInfomation.order_id,
+        name: this.state.userInformation.name,
+        address: this.state.userInformation.address,
+        email: this.state.userInformation.email,
+        content: this.state.userInformation.content,
+        phone_number: this.state.userInformation.phone_number,
       }),
     })
       .then(res => res.json())
@@ -77,7 +82,7 @@ class Payment extends React.Component {
   };
 
   render() {
-    const token = localStorage.getItem('TOKEN');
+    // const token = localStorage.getItem('TOKEN');
     const { cartItem } = this.state;
     const [totalPrice, totalDiscount] = this.getTotalPrice(cartItem);
 
