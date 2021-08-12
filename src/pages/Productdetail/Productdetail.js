@@ -6,6 +6,7 @@ import ProductDetailOption from './ProductDetailOption';
 import ProductDetailButtons from './ProductDetailButtons';
 import Review from '../Review/Review';
 import Modal from './Modal';
+import { TOKEN_KEY } from '../../config.js';
 import { BASE_URL } from '../../config.js';
 import './Productdetail.scss';
 
@@ -21,7 +22,7 @@ class Productdetail extends React.Component {
   }
 
   openModal = () => {
-    const token = localStorage.getItem('TOKKEN');
+    const token = localStorage.getItem(TOKEN_KEY);
     token
       ? this.setState({ modalOpen: true })
       : alert('로그인 후 이용해주세요');
@@ -54,7 +55,7 @@ class Productdetail extends React.Component {
         quantities: this.state.quantity,
       }),
       headers: {
-        Authorization: localStorage.getItem('TOKKEN'),
+        Authorization: localStorage.getItem(TOKEN_KEY),
         Accept: 'application/json',
       },
     })

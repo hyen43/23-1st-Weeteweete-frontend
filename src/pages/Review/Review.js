@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Total from './Total';
 import { withRouter } from 'react-router-dom';
 import ReviewList from './ReviewList';
+import { TOKEN_KEY } from '../../config.js';
 import { BASE_URL } from '../../config.js';
 import './Review.scss';
 
@@ -30,11 +31,11 @@ class Review extends Component {
     fetch(`${BASE_URL}/products/${this.props.match.params.id}`, {
       method: 'POST',
       body: JSON.stringify({
-        //token: localStorage.getItem('TOKKEN'),
+        //token: localStorage.getItem('TOKEN'),
         itemId: this.state.itemId,
       }),
       headers: {
-        Authorization: localStorage.getItem('TOKKEN'),
+        Authorization: localStorage.getItem(TOKEN_KEY),
         Accept: 'application / json',
       },
     })

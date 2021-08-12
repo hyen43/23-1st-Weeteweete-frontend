@@ -3,6 +3,7 @@ import CartListSection from './CartListSection';
 import CartTotalSection from './CartTotalSection';
 import CartButton from './CartButton';
 import CartTotalSectionFooter from './CartTotalSectionFooter';
+import { TOKEN_KEY } from '../../config';
 import { BASE_URL } from '../../config';
 import './Cart.scss';
 
@@ -17,10 +18,9 @@ class Cart extends React.Component {
   }
 
   getCartData = () => {
-    console.log('지우고옴');
     fetch(`${BASE_URL}/orders/cart`, {
       headers: {
-        Authorization: localStorage.getItem('TOKKEN'),
+        Authorization: localStorage.getItem(TOKEN_KEY),
       },
     })
       .then(res => res.json())
@@ -34,7 +34,7 @@ class Cart extends React.Component {
   componentDidMount() {
     // fetch(`${BASE_URL}/orders/cart`, {
     //   headers: {
-    //     Authorization: localStorage.getItem('TOKKEN'),
+    //     Authorization: localStorage.getItem('TOKEN_KEY'),
     //   },
     // })
     //   .then(res => res.json())
@@ -79,21 +79,18 @@ class Cart extends React.Component {
   };
 
   ordered = idx => {
-    fetch(`${BASE_URL}/orders/cart`, {
+    fetch(`${BASE_URL}/orders?item_id=${this.state.cartData[idx].item_id}`, {
       headers: {
-        Authorization: localStorage.getItem('TOKKEN'),
+        Authorization: localStorage.getItem(TOKEN_KEY),
       },
       method: 'POST',
       body: JSON.stringify({
-        item_id: this.state.cartData[idx].item_id,
+        //item_id: this.state.cartData[idx].item_id,
         quantity: this.state.cartData[idx].quantity,
       }),
-    })
-      .then(res => res.json())
-      .then(order => {
-        alert('성공');
-        //   this.props.push.history('/Payment');
-      });
+    }).then(() => {
+      this.props.push.history('/Payment');
+    });
   };
 
   deleteproduct = idx => {
@@ -107,58 +104,48 @@ class Cart extends React.Component {
           //quantity: this.state.cartData[idx].quantity,
         }),
         headers: {
-          Authorization: localStorage.getItem('TOKKEN'),
+          Authorization: localStorage.getItem(TOKEN_KEY),
         },
       }
     )
-      .then(res => res.json())
-      .then(res => {
-        alert('성공');
-        //this.history.
-        this.getCartData();
+      .then(res => res.status)
+      .then(status => {
+        if (status === 204) {
+          this.getCartData();
+        }
       });
   };
 
   reviseQuantity = idx => {
-    fetch(`${BASE_URL}/orders/cart`, {
-      headers: {
-        Authorization: localStorage.getItem('TOKKEN'),
-      },
-      method: 'PATCH',
-      body: JSON.stringify({
-        item_id: this.state.cartData[idx].item_id,
-        quantity: this.state.cartData[idx].quantity,
-      }),
-    })
-      .then(res => res.json())
-      .then(revise => {
-        alert('성공');
-      });
+    fetch(
+      `${BASE_URL}/orders/cart?item_id=${this.state.cartData[idx].item_id}`,
+      {
+        headers: {
+          Authorization: localStorage.getItem('TOKEN_KEY'),
+        },
+        method: 'PATCH',
+        body: JSON.stringify({
+          item_id: this.state.cartData[idx].item_id,
+          quantities: this.state.cartData[idx].quantity,
+        }),
+      }
+    ).then(() => {
+      alert('성공');
+    });
   };
 
   render() {
     const { cartData } = this.state;
 
-    // let originTotal = cartData.reduce((origin, arrayItem, index) => {
-    //   origin =
-    //     origin +
-    //     Number(arrayItem[index].price) * Number(arrayItem[index].quantity);
-    //   return origin;
-    // });
     let originTotal = 0;
     for (let i = 0; i < cartData.length; i++) {
       originTotal += cartData[i].price * cartData[i].quantity;
     }
 
-    // let total = cartData.reduce((total, arrayItem, index) => {
-    //   total =
-    //     total +
-    //     Number(arrayItem[index].discount) * Number(arrayItem[index].quantity);
-    //   return total;
-    // });
     let total = 0;
     for (let i = 0; i < cartData.length; i++) {
-      total += cartData[i].discount * cartData[i].quantity;
+      total +=
+        (cartData[i].price - cartData[i].discount) * cartData[i].quantity;
     }
 
     let deliveryFee = total > 30000 ? 0 : 2500;

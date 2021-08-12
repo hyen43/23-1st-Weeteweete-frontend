@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import StarInput from './StarInput';
+import { TOKEN_KEY } from '../../../config.js';
 import { BASE_URL } from '../../../config.js';
 import './ReviewWrite.scss';
 
@@ -44,7 +45,7 @@ class ReviewWrite extends Component {
     return axios
       .post(`${BASE_URL}/users/${this.state.itemId}`, formData, {
         headers: {
-          Authorization: localStorage.getItem('TOKKEN'),
+          Authorization: localStorage.getItem(TOKEN_KEY),
           'Content-Type': 'multipart/form-data',
         },
       })

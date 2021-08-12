@@ -34,7 +34,7 @@ class CartListSection extends React.Component {
                   <p className="realPrice">
                     {Number(price).toLocaleString()}원
                   </p>
-                  <p> {Number(discount).toLocaleString()}원 </p>
+                  <p> {Number(price - discount).toLocaleString()}원 </p>
                 </td>
                 <td>
                   <div className="quantityTable">
@@ -72,7 +72,9 @@ class CartListSection extends React.Component {
                   </div>
                 </td>
                 <td> {deliveryFee.toLocaleString()}</td>
-                <td>{(discount * quantity).toLocaleString()}원</td>
+                <td>
+                  {(Number(price - discount) * quantity).toLocaleString()}원
+                </td>
                 <td className="selecteMenu">
                   <p>
                     <button
