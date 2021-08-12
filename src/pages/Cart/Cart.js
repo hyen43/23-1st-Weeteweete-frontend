@@ -31,7 +31,7 @@ class Cart extends React.Component {
       });
   };
 
-  thisDidMount() {
+  componentDidMount() {
     this.getCartData();
   }
 
