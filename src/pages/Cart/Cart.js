@@ -58,6 +58,21 @@ class Cart extends React.Component {
     });
   };
 
+  ordered = idx => {
+    fetch(`${BASE_URL}/orders?item_id=${this.state.cartData[idx].item_id}`, {
+      headers: {
+        Authorization: localStorage.getItem(TOKEN_KEY),
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        //item_id: this.state.cartData[idx].item_id,
+        quantity: this.state.cartData[idx].quantity,
+      }),
+    }).then(() => {
+      this.props.history.push('/Payment');
+    });
+  };
+
   orderedAll = idx => {
     const token = localStorage.getItem(TOKEN_KEY);
     fetch(`${BASE_URL}/orders`, {

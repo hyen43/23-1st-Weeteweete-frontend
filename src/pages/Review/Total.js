@@ -14,7 +14,7 @@ class Total extends Component {
     return (
       <div className="total">
         <div className="totalStar">
-          {Number(starAverage) === 'NaN' ? '0' : Number(starAverage)}
+          {String(starAverage) === 'NaN' ? 0 : starAverage}
         </div>
         <div className="totalReview">후기 {starArry.length}개</div>
       </div>
