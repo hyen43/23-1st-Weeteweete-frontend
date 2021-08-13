@@ -5,7 +5,7 @@ class Total extends Component {
   render() {
     const { reviewList } = this.props;
     const starArry = reviewList.map(review => {
-      return review.star;
+      return review.grade;
     });
     const starSum = starArry.reduce((prev, cur) => {
       return prev + cur;

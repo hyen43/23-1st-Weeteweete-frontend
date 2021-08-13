@@ -3,6 +3,7 @@ import CartListSection from './CartListSection';
 import CartTotalSection from './CartTotalSection';
 import CartButton from './CartButton';
 import CartTotalSectionFooter from './CartTotalSectionFooter';
+import { withRouter } from 'react-router-dom';
 import { TOKEN_KEY } from '../../config';
 import { BASE_URL } from '../../config';
 import './Cart.scss';
@@ -25,9 +26,11 @@ class Cart extends React.Component {
     })
       .then(res => res.json())
       .then(cartData => {
-        this.setState({
-          cartData: cartData.RESULT,
-        });
+        cartData.RESULT === undefined
+          ? this.setState({ cartData: [] })
+          : this.setState({
+              cartData: cartData.RESULT,
+            });
       });
   };
 
@@ -55,18 +58,23 @@ class Cart extends React.Component {
     });
   };
 
-  ordered = idx => {
-    fetch(`${BASE_URL}/orders?item_id=${this.state.cartData[idx].item_id}`, {
+  orderedAll = idx => {
+    const token = localStorage.getItem(TOKEN_KEY);
+    fetch(`${BASE_URL}/orders`, {
       headers: {
         Authorization: localStorage.getItem(TOKEN_KEY),
       },
       method: 'POST',
       body: JSON.stringify({
+        token: token,
         //item_id: this.state.cartData[idx].item_id,
-        quantity: this.state.cartData[idx].quantity,
+        // quantity: this.state.cartData.quantity,
       }),
     }).then(() => {
-      this.props.push.history('/Payment');
+      this.props.history.push({
+        pathname: `/payment`,
+        state: { itemId: this.state.cartData.item_id },
+      });
     });
   };
 
@@ -113,6 +121,7 @@ class Cart extends React.Component {
 
   render() {
     const { cartData } = this.state;
+    console.log(this.state.cartData);
 
     let originTotal = 0;
     for (let i = 0; i < cartData.length; i++) {
@@ -127,6 +136,7 @@ class Cart extends React.Component {
 
     let deliveryFee = total > 30000 ? 0 : 2500;
 
+    let component = this;
     const carts = this.state.cartData.map(function (cart, index) {
       return (
         <CartListSection
@@ -137,13 +147,13 @@ class Cart extends React.Component {
           total={total}
           deliveryFee={deliveryFee}
           quantity={cart.quantity}
-          calculateTotal={this.calculateTotal}
-          changeQuantity={this.changeQuantity}
+          calculateTotal={component.calculateTotal}
+          changeQuantity={component.changeQuantity}
           index={index}
           key={cart.cart_id}
-          ordered={this.ordered}
-          deleteproduct={this.deleteproduct}
-          reviseQuantity={this.reviseQuantity}
+          ordered={component.ordered}
+          deleteproduct={component.deleteproduct}
+          reviseQuantity={component.reviseQuantity}
         />
       );
     });
@@ -190,7 +200,7 @@ class Cart extends React.Component {
               total={total}
               deliveryFee={deliveryFee}
             />
-            <CartButton cartData={cartData} />
+            <CartButton cartData={cartData} orderedAll={this.orderedAll} />
           </div>
         </main>
       </>
@@ -198,4 +208,4 @@ class Cart extends React.Component {
   }
 }
 
-export default Cart;
+export default withRouter(Cart);

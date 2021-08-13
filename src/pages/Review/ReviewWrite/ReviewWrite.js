@@ -50,14 +50,12 @@ class ReviewWrite extends Component {
         },
       })
       .then(res => {
-        //res.json();
-        alert('리뷰쓰기 성공');
-        this.props.history.push('/');
+        if (res.data.MESSAGE === 'SUCCESS') {
+          alert('리뷰쓰기 성공');
+        }
       })
       .catch(err => {
-        for (var pair of formData.entries()) {
-          console.log(pair[0] + ', >>>>>' + pair[1]);
-        }
+        alert('리뷰쓰기 실패');
       });
   };
 

@@ -9,18 +9,8 @@ class PaymentOrderDetails extends React.Component {
     };
   }
 
-  componentDidMount() {
-    fetch('/data/PaymentProductData.json')
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          paymentList: data.data,
-        });
-      });
-  }
-
   render() {
-    const productList = this.state.paymentList;
+    const productList = this.props.cartItem;
     const totalPrice = productList.reduce((total, arrayItem) => {
       total =
         total +
@@ -38,7 +28,7 @@ class PaymentOrderDetails extends React.Component {
     }, 0);
 
     const deliveryFee = discountPrice < 30000 ? 2500 : 0;
-    const paymentTotal = discountPrice + deliveryFee;
+    const paymentTotal = totalPrice - discountPrice + deliveryFee;
 
     return (
       <main className="paymentOrderDetails">
@@ -66,7 +56,7 @@ class PaymentOrderDetails extends React.Component {
               </tr>
             </thead>
             <tbody>
-              {this.state.paymentList.map(product => {
+              {this.props.cartItem.map(product => {
                 const {
                   product_image,
                   product_name,
@@ -75,13 +65,18 @@ class PaymentOrderDetails extends React.Component {
                 } = product.information[0];
                 return (
                   <tr key={product.order_number}>
-                    <td className="tableline">{product_image}</td>
+                    <td className="tableline">
+                      <img src={product_image} />
+                    </td>
                     <td className="tableline">{product_name}</td>
                     <td className="tableline">{product_price}</td>
-                    <td className="tableline">{product_discount}</td>
+                    <td className="tableline">
+                      {product_price - product_discount}
+                    </td>
                     <td className="tableline">{product.quantity}</td>
                     <td className="tableline">
-                      {Number(product_discount) * Number(product.quantity)}
+                      {Number(product_price) -
+                        Number(product_discount) * Number(product.quantity)}
                     </td>
                   </tr>
                 );
@@ -92,7 +87,7 @@ class PaymentOrderDetails extends React.Component {
                   <span>
                     <strong> 원</strong>
                   </span>
-                  - 상품할인금액 {totalPrice - discountPrice}
+                  - 상품할인금액 {discountPrice}
                   <span>
                     <strong> 원</strong>
                   </span>

@@ -3,7 +3,7 @@ export const DELIVERYINFO_LIST = [
     key: 1,
     lable: '받으시는 분',
     type: 'text',
-    name: 'delivery_receiver',
+    name: 'name',
     className: 'receiverInput',
     content: '',
   },

@@ -10,9 +10,9 @@ class Footer extends Component {
         <div className="footerInfo">
           <div className="contain">
             <div className="customer">
-              <h3>모트모트 고객센터</h3>
+              <h3>위트위트 고객센터</h3>
               <h4>
-                카카오톡 플러스 친구 <span>@motemote</span>
+                카카오톡 플러스 친구 <span>@Weeteweete</span>
               </h4>
               <p>
                 평일 10:00 ~ 18:00 (점심시간 13:00 ~ 14:00) 주말 및 공휴일은
@@ -22,13 +22,13 @@ class Footer extends Component {
             </div>
             <div className="companyInfo">
               <address>
-                <span>주식회사 모트모트</span> <span className="bar" />
+                <span>주식회사 위트위트</span> <span className="bar" />
                 <span>
                   04560 서울특별시 중구 마른내로 146 (쌍림동) 청인빌딩 3층
                 </span>
-                <span className="bar" /> <span>CEO/CPO : 김권봉</span>
+                <span className="bar" /> <span>CEO/CPO : 위트위트 </span>
                 <span className="bar" />
-                <span>사업자등록번호 : 580-86-00984</span>
+                <span>사업자등록번호 : 000-000-0000</span>
                 <span className="bar" />
                 <span>통신판매업 신고번호 : 제 2018-서울중구-0633 호</span>
               </address>

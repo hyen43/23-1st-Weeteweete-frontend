@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import FindFormLayout from './FindFormLayout';
 import FINDID_LIST from './FindidData';
 import './Findid.scss';
+import { BASE_URL } from '../../config';
 
 class Findid extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class Findid extends Component {
   findidTest = e => {
     e.preventDefault();
     const { name, email } = this.state;
-    fetch('http://10.58.4.206:8000/users/account', {
+    fetch(`${BASE_URL}/users/account`, {
       method: 'POST',
       body: JSON.stringify({ name, email }),
     })

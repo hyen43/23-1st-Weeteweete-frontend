@@ -3,10 +3,6 @@ import './PaymentTotalPayment.scss';
 
 class PaymentTotalPayment extends React.Component {
   render() {
-    const { totalPrice, totalDiscount } = this.props;
-    const shippingFee = totalDiscount < 30000 ? 2500 : 0;
-    const calculateTotal = totalDiscount + shippingFee;
-
     return (
       <main className="paymentTotalPayment">
         <h3>결제 예정 금액</h3>
@@ -21,16 +17,16 @@ class PaymentTotalPayment extends React.Component {
           </thead>
           <tbody>
             <tr>
-              <td>{totalPrice}원</td>
-              <td>{totalDiscount}원</td>
-              <td>{shippingFee}원</td>
-              <td>{calculateTotal}원</td>
+              <td>{this.props.totalPrice}원</td>
+              <td>{this.props.totalDiscount}원</td>
+              <td>{this.props.shippingFee}원</td>
+              <td>{this.props.calculateTotal}원</td>
             </tr>
           </tbody>
         </table>
         <section className="payArea">
           <h3>최종결제 금액</h3>
-          <p>{calculateTotal}원</p>
+          <p>{this.props.calculateTotal}원</p>
           <button
             type="submit"
             formMethod="POST"

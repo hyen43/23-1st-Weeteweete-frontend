@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import FindFormLayout from '../Findid/FindFormLayout';
 import FINDPW_DATA from './FindpwData';
+import { BASE_URL } from '../../config';
 import './Findpw.scss';
 
 class Findpw extends Component {
@@ -24,7 +25,7 @@ class Findpw extends Component {
   findpwTest = e => {
     e.preventDefault();
     const { account, name, email } = this.state;
-    fetch('http://10.58.4.206:8000/users/password', {
+    fetch(`${BASE_URL}/users/password`, {
       method: 'PATCH',
       body: JSON.stringify({ account, name, email }),
     })

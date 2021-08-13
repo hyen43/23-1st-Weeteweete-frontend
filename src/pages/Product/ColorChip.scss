@@ -35,63 +35,44 @@
       }
     }
 
-    .red {
+    .blue {
       &:hover:after {
-        border: 1px solid #ff6c6c;
+        border: 1px solid #bcd6fa;
       }
-
       span {
-        background: #ff6c6c;
+        background: #bcd6fa;
       }
     }
-
     .green {
       &:hover:after {
-        border: 1px solid #53ff4ced;
+        border: 1px solid #cce7bb;
       }
-
       span {
-        background: #53ff4ced;
+        background: #cce7bb;
       }
     }
-
-    .dream {
-      &:hover:after {
-        border: 1px solid #b2ccff;
-      }
-
-      span {
-        background: #b2ccff;
-      }
-    }
-
     .violet {
       &:hover:after {
-        border: 1px solid #d1b2ff;
+        border: 1px solid #c5bcfa;
       }
-
       span {
-        background: #d1b2ff;
+        background: #c5bcfa;
       }
     }
-
-    .dark {
-      &:hover:after {
-        border: 1px solid #bdbdbd;
-      }
-
-      span {
-        background: #bdbdbd;
-      }
-    }
-
     .yellow {
       &:hover:after {
-        border: 1px solid #faed7d;
+        border: 1px solid #eed0a4;
       }
-
       span {
-        background: #faed7d;
+        background: #eed0a4;
+      }
+    }
+    .pink {
+      &:hover:after {
+        border: 1px solid #f5d2cd;
+      }
+      span {
+        background: #f5d2cd;
       }
     }
   }

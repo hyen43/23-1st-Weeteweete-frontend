@@ -3,7 +3,7 @@ import './Payment.scss';
 import PaymentOrderDetails from './PaymentOrderDetails';
 import PaymentDeliveryInfo from './PaymentDeliveryInfo';
 import PaymentTotalPayment from './PaymentTotalPayment';
-import { BASE_URL } from '../../config';
+import { BASE_URL, TOKEN_KEY } from '../../config';
 
 class Payment extends React.Component {
   constructor(props) {
@@ -11,38 +11,53 @@ class Payment extends React.Component {
 
     this.state = {
       userInformation: {
-        order_id: '',
+        order_number: '',
         name: '',
         phone_number: '',
         content: '',
         email: '',
       },
       cartItem: [],
+      total: 0,
+      totaldiscount: 0,
     };
   }
 
   handleInputs = event => {
     const { name, value } = event.target;
     this.setState({
-      userInformation: {
-        [name]: value,
-      },
+      userInformation: { ...this.state.userInformation, [name]: value },
     });
+    console.log(this.state.userInformation);
   };
 
   componentDidMount() {
-    fetch('data/paymentTotalPayment.json')
+    fetch(`${BASE_URL}/orders?${this.props.location.state.itemId}`, {
+      headers: {
+        Authorization: localStorage.getItem(TOKEN_KEY),
+      },
+    })
       .then(res => res.json())
       .then(res => {
         this.setState({
-          cartItem: res.data,
+          cartItem: res.RESULT,
         });
+        console.log(this.state.cartItem);
       });
   }
+  //       .then(res => res.json())
+  //       .then(res => {
+  //         this.setState({
+  //           cartItem: res.data,
+  //         });
+  //       }),
+  //   });
+  // }
 
   getTotalPrice = cartItems => {
     let totalPrice = 0;
     let totalDiscount = 0;
+
     for (let cartItem of cartItems) {
       const { quantity } = cartItem;
       const productPrice = cartItem.information[0].product_price;
@@ -54,14 +69,18 @@ class Payment extends React.Component {
     return [totalPrice, totalDiscount];
   };
 
-  handleSubmit = () => {
-    // const token = localStorage.getItem(`${TOKEN_KEY}`);
-    fetch(`${BASE_URL}/orders`, {
+  handleSubmit = calculateTotal => {
+    // console.log(calculateTotal);
+    //const token = localStorage.getItem(`${TOKEN_KEY}`);
+    console.log(this.state.userInformation);
+    fetch(`${BASE_URL}/orders/purchase`, {
+      headers: {
+        Authorization: localStorage.getItem(TOKEN_KEY),
+      },
       method: 'POST',
-      headers: {},
       body: JSON.stringify({
-        total_price: this.state.cartItem,
-        order_id: this.state.userInfomation.order_id,
+        total_price: calculateTotal,
+        order_id: this.state.cartItem[0].order_number,
         name: this.state.userInformation.name,
         address: this.state.userInformation.address,
         email: this.state.userInformation.email,
@@ -82,19 +101,25 @@ class Payment extends React.Component {
   };
 
   render() {
-    // const token = localStorage.getItem(`${TOKEN_KEY}`);
     const { cartItem } = this.state;
     const [totalPrice, totalDiscount] = this.getTotalPrice(cartItem);
+    // const { total, totaldiscount } = this.state;
+    const shippingFee = totalDiscount < 30000 ? 2500 : 0;
+    const calculateTotal = totalPrice - totalDiscount + shippingFee;
+
+    console.log(this.state.cartItem);
 
     return (
       <main className="payment">
-        <PaymentOrderDetails />
+        <PaymentOrderDetails cartItem={this.state.cartItem} />
         <PaymentDeliveryInfo onChange={this.handleInputs} />
         <PaymentTotalPayment
           userInformation={this.state.userInformation}
-          handleSubmit={this.handleSubmit}
+          handleSubmit={() => this.handleSubmit(calculateTotal)}
           totalPrice={totalPrice}
           totalDiscount={totalDiscount}
+          calculateTotal={calculateTotal}
+          shippingFee={shippingFee}
         />
       </main>
     );
