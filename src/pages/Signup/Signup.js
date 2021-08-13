@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import SIGNUP_LIST from './SignupData.js';
 import './Signup.scss';
 import { validationFunction } from '../../utils/validation';
+import { BASE_URL } from '../../config';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -38,30 +39,30 @@ class Signup extends React.Component {
   };
 
   signupTest = () => {
-    if (this.testValidation()) {
-      fetch('http://10.58.5.153:8000/users/signup', {
-        method: 'POST',
-        body: JSON.stringify({
-          account: this.state.userInfo.account,
-          password: this.state.userInfo.password,
-          name: this.state.name,
-          address: this.state.address,
-          phone_number: this.state.phone_number,
-          email: this.state.userInfo.email,
-        }),
-      })
-        .then(res => res.json())
-        .then(result => {
-          if (result.MESSAGE === 'SUCCESS') {
-            alert('회원가입 성공! 로그인 페이지로 이동합니다!');
-            this.props.history.push('/login');
-          } else {
-            alert('회원가입 실패!');
-          }
-        });
-    } else {
-      return alert('회원가입 조건을 지켜주세요!');
-    }
+    // if (this.testValidation()) {
+    fetch(`${BASE_URL}/users/signup`, {
+      method: 'POST',
+      body: JSON.stringify({
+        account: this.state.userInfo.account,
+        password: this.state.userInfo.password,
+        name: this.state.name,
+        address: this.state.address,
+        phone_number: this.state.phone_number,
+        email: this.state.userInfo.email,
+      }),
+    })
+      .then(res => res.json())
+      .then(result => {
+        if (result.MESSAGE === 'SUCCESS') {
+          alert('회원가입 성공! 로그인 페이지로 이동합니다!');
+          this.props.history.push('/login');
+        } else {
+          alert('회원가입 실패!');
+        }
+      });
+    // } else {
+    //   return alert('회원가입 조건을 지켜주세요!');
+    // }
   };
 
   render() {

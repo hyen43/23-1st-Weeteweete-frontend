@@ -22,7 +22,7 @@ class ProListInList extends Component {
           {stock === 0 && <div className="soldOut">SOLD OUT</div>}
           <div className="thumb">
             <div className="img">
-              <img alt={name} src={image[0]}></img>
+              <img alt={name} src={image}></img>
             </div>
           </div>
           <div className="content">

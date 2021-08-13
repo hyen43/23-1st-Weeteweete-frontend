@@ -1,7 +1,9 @@
 .visualContainer {
-  width: 200%;
-
+  width: 2880px;
   .mainVisual {
     display: flex;
+    img {
+      width: 1440px;
+    }
   }
 }
