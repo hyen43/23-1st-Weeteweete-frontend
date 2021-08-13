@@ -1,13 +1,9 @@
-## 팀명: weeteweete
-## 팀원
-- 프론트엔드: 최호정, 차예은, 배윤아, 이나현
-- 백엔드: 백선호, 임종성
    # WEETEWEETE(위트위트)
    ##  Introduction to weeteweete project (Front-End)
-   > Colorize your life with weete weete
-   > 색은 특별함을 담는 가장 강력한 요소입니다. 
-   > 'color'라는 가치관에 생각과 감정을 정리하는 노트를 판매하는 모트모트 페이지가 매력적으로 느껴졌습니다. 
-   > 모트모트만의 매력과 페이지의 디자인/기획이 마음에 들어 디자인/기획 부분만 클론했습니다. 
+   > Colorize your life with weete weete<br/>
+   > 색은 특별함을 담는 가장 강력한 요소입니다. <br/>
+   > 'color'라는 가치관에 생각과 감정을 정리하는 노트를 판매하는 모트모트 페이지가 매력적으로 느껴졌습니다. <br/>
+   > 모트모트만의 매력과 페이지의 디자인/기획이 마음에 들어 디자인/기획 부분만 클론했습니다. <br/>
    > 개발은 초기 세팅부터 직접 구현했으며, 데모 영상에서 알 수 있듯이 모든 부분이 백앤드와 통신으로 이루어져 있습니다. 
    
  ## WEETEWEETE TEAM MEMBER & TERM
@@ -18,20 +14,21 @@
   - 최호정: nav, footer, 메인페이지, 제품리스트페이지, 상품 리뷰
   - 차예은: 결제 form
   - 배윤아: 로그인/회원가입, 아이디/비밀번호 찾기, 결제 table
-  - 이나현: 상세페이지, 장바구니 
+  - 이나현: 상세페이지, 장바구니
+  <br/>
   [백엔드] 
   - 백선호: 로그인/회원가입, 비밀번호 초기화, 아이디 찾기, 로그인 데코레이터, 상품 결제, 상품 리뷰
   - 임종성: 모델링, 메인페이지, 상세페이지, 메뉴페이지, 장바구니 CRUD,  상품 리뷰
 
-- WEETEWEETE BACKEND LINK: 
+- WEETEWEETE BACKEND LINK: https://github.com/wecode-bootcamp-korea/23-1st-Weeteweete-backend
 
 ## 프로젝트 선정이유
 > 모트모트, 일상의 영감을 불어넣다(with color)
 
-모트모트는 우리가 일상적으로 쓰는 노트를 판매하는 사이트입니다. 
-깔끔한 디자인이 돋보이고, 아기자기한게 매력적인 사이트입니다. 
-가장 프라이빗한 나만의 공간인 노트를 오브제를 만들고 가치를 판매한다는 것이 매력적이었습니다. 
-또한, 브랜드의 고유한 색상 팔레트가 있어 이를 통해 구현할 수 있는 가치과 기능이 있었습니다. 
+모트모트는 우리가 일상적으로 쓰는 노트를 판매하는 사이트입니다.<br/> 
+깔끔한 디자인이 돋보이고, 아기자기한게 매력적인 사이트입니다. <br/>
+가장 프라이빗한 나만의 공간인 노트를 오브제를 만들고 가치를 판매한다는 것이 매력적이었습니다. <br/>
+또한, 브랜드의 고유한 색상 팔레트가 있어 이를 통해 구현할 수 있는 가치과 기능이 있었습니다. <br/>
 깔끔한 디자인, 브랜드 가치, 적정한 수준의 기능 이 3가지 부분이 마음에 들어 모트모트 페이지를 클론코딩하게 되었습니다. 
 
 
@@ -40,9 +37,9 @@
 
 ## 적용 기술 및 구현 기능
 ### 적용 기술
-Front-End : React.js, sass, react-router-dom, axios
-Back-End : 
-Common : RESTful API, trello
+Front-End : React.js, sass, react-router-dom, axios<br/>
+Back-End : Python, Django web framework, Bcrypt, My SQL, RESTful API<br/>
+Common : RESTful API, trello <br/>
 
 ### 구현 기능
 - 필수구현
