@@ -55,6 +55,25 @@ Common : RESTful API, trello <br/>
 2. 상품 리뷰
 3. 재고 수량 
 
+## 구현기능 상세 
+
+### 공통
+* 초기세팅 
+
+### 상세페이지(이나현)
+1. 라이브러리 없이 작동하는 이미지 Carousel 기능 구현 
+![Carousel 영상](https://user-images.githubusercontent.com/60104321/136542360-576ca2fd-5bc7-49b8-8635-665a51dc0160.gif)
+
+2. 수량 증감 기능 구현(재고에 따라 alert창 띄우기)
+3. 수량 data post와 함께 장바구니 이동 라우팅 기능 구현 
+![상세페이지_장바구니이동_weeteweete](https://user-images.githubusercontent.com/60104321/136542383-cdb6465a-99d6-4ed1-a86b-26a449779e22.gif)
+
+### 장바구니(이나현, 최호정)
+1. 제품당 수량 변경(이벤트 index와 제품 index 비교하여 구현)
+2. 전체 및 각 상품 선택 주문(API-POST, ItemId의 state를 push)
+3. 선택 상품 삭제(API-DELETE)
+![장바구니_weeteweete](https://user-images.githubusercontent.com/60104321/136542418-464c150a-4051-4c0a-ad31-b37cdd2ef861.gif)
+
 
 ## Reference
 이 프로젝트는 모트모트 사이트를 참조하여 학습목적으로 만들었습니다.<br/>
